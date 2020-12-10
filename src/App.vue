@@ -1,24 +1,55 @@
 <template>
   <div id="app">
-    {{ test }}
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <item-detail
+      v-if="detailContentId"
+      :content-id="detailContentId"
+      :is-list-available="islistAvailable"
+      @close="closeDetail"
+    />
+    <items-list v-else @show-detail="showDetail" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import ItemsList from './components/ItemsList.vue';
+import ItemDetail from './components/ItemDetail.vue';
 
 export default Vue.extend({
-  name: 'App',
   components: {
-    HelloWorld,
+    ItemsList,
+    ItemDetail,
   },
   props: {
-    test: {
+    contentIdList: {
       type: String,
-      default: 'bla',
+      default: '1,2,3',
+    },
+  },
+  data() {
+    return {
+      detailContentId: null,
+    };
+  },
+  computed: {
+    contentIds() {
+      return this.contentIdList.split(',');
+    },
+    islistAvailable() {
+      return this.contentIds.length > 1;
+    },
+  },
+  created() {
+    if (!this.islistAvailable) {
+      this.detailContentId = this.contentIds[0];
+    }
+  },
+  methods: {
+    showDetail(detailContentId) {
+      this.detailContentId = detailContentId;
+    },
+    closeDetail() {
+      this.detailContentId = null;
     },
   },
 });
@@ -29,8 +60,5 @@ export default Vue.extend({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
