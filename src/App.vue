@@ -6,7 +6,7 @@
         :is-list-available="islistAvailable"
         @close="closeDetail"
     />
-    <items-list v-else @show-detail="showDetail" />
+    <items-list v-else @show-detail="showDetail" language="it" contentType="Gastronomy"/>
   </div>
 </template>
 
@@ -20,10 +20,22 @@ export default Vue.extend({
     ItemDetail,
   },
   props: {
+    contentType: {
+      type: String,
+      default: 'Gastronomy'
+    },
     contentIdList: {
       type: String,
       default: '1,2,3',
     },
+    categories: {
+      type: Array,
+      default: null
+    },
+    language: {
+      type: String,
+      default: 'en'
+    }
   },
   data() {
     return {
@@ -49,7 +61,7 @@ export default Vue.extend({
     },
     closeDetail() {
       this.detailContentId = null;
-    },
+    }
   },
 });
 </script>
