@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <item-detail
-      v-if="detailContentId"
-      :content-id="detailContentId"
-      :is-list-available="islistAvailable"
-      @close="closeDetail"
+        v-if="detailContentId"
+        :content-id="detailContentId"
+        :is-list-available="islistAvailable"
+        @close="closeDetail"
     />
     <items-list v-else @show-detail="showDetail" />
   </div>
@@ -14,7 +14,6 @@
 import Vue from 'vue';
 import ItemsList from './components/ItemsList.vue';
 import ItemDetail from './components/ItemDetail.vue';
-
 export default Vue.extend({
   components: {
     ItemsList,

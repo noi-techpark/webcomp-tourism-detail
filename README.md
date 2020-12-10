@@ -49,7 +49,7 @@ To build the project, the following prerequisites must be met:
 
 For a ready to use Docker environment with all prerequisites already installed and prepared, you can check out the [Docker environment](#docker-environment) section.
 
-### Source code
+`### Source code`
 
 Get a copy of the repository:
 
