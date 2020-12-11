@@ -59,6 +59,19 @@
           <li v-for="(value, i) of type.values" :key="i">{{ value }}</li>
         </ul>
       </div>
+
+      <div v-if="itemOperationSchedule.length">
+        <b>Öffnungszeiten</b>
+        <div v-for="(schedule, i) of itemOperationSchedule" :key="i">
+          <ul>
+            <li v-for="(time, j) of schedule.OperationScheduleTime" :key="j">
+              {{ TIMECODES[time.Timecode][language] }} von {{ time.Start }} bis
+              {{ time.End }}
+              ({{ time | scheduleDays(language) }})
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -86,6 +99,88 @@ const GASTRONOMY_TYPES = [
   {
     type: 'FacilityCodes_QualitySeals',
     name: 'Qualitätssiegel',
+  },
+];
+
+const TIMECODES = {
+  1: {
+    en: 'General Opening Time',
+    de: 'Allgemeine Öffnungszeiten',
+    it: '',
+  },
+  2: {
+    en: 'Time range for warm meals',
+    de: 'Warme Mahlzeiten',
+    it: '',
+  },
+  3: {
+    en: 'Time range for pizza',
+    de: 'Pizza',
+    it: '',
+  },
+  4: {
+    en: "Time range for snack's",
+    de: 'Snacks',
+    it: '',
+  },
+};
+
+const SCHEDULE_DAYS = [
+  {
+    code: 'Monday',
+    name: {
+      en: 'Mo',
+      de: 'Mo',
+      it: 'Lu',
+    },
+  },
+  {
+    code: 'Tuesday',
+    name: {
+      en: 'Tu',
+      de: 'Di',
+      it: 'Ma',
+    },
+  },
+  {
+    code: 'Wednesday',
+    name: {
+      en: 'We',
+      de: 'Mi',
+      it: 'Me',
+    },
+  },
+  {
+    code: 'Thuresday',
+    name: {
+      en: 'Th',
+      de: 'Do',
+      it: 'Gi',
+    },
+  },
+  {
+    code: 'Friday',
+    name: {
+      en: 'Fr',
+      de: 'Fr',
+      it: 'Ve',
+    },
+  },
+  {
+    code: 'Saturday',
+    name: {
+      en: 'Sa',
+      de: 'Sa',
+      it: 'Sa',
+    },
+  },
+  {
+    code: 'Sunday',
+    name: {
+      en: 'Su',
+      de: 'So',
+      it: 'Do',
+    },
   },
 ];
 
@@ -166,11 +261,29 @@ export default {
           .map((t) => t.TypeDesc[this.language]),
       })).filter((t) => t.values.length);
     },
+    itemOperationSchedule() {
+      return this.item.OperationSchedule.filter((s) => {
+        const start = new Date(s.Start);
+        const stop = new Date(s.Stop);
+        const now = new Date();
+        return (
+          now.getTime() <= stop.getTime() && now.getTime() >= start.getTime()
+        );
+      });
+    },
+    TIMECODES: () => TIMECODES,
   },
   created() {
     this.gastronomyApi = new GastronomyApi();
     this.loadGastronomyTypeList();
     this.loadGastronomyItem();
+  },
+  filters: {
+    scheduleDays(scheduleTime, language) {
+      return SCHEDULE_DAYS.map((d) =>
+        scheduleTime[d.code] ? d.name[language] : null
+      ).join(', ');
+    },
   },
   methods: {
     loadGastronomyItem() {
