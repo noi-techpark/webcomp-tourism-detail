@@ -72,6 +72,8 @@
           </ul>
         </div>
       </div>
+
+      <small>Letzte Änderung: {{ item.LastChange | dateFormat }}</small>
     </div>
   </div>
 </template>
@@ -283,6 +285,9 @@ export default {
       return SCHEDULE_DAYS.map((d) =>
         scheduleTime[d.code] ? d.name[language] : null
       ).join(', ');
+    },
+    dateFormat(dateString) {
+      return new Date(dateString).toLocaleDateString();
     },
   },
   methods: {
