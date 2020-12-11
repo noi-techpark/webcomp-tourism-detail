@@ -178,7 +178,6 @@ export default {
         .gastronomyGetGastronomySingle(this.contentId)
         .then((value) => {
           this.item = value.data;
-          console.log(this.item);
         });
     },
     loadGastronomyTypeList() {
