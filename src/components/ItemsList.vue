@@ -8,17 +8,18 @@
         <div class="info">
           <div class="title">{{ getTitle(item, language) }}</div>
           <div v-if="contentType === 'Gastronomy'">{{ getGastronomyShortInfo(item) }}</div>
-          <div v-if="contentType === 'Activity'">{{ getActivityShortInfo(item) }}</div>
-          <div v-if="contentType === 'POI'">{{ getGastronomyShortInfo(item) }}</div>
+          <div v-else-if="contentType === 'Activity'">{{ getActivityShortInfo(item) }}</div>
+          <div v-else-if="contentType === 'POI'">{{ getPoiShortInfo(item) }}</div>
         </div>
         <div class="arrow"></div>
       </div>
     </div>
+    <hr class="solid">
   </div>
 </template>
 
 <script>
-import {ActivityApi, GastronomyApi} from "@/api";
+import {ActivityApi, GastronomyApi, PoiApi} from "@/api";
 
 export default {
   props: {
@@ -35,7 +36,8 @@ export default {
     return {
       items: [],
       gastronomyTypes: [],
-      activityTypes: []
+      activityTypes: [],
+      poiTypes: []
     };
   },
   created() {
@@ -45,6 +47,9 @@ export default {
     } else if(this.contentType === 'Activity') {
       this.loadActivityTypeList()
       this.loadActivityList()
+    } else if(this.contentType === 'POI') {
+      this.loadPoiTypeList();
+      this.loadPoiList();
     }
   },
   methods: {
@@ -64,7 +69,7 @@ export default {
           null,null,null,null,null,null,null,
           null,null,true,true,null,null,null,null,
           null,null,null,[]).then((value => {
-        this.items = value.data.Items
+        this.items = value?.data?.Items ?? []
         console.log(value)
       }))
     },
@@ -82,15 +87,32 @@ export default {
           null, null, null, true, true, null, null,
           null, null, null, null, null, null
       ).then((value => {
-        this.items = value.data.Items
+        this.items = value?.data?.Items ?? []
+        console.log(value)
+      }))
+    },
+    loadPoiTypeList() {
+      const poiApi = new PoiApi()
+      poiApi.poiGetAllPoiTypesList().then((value) => {
+        this.poiTypes = value.data
+        console.log(value)
+      })
+    },
+    loadPoiList() {
+      const poiApi = new PoiApi()
+      poiApi.poiGetPoiFiltered(1, 20, null, null, null, null, null,
+      null, null, true, true, null, null, null, null, null,
+      null, null, null, []
+      ).then((value => {
+        this.items = value?.data?.Items ?? []
         console.log(value)
       }))
     },
     getGastronomyShortInfo(item) {
       const categories = this.getGastronomyTypes(item)
-      const location = 'Location: ' + this.getLocation(item)
-      const telephone = 'Tel: ' + this.getPhoneNumber(item)
-      const url = 'Website: ' + this.getUrl(item)
+      const location = 'Location: ' + (item?.ContactInfos?.[this.language]?.City ?? '')
+      const telephone = 'Tel: ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
+      const url = 'Website: ' + (item?.ContactInfos?.en?.Url ?? '')
       return categories + ', ' + location + ', ' + telephone + ', ' + url
     },
     getGastronomyTypes(item) {
@@ -108,21 +130,12 @@ export default {
       })
       return categories.join(', ')
     },
-    getLocation(item) {
-      if(this.language === 'de') {
-        return item?.ContactInfos?.de?.City ?? ''
-      } else if(this.language === 'it') {
-        return item?.ContactInfos?.it?.City ?? ''
-      } else {
-        return item?.ContactInfos?.en?.City ?? ''
-      }
-    },
     getActivityShortInfo(item) {
       const categories = this.getActivityTypes(item)
-      const location = 'Location: ' + this.getActivityLocation(item, this.language)
-      const telephone = 'Tel: ' + this.getPhoneNumber(item)
-      const url = 'Website: ' + this.getUrl(item)
-      const difficulty = 'Difficulty: ' + this.getDifficulty(item)
+      const location = 'Location: ' + (item?.ContactInfos?.[this.language]?.City ?? '')
+      const telephone = 'Tel: ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
+      const url = 'Website: ' + (item?.ContactInfos?.en?.Url ?? '')
+      const difficulty = 'Difficulty: ' + (item?.Difficulty ?? '')
       return categories + ', ' + location + ', ' + telephone + ', ' + url + ', ' + difficulty
     },
     getActivityTypes(item) {
@@ -143,20 +156,33 @@ export default {
       })
       return categories.join(', ')
     },
-    getActivityLocation(item, language) {
-      return item?.ContactInfos?.[language]?.City ?? ''
-    },
-    getPhoneNumber(item) {
-      return item?.ContactInfos?.en?.Phonenumber ?? ''
-    },
-    getUrl(item) {
-      return item?.ContactInfos?.en?.Url ?? ''
-    },
     getTitle(item, language) {
       return item?.Detail?.[language]?.Title ?? ''
     },
-    getDifficulty(item) {
-      return item?.Difficulty ?? ''
+    getPoiShortInfo(item) {
+      const categories = this.getPoiTypes(item);
+      const location = 'Location: ' + (item?.ContactInfos?.[this.language]?.City ?? '')
+      const telephone = 'Tel: ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
+      const url = 'Website: ' + (item?.ContactInfos?.en?.Url ?? '')
+      return categories + ', ' + location + ', ' + telephone + ', ' + url
+    },
+    getPoiTypes(item) {
+      let categoryCodeIds = item.PoiTypes.map((code) =>
+          this.poiTypes.find(x => x.Id === code.Id)
+      )
+      categoryCodeIds = categoryCodeIds.filter(function (el) {
+        return el != null;
+      })
+      const categories = categoryCodeIds.map((category) => {
+        if(this.language === 'de') {
+          return category?.TypeDesc?.de ?? ''
+        } else if(this.language === 'it') {
+          return category?.TypeDesc?.it ?? ''
+        } else {
+          return category?.TypeDesc?.en ?? ''
+        }
+      })
+      return categories.join(', ')
     }
   },
 };

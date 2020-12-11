@@ -6,7 +6,7 @@
         :is-list-available="islistAvailable"
         @close="closeDetail"
     />
-    <items-list v-else @show-detail="showDetail" language="it" contentType="Activity"/>
+    <items-list v-else @show-detail="showDetail" language="it" contentType="POI"/>
   </div>
 </template>
 
