@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>List</h2>
-    <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.id)">
+    <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)">
       <hr class="solid">
       <div class="list-item">
         <div class="thumbnail"></div>
