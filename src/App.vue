@@ -50,6 +50,14 @@ export default Vue.extend({
       return this.contentIds.length > 1;
     },
   },
+  watch: {
+    language: {
+      immediate: true,
+      handler(value) {
+        this.$i18n.locale = value;
+      },
+    },
+  },
   created() {
     if (!this.islistAvailable) {
       this.detailContentId = this.contentIds[0];

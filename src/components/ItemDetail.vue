@@ -7,35 +7,38 @@
       <h2>{{ dataDetail.Title }}</h2>
 
       <ul>
-        <li>Altitude: {{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}</li>
+        <li>
+          {{ $t('altitude') }}: {{ item.Altitude
+          }}{{ item.AltitudeUnitofMeasure }}
+        </li>
         <li v-if="googleMapsLink">
           <a :href="googleMapsLink" target="_blank">Google Maps</a>
         </li>
         <li v-if="dataContactInfos.City">
-          Location: {{ dataContactInfos.City }}
+          {{ $t('location') }}: {{ dataContactInfos.City }}
         </li>
         <li v-if="dataContactInfos.Url">
-          Web:
+          {{ $t('web') }}:
           <a :href="dataContactInfos.Url" target="_blank">{{
             dataContactInfos.Url
           }}</a>
         </li>
         <li v-if="dataContactInfos.Phonenumber">
-          Phone: {{ dataContactInfos.Phonenumber }}
+          {{ $t('phone') }}: {{ dataContactInfos.Phonenumber }}
         </li>
       </ul>
 
       <p>{{ dataDetail.BaseText }}</p>
 
       <div v-if="itemCategories.length">
-        <b>Kategorien</b>
+        <b>{{ $t('categories') }}</b>
         <ul>
           <li v-for="(value, i) of itemCategories" :key="i">{{ value }}</li>
         </ul>
       </div>
 
       <div v-if="itemCeremonies.length">
-        <b>Veranstaltungen</b>
+        <b>{{ $t('ceremonies') }}</b>
         <ul>
           <li v-for="(value, i) of itemCeremonies" :key="i">
             {{ value.name }} (max. {{ value.maxSeatingCapacity }} Personen)
@@ -44,7 +47,7 @@
       </div>
 
       <div v-if="itemDishRates.length">
-        <b>Speisen</b>
+        <b>{{ $t('dishRates') }}</b>
         <ul>
           <li v-for="(value, i) of itemDishRates" :key="i">
             {{ value.name }} (von {{ value.minAmount }} bis
@@ -61,19 +64,21 @@
       </div>
 
       <div v-if="itemOperationSchedule.length">
-        <b>Öffnungszeiten</b>
+        <b>{{ $t('operationSchedule') }}</b>
         <div v-for="(schedule, i) of itemOperationSchedule" :key="i">
           <ul>
             <li v-for="(time, j) of schedule.OperationScheduleTime" :key="j">
-              {{ TIMECODES[time.Timecode][language] }} von {{ time.Start }} bis
+              {{ $t(`timeCodes.${time.Timecode}`) }} von {{ time.Start }} bis
               {{ time.End }}
-              ({{ time | scheduleDays(language) }})
+              ({{ getItemScheduleDays(time) }})
             </li>
           </ul>
         </div>
       </div>
 
-      <small>Letzte Änderung: {{ item.LastChange | dateFormat }}</small>
+      <small>
+        {{ $t('lastChange') }}: {{ item.LastChange | dateFormat }}
+      </small>
     </div>
   </div>
 </template>
@@ -82,108 +87,21 @@
 import { GastronomyApi } from '@/api';
 
 const GASTRONOMY_TYPES = [
-  {
-    type: 'DishCodes',
-    name: 'Speisen',
-  },
-  {
-    type: 'CuisineCodes',
-    name: 'Küche',
-  },
-  {
-    type: 'FacilityCodes_CreditCard',
-    name: 'Zahlungsmittel',
-  },
-  {
-    type: 'FacilityCodes_Equipment',
-    name: 'Ausstattung',
-  },
-  {
-    type: 'FacilityCodes_QualitySeals',
-    name: 'Qualitätssiegel',
-  },
+  'DishCodes',
+  'CuisineCodes',
+  'FacilityCodes_CreditCard',
+  'FacilityCodes_Equipment',
+  'FacilityCodes_QualitySeals',
 ];
 
-const TIMECODES = {
-  1: {
-    en: 'General Opening Time',
-    de: 'Allgemeine Öffnungszeiten',
-    it: '',
-  },
-  2: {
-    en: 'Time range for warm meals',
-    de: 'Warme Mahlzeiten',
-    it: '',
-  },
-  3: {
-    en: 'Time range for pizza',
-    de: 'Pizza',
-    it: '',
-  },
-  4: {
-    en: "Time range for snack's",
-    de: 'Snacks',
-    it: '',
-  },
-};
-
 const SCHEDULE_DAYS = [
-  {
-    code: 'Monday',
-    name: {
-      en: 'Mo',
-      de: 'Mo',
-      it: 'Lu',
-    },
-  },
-  {
-    code: 'Tuesday',
-    name: {
-      en: 'Tu',
-      de: 'Di',
-      it: 'Ma',
-    },
-  },
-  {
-    code: 'Wednesday',
-    name: {
-      en: 'We',
-      de: 'Mi',
-      it: 'Me',
-    },
-  },
-  {
-    code: 'Thuresday',
-    name: {
-      en: 'Th',
-      de: 'Do',
-      it: 'Gi',
-    },
-  },
-  {
-    code: 'Friday',
-    name: {
-      en: 'Fr',
-      de: 'Fr',
-      it: 'Ve',
-    },
-  },
-  {
-    code: 'Saturday',
-    name: {
-      en: 'Sa',
-      de: 'Sa',
-      it: 'Sa',
-    },
-  },
-  {
-    code: 'Sunday',
-    name: {
-      en: 'Su',
-      de: 'So',
-      it: 'Do',
-    },
-  },
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thuresday',
+  'Friday',
+  'Saturday',
+  'Sunday',
 ];
 
 export default {
@@ -257,9 +175,9 @@ export default {
         this.item.Facilities.find((f) => t.Id === f.Id)
       );
       return GASTRONOMY_TYPES.map((type) => ({
-        name: type.name,
+        name: this.$t(`gastronomyTypes.${type}`),
         values: filteredArray
-          .filter((t) => t.Type === type.type)
+          .filter((t) => t.Type === type)
           .map((t) => t.TypeDesc[this.language]),
       })).filter((t) => t.values.length);
     },
@@ -273,7 +191,12 @@ export default {
         );
       });
     },
-    TIMECODES: () => TIMECODES,
+    getItemScheduleDays() {
+      return (scheduleTime) =>
+        SCHEDULE_DAYS.map((day) =>
+          scheduleTime[day] ? this.$t(`scheduleDays.${day}`) : null
+        ).join(', ');
+    },
   },
   created() {
     this.gastronomyApi = new GastronomyApi();
@@ -281,11 +204,6 @@ export default {
     this.loadGastronomyItem();
   },
   filters: {
-    scheduleDays(scheduleTime, language) {
-      return SCHEDULE_DAYS.map((d) =>
-        scheduleTime[d.code] ? d.name[language] : null
-      ).join(', ');
-    },
     dateFormat(dateString) {
       return new Date(dateString).toLocaleDateString();
     },
