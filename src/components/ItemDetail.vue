@@ -28,7 +28,7 @@
         </li>
       </ul>
 
-      <p>{{ dataDetail.BaseText }}</p>
+      <p v-html="dataDetail.BaseText"></p>
 
       <div v-if="itemCategories.length">
         <b>{{ $t('categories') }}</b>
@@ -122,7 +122,6 @@ export default {
   data() {
     return {
       item: null,
-      gastronomyApi: null,
       gastronomyTypes: [],
     };
   },
@@ -140,7 +139,7 @@ export default {
     },
     itemCategories() {
       return (
-        this.item?.CategoryCodes.map(
+        this.item?.CategoryCodes?.map(
           (c) =>
             this.gastronomyTypes.find((t) => t.Id === c.Id)?.TypeDesc[
               this.language
@@ -150,7 +149,7 @@ export default {
     },
     itemCeremonies() {
       return (
-        this.item?.CapacityCeremony.map((c) => ({
+        this.item?.CapacityCeremony?.map((c) => ({
           name: this.gastronomyTypes.find((t) => t.Id === c.Id)?.TypeDesc[
             this.language
           ],
@@ -160,7 +159,7 @@ export default {
     },
     itemDishRates() {
       return (
-        this.item?.DishRates.map((c) => ({
+        this.item?.DishRates?.map((c) => ({
           name: this.gastronomyTypes.find((t) => t.Id === c.Id)?.TypeDesc[
             this.language
           ],
@@ -210,16 +209,18 @@ export default {
   },
   methods: {
     loadGastronomyItem() {
-      this.gastronomyApi
+      new GastronomyApi()
         .gastronomyGetGastronomySingle(this.contentId)
         .then((value) => {
           this.item = value.data;
         });
     },
     loadGastronomyTypeList() {
-      this.gastronomyApi.gastronomyGetAllGastronomyTypesList().then((value) => {
-        this.gastronomyTypes = value.data;
-      });
+      new GastronomyApi()
+        .gastronomyGetAllGastronomyTypesList()
+        .then((value) => {
+          this.gastronomyTypes = value.data;
+        });
     },
     close() {
       this.$emit('close');
