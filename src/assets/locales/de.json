@@ -29,5 +29,8 @@
         "Friday": "Fr",
         "Saturday": "Sa",
         "Sunday": "So"
-    }
+    },
+    "Gastronomy": "Gastronomie",
+    "Activities": "Aktivitäten",
+    "POI": "Sehenswürdigkeiten"
 }

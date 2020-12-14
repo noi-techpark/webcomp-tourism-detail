@@ -1,17 +1,17 @@
 <template>
   <div>
-    <h2>List</h2>
+    <h2 class="page-title">{{ $t(contentType) }}</h2>
     <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)">
       <hr class="solid">
       <div class="list-item">
         <div class="thumbnail"></div>
         <div class="info">
           <div class="title">{{ getTitle(item, language) }}</div>
-          <div v-if="contentType === 'Gastronomy'">{{ getGastronomyShortInfo(item) }}</div>
-          <div v-else-if="contentType === 'Activity'">{{ getActivityShortInfo(item) }}</div>
-          <div v-else-if="contentType === 'POI'">{{ getPoiShortInfo(item) }}</div>
+          <div v-if="contentType === 'Gastronomy'" class="short-info">{{ getGastronomyShortInfo(item) }}</div>
+          <div v-else-if="contentType === 'Activity'" class="short-info">{{ getActivityShortInfo(item) }}</div>
+          <div v-else-if="contentType === 'POI'" class="short-info">{{ getPoiShortInfo(item) }}</div>
         </div>
-        <div class="arrow"></div>
+        <img src="@/assets/img/arrow_right.svg" width="28" height="28"/>
       </div>
     </div>
     <hr class="solid">
@@ -110,9 +110,9 @@ export default {
     },
     getGastronomyShortInfo(item) {
       const categories = this.getGastronomyTypes(item)
-      const location = 'Location: ' + (item?.ContactInfos?.[this.language]?.City ?? '')
-      const telephone = 'Tel: ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
-      const url = 'Website: ' + (item?.ContactInfos?.en?.Url ?? '')
+      const location = this.$t('location') + ': ' + (item?.ContactInfos?.[this.language]?.City ?? '')
+      const telephone = this.$t('phone') + ': ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
+      const url = this.$t('web') + ': ' + (item?.ContactInfos?.en?.Url ?? '')
       return categories + ', ' + location + ', ' + telephone + ', ' + url
     },
     getGastronomyTypes(item) {
@@ -132,9 +132,9 @@ export default {
     },
     getActivityShortInfo(item) {
       const categories = this.getActivityTypes(item)
-      const location = 'Location: ' + (item?.ContactInfos?.[this.language]?.City ?? '')
-      const telephone = 'Tel: ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
-      const url = 'Website: ' + (item?.ContactInfos?.en?.Url ?? '')
+      const location = this.$t('location') + ': ' + (item?.ContactInfos?.[this.language]?.City ?? '')
+      const telephone = this.$t('phone') + ': ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
+      const url = this.$t('web') + ': ' + (item?.ContactInfos?.en?.Url ?? '')
       const difficulty = 'Difficulty: ' + (item?.Difficulty ?? '')
       return categories + ', ' + location + ', ' + telephone + ', ' + url + ', ' + difficulty
     },
@@ -161,9 +161,9 @@ export default {
     },
     getPoiShortInfo(item) {
       const categories = this.getPoiTypes(item);
-      const location = 'Location: ' + (item?.ContactInfos?.[this.language]?.City ?? '')
-      const telephone = 'Tel: ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
-      const url = 'Website: ' + (item?.ContactInfos?.en?.Url ?? '')
+      const location = this.$t('location') + ': ' + (item?.ContactInfos?.[this.language]?.City ?? '')
+      const telephone = this.$t('phone') + ': ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
+      const url = this.$t('web') + ': ' + (item?.ContactInfos?.en?.Url ?? '')
       return categories + ', ' + location + ', ' + telephone + ', ' + url
     },
     getPoiTypes(item) {
@@ -191,36 +191,41 @@ export default {
   .list-item {
     display: flex;
     flex-direction: row;
-    padding: 8px;
+    padding: 8px 40px 8px 40px;
     align-items: center;
   }
 
   .thumbnail {
-    height: 80px;
-    width: 80px;
-    background-color: grey;
+    height: 60px;
+    width: 60px;
+    background-color: #E8ECF1;
   }
 
   .info {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding-left: 20px;
-  }
-
-  .arrow {
-    height: 20px;
-    width: 20px;
-    background-color: grey;
+    padding-left: 24px;
   }
 
   hr.solid {
-    border-top: 1px solid lightgray;
-    margin: 8px;
+    border-top: 1px solid #CFCFCF;
+    margin: 8px 40px 8px 40px;
   }
 
   .title {
     font-size: 18px;
     font-weight: bold;
+  }
+
+  .short-info {
+    font-size: 14px;
+  }
+
+  .page-title {
+    font-weight: bold;
+    font-size: 36px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 </style>
