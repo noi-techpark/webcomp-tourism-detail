@@ -31,6 +31,10 @@
         "Sunday": "So"
     },
     "Gastronomy": "Gastronomie",
-    "Activities": "Aktivitäten",
-    "POI": "Sehenswürdigkeiten"
+    "Activity": "Aktivitäten",
+    "POI": "Sehenswürdigkeiten",
+    "paging": {
+        "next": "weiter",
+        "back": "zurück"
+    }
 }

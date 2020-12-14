@@ -1,10 +1,17 @@
 <template>
   <div class="list">
     <h2 class="page-title">{{ $t(contentType) }}</h2>
+    <paging
+        :current-page="currentPage"
+        :total-pages="totalPages"
+        @next-page="nextPage"
+        @last-page="lastPage"
+        @go-to-page="goToPage"></paging>
     <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)" class="item-container">
       <hr class="solid">
       <div class="list-item">
-        <div class="thumbnail"></div>
+        <div class="thumbnail" v-if="item.ImageGallery === null || item.ImageGallery.length === 0"></div>
+        <div v-else><img class="thumbnail" :src="item.ImageGallery[0].ImageUrl"/></div>
         <div class="info">
           <div class="title">{{ getTitle(item, language) }}</div>
           <div v-if="contentType === 'Gastronomy'" class="short-info">{{ getGastronomyShortInfo(item) }}</div>
@@ -16,13 +23,21 @@
     </div>
     <div class="bottom-divider" v-if="items.length > 0"><hr class="solid"></div>
     <div class="bottom-divider bottom-divider2" v-if="items.length > 0"><hr class="solid"></div>
+    <paging
+        :current-page="currentPage"
+        :total-pages="totalPages"
+        @next-page="nextPage"
+        @last-page="lastPage"
+        @go-to-page="goToPage"></paging>
   </div>
 </template>
 
 <script>
 import {ActivityApi, GastronomyApi, PoiApi} from "@/api";
+import Paging from "@/components/Paging";
 
 export default {
+  components: {Paging},
   props: {
     language: {
       type: String,
@@ -38,22 +53,51 @@ export default {
       items: [],
       gastronomyTypes: [],
       activityTypes: [],
-      poiTypes: []
+      poiTypes: [],
+      currentPage: 0,
+      totalPages: 0
     };
   },
   created() {
     if(this.contentType === 'Gastronomy') {
       this.loadGastronomyTypeList()
-      this.loadGastronomyList()
+      this.loadGastronomyList(1)
     } else if(this.contentType === 'Activity') {
       this.loadActivityTypeList()
-      this.loadActivityList()
+      this.loadActivityList(1)
     } else if(this.contentType === 'POI') {
       this.loadPoiTypeList();
-      this.loadPoiList();
+      this.loadPoiList(1);
     }
   },
   methods: {
+    nextPage() {
+      if(this.contentType === 'Gastronomy') {
+        this.loadGastronomyList(this.currentPage + 1)
+      } else if(this.contentType === 'Activity') {
+        this.loadActivityList(this.currentPage + 1)
+      } else {
+        this.loadPoiList(this.currentPage + 1)
+      }
+    },
+    lastPage() {
+      if(this.contentType === 'Gastronomy') {
+        this.loadGastronomyList(this.currentPage - 1)
+      } else if(this.contentType === 'Activity') {
+        this.loadActivityList(this.currentPage - 1)
+      } else {
+        this.loadPoiList(this.currentPage - 1)
+      }
+    },
+    goToPage(pageNum) {
+      if(this.contentType === 'Gastronomy') {
+        this.loadGastronomyList(pageNum)
+      } else if(this.contentType === 'Activity') {
+        this.loadActivityList(pageNum)
+      } else {
+        this.loadPoiList(pageNum)
+      }
+    },
     showDetail(contentId) {
       this.$emit('show-detail', contentId);
     },
@@ -64,13 +108,18 @@ export default {
         console.log(value)
       })
     },
-    loadActivityList() {
+    loadActivityList(pageNum) {
       const activityApi = new ActivityApi()
-      activityApi.activityGetActivityList(null, 1, 20, null, null,
+      activityApi.activityGetActivityList(null, pageNum, 20, null, null,
           null,null,null,null,null,null,null,
           null,null,true,true,null,null,null,null,
           null,null,null,[]).then((value => {
         this.items = value?.data?.Items ?? []
+        this.currentPage = value?.data?.CurrentPage
+        this.totalPages = value?.data?.TotalPages
+        for(const item of this.items) {
+          console.log(item.ImageGallery.length)
+        }
         console.log(value)
       }))
     },
@@ -81,14 +130,19 @@ export default {
         console.log(value)
       })
     },
-    loadGastronomyList() {
+    loadGastronomyList(pageNum) {
       const gastronomyApi = new GastronomyApi()
       gastronomyApi.gastronomyGetGastronomyList(
-          1, 20, null, null, null, null, null,
+          pageNum, 20, null, null, null, null, null,
           null, null, null, true, true, null, null,
           null, null, null, null, null, null
       ).then((value => {
         this.items = value?.data?.Items ?? []
+        this.currentPage = value?.data?.CurrentPage
+        this.totalPages = value?.data?.TotalPages
+        for(const item of this.items) {
+          console.log(item.ImageGallery.length)
+        }
         console.log(value)
       }))
     },
@@ -99,13 +153,15 @@ export default {
         console.log(value)
       })
     },
-    loadPoiList() {
+    loadPoiList(pageNum) {
       const poiApi = new PoiApi()
-      poiApi.poiGetPoiFiltered(1, 20, null, null, null, null, null,
+      poiApi.poiGetPoiFiltered(pageNum, 20, null, null, null, null, null,
       null, null, true, true, null, null, null, null, null,
       null, null, null, []
       ).then((value => {
         this.items = value?.data?.Items ?? []
+        this.currentPage = value?.data?.CurrentPage
+        this.totalPages = value?.data?.TotalPages
         console.log(value)
       }))
     },
@@ -199,6 +255,8 @@ export default {
   .thumbnail {
     min-height: 60px;
     min-width: 60px;
+    max-width: 60px;
+    max-height: 60px;
     background-color: #E8ECF1;
   }
 
