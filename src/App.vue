@@ -6,7 +6,7 @@
         :is-list-available="islistAvailable"
         @close="closeDetail"
     />
-    <items-list v-else @show-detail="showDetail" language="it" contentType="POI"/>
+    <items-list v-else @show-detail="showDetail" :language="language" contentType="POI"/>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default Vue.extend({
     },
     language: {
       type: String,
-      default: 'en'
+      default: 'de'
     }
   },
   data() {

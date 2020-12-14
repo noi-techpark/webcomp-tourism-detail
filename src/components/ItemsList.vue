@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="list">
     <h2 class="page-title">{{ $t(contentType) }}</h2>
-    <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)">
+    <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)" class="item-container">
       <hr class="solid">
       <div class="list-item">
         <div class="thumbnail"></div>
@@ -14,7 +14,8 @@
         <img src="@/assets/img/arrow_right.svg" width="28" height="28"/>
       </div>
     </div>
-    <hr class="solid">
+    <div class="bottom-divider" v-if="items.length > 0"><hr class="solid"></div>
+    <div class="bottom-divider bottom-divider2" v-if="items.length > 0"><hr class="solid"></div>
   </div>
 </template>
 
@@ -196,8 +197,8 @@ export default {
   }
 
   .thumbnail {
-    height: 60px;
-    width: 60px;
+    min-height: 60px;
+    min-width: 60px;
     background-color: #E8ECF1;
   }
 
@@ -227,5 +228,43 @@ export default {
     font-size: 36px;
     padding-left: 40px;
     padding-right: 40px;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .item-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .bottom-divider {
+    width: 100%;
+  }
+
+  .bottom-divider2 {
+    visibility: hidden;
+  }
+
+  @media(min-width: 768px){
+    .item-container{
+      width: 50%;
+    }
+
+    .bottom-divider {
+      width: 50%;
+    }
+
+    .bottom-divider2 {
+      visibility: visible;
+    }
   }
 </style>
