@@ -58,7 +58,6 @@ export default {
       items: [],
       gastronomyTypes: [],
       activityTypes: [],
-      poiTypes: [],
       currentPage: 0,
       totalPages: 0
     };
@@ -71,8 +70,7 @@ export default {
       this.loadActivityTypeList()
       this.loadActivityList(1)
     } else if(this.contentType === 'POI') {
-      this.loadPoiTypeList();
-      this.loadPoiList(1);
+      this.loadPoiList(1)
     }
   },
   methods: {
@@ -157,13 +155,6 @@ export default {
         console.log(value)
       }))
     },
-    loadPoiTypeList() {
-      const poiApi = new PoiApi()
-      poiApi.poiGetAllPoiTypesList().then((value) => {
-        this.poiTypes = value.data
-        console.log(value)
-      })
-    },
     loadPoiList(pageNum) {
       const poiApi = new PoiApi()
       poiApi.poiGetPoiFiltered(pageNum, 20, null, null, null, null, null,
@@ -235,21 +226,15 @@ export default {
       return categories + ', ' + location + ', ' + telephone + ', ' + url
     },
     getPoiTypes(item) {
-      let categoryCodeIds = item.PoiTypes.map((code) =>
-          this.poiTypes.find(x => x.Id === code.Id)
-      )
-      categoryCodeIds = categoryCodeIds.filter(function (el) {
-        return el != null;
-      })
-      const categories = categoryCodeIds.map((category) => {
-        if(this.language === 'de') {
-          return category?.TypeDesc?.de ?? ''
-        } else if(this.language === 'it') {
-          return category?.TypeDesc?.it ?? ''
-        } else {
-          return category?.TypeDesc?.en ?? ''
-        }
-      })
+      const poiType = item.AdditionalPoiInfos[this.language].MainType
+      const subType = item.AdditionalPoiInfos[this.language].SubType
+      const categories = []
+      if(poiType !== null) {
+        categories.push(poiType)
+      }
+      if(subType !== null) {
+        categories.push(subType)
+      }
       return categories.join(', ')
     }
   },
@@ -290,6 +275,7 @@ export default {
 
   .short-info {
     font-size: 14px;
+    word-break: break-word;
   }
 
   .page-title {
