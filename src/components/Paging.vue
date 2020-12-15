@@ -13,7 +13,7 @@
         <span class="item" @click="goToPage(3)" :class="{'selected-item': currentPage===3}">3</span>
         <span class="item" @click="goToPage(4)" :class="{'selected-item': currentPage===4}">4</span>
         <span class="item">...</span>
-        <span class="item">{{totalPages}}</span>
+        <span class="item" @click="goToPage(totalPages)">{{totalPages}}</span>
       </div>
       <div v-else-if="currentPage < totalPages-2">
         <span class="item" @click="goToPage(1)">1</span>

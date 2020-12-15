@@ -7,19 +7,24 @@
         @next-page="nextPage"
         @last-page="lastPage"
         @go-to-page="goToPage"></paging>
-    <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)" class="item-container">
-      <hr class="solid">
-      <div class="list-item">
-        <div class="thumbnail" v-if="item.ImageGallery === null || item.ImageGallery.length === 0"></div>
-        <div v-else><img class="thumbnail" :src="item.ImageGallery[0].ImageUrl"/></div>
-        <div class="info">
-          <div class="title">{{ getTitle(item, language) }}</div>
-          <div v-if="contentType === 'Gastronomy'" class="short-info">{{ getGastronomyShortInfo(item) }}</div>
-          <div v-else-if="contentType === 'Activity'" class="short-info">{{ getActivityShortInfo(item) }}</div>
-          <div v-else-if="contentType === 'POI'" class="short-info">{{ getPoiShortInfo(item) }}</div>
+    <div v-if="items.length > 0" class="list">
+      <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)" class="item-container">
+        <hr class="solid">
+        <div class="list-item">
+          <div class="thumbnail" v-if="item.ImageGallery === null || item.ImageGallery.length === 0"></div>
+          <div v-else><img class="thumbnail" :src="item.ImageGallery[0].ImageUrl"/></div>
+          <div class="info">
+            <div class="title">{{ getTitle(item, language) }}</div>
+            <div v-if="contentType === 'Gastronomy'" class="short-info">{{ getGastronomyShortInfo(item) }}</div>
+            <div v-else-if="contentType === 'Activity'" class="short-info">{{ getActivityShortInfo(item) }}</div>
+            <div v-else-if="contentType === 'POI'" class="short-info">{{ getPoiShortInfo(item) }}</div>
+          </div>
+          <img src="@/assets/img/arrow_right.svg" width="28" height="28"/>
         </div>
-        <img src="@/assets/img/arrow_right.svg" width="28" height="28"/>
       </div>
+    </div>
+    <div v-else class="loading-spinner">
+      <img src="@/assets/img/loading.gif"/>
     </div>
     <div class="bottom-divider" v-if="items.length > 0"><hr class="solid"></div>
     <div class="bottom-divider bottom-divider2" v-if="items.length > 0"><hr class="solid"></div>
@@ -72,6 +77,7 @@ export default {
   },
   methods: {
     nextPage() {
+      this.items = []
       if(this.contentType === 'Gastronomy') {
         this.loadGastronomyList(this.currentPage + 1)
       } else if(this.contentType === 'Activity') {
@@ -79,8 +85,10 @@ export default {
       } else {
         this.loadPoiList(this.currentPage + 1)
       }
+      this.currentPage = this.currentPage + 1
     },
     lastPage() {
+      this.items = []
       if(this.contentType === 'Gastronomy') {
         this.loadGastronomyList(this.currentPage - 1)
       } else if(this.contentType === 'Activity') {
@@ -88,8 +96,10 @@ export default {
       } else {
         this.loadPoiList(this.currentPage - 1)
       }
+      this.currentPage = this.currentPage - 1
     },
     goToPage(pageNum) {
+      this.items = []
       if(this.contentType === 'Gastronomy') {
         this.loadGastronomyList(pageNum)
       } else if(this.contentType === 'Activity') {
@@ -97,6 +107,7 @@ export default {
       } else {
         this.loadPoiList(pageNum)
       }
+      this.currentPage = pageNum
     },
     showDetail(contentId) {
       this.$emit('show-detail', contentId);
@@ -324,5 +335,13 @@ export default {
     .bottom-divider2 {
       visibility: visible;
     }
+  }
+
+  .loading-spinner {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
