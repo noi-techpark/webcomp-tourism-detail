@@ -1,5 +1,5 @@
 <template>
-  <div class="paging" v-if="totalPages > 0">
+  <div class="paging" v-if="totalPages > 1">
     <div @click="lastPage" class="back" v-if="currentPage !== 1">{{$t('paging.back')}}</div>
     <div v-if="totalPages < 8">
     <span class="item" v-for="page in totalPages" @click="goToPage(page)" :class="{'selected-item': currentPage===page}" :key="page">

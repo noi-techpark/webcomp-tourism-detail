@@ -6,7 +6,7 @@
         :is-list-available="islistAvailable"
         @close="closeDetail"
     />
-    <items-list v-else @show-detail="showDetail" :language="language" contentType="POI"/>
+    <items-list v-else @show-detail="showDetail" :language="language" contentType="Gastronomy" :contentIdList="contentIdList"/>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default Vue.extend({
     },
     contentIdList: {
       type: String,
-      default: '1,2,3',
+      default: null,
     },
     categories: {
       type: Array,
@@ -44,7 +44,7 @@ export default Vue.extend({
   },
   computed: {
     contentIds() {
-      return this.contentIdList.split(',');
+      return this.contentIdList !== null ? this.contentIdList.split(',') : [];
     },
     islistAvailable() {
       return this.contentIds.length > 1;

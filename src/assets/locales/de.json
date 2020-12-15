@@ -36,5 +36,6 @@
     "paging": {
         "next": "weiter",
         "back": "zurück"
-    }
+    },
+    "noResults": "Keine Ergebnisse gefunden"
 }

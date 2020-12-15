@@ -29,11 +29,11 @@ The description of the parameter xxx.
 Type: string
 Options: "test", "123"
 
-#### yyy
+#### contentIdList
 
-The description of the parameter yyy.
+List of content Ids separated by a comma. Example: "1,2,3" 
 
-Type: int
+Type: String
 
 ## Getting started
 

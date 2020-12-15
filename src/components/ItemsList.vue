@@ -23,9 +23,10 @@
         </div>
       </div>
     </div>
-    <div v-else class="loading-spinner">
+    <div v-else-if="isLoading" class="loading-spinner">
       <img src="@/assets/img/loading.gif"/>
     </div>
+    <div class="noResult" v-else>{{ $t('noResults')}}</div>
     <div class="bottom-divider" v-if="items.length > 0"><hr class="solid"></div>
     <div class="bottom-divider bottom-divider2" v-if="items.length > 0"><hr class="solid"></div>
     <paging
@@ -52,6 +53,10 @@ export default {
       type: String,
       default: 'Gastronomy'
     },
+    contentIdList: {
+      type: String,
+      default: null
+    }
   },
   data() {
     return {
@@ -59,7 +64,8 @@ export default {
       gastronomyTypes: [],
       activityTypes: [],
       currentPage: 0,
-      totalPages: 0
+      totalPages: 0,
+      isLoading: false
     };
   },
   created() {
@@ -118,9 +124,10 @@ export default {
       })
     },
     loadActivityList(pageNum) {
+      this.isLoading = true;
       const activityApi = new ActivityApi()
       activityApi.activityGetActivityList(null, pageNum, 20, null, null,
-          null,null,null,null,null,null,null,
+          this.contentIdList,null,null,null,null,null,null,
           null,null,true,true,null,null,null,null,
           null,null,null,[]).then((value => {
         this.items = value?.data?.Items ?? []
@@ -130,6 +137,7 @@ export default {
           console.log(item.ImageGallery.length)
         }
         console.log(value)
+        this.isLoading = false;
       }))
     },
     loadGastronomyTypeList() {
@@ -140,9 +148,10 @@ export default {
       })
     },
     loadGastronomyList(pageNum) {
+      this.isLoading = true;
       const gastronomyApi = new GastronomyApi()
       gastronomyApi.gastronomyGetGastronomyList(
-          pageNum, 20, null, null, null, null, null,
+          pageNum, 20, this.contentIdList, null, null, null, null,
           null, null, null, true, true, null, null,
           null, null, null, null, null, null
       ).then((value => {
@@ -153,11 +162,13 @@ export default {
           console.log(item.ImageGallery.length)
         }
         console.log(value)
+        this.isLoading = false;
       }))
     },
     loadPoiList(pageNum) {
+      this.isLoading = true;
       const poiApi = new PoiApi()
-      poiApi.poiGetPoiFiltered(pageNum, 20, null, null, null, null, null,
+      poiApi.poiGetPoiFiltered(pageNum, 20, null, null, this.contentIdList, null, null,
       null, null, true, true, null, null, null, null, null,
       null, null, null, []
       ).then((value => {
@@ -165,6 +176,7 @@ export default {
         this.currentPage = value?.data?.CurrentPage
         this.totalPages = value?.data?.TotalPages
         console.log(value)
+        this.isLoading = false;
       }))
     },
     getGastronomyShortInfo(item) {
@@ -329,5 +341,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .noResult {
+    margin-left: 40px;
   }
 </style>
