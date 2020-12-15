@@ -4,32 +4,55 @@
     <p>{{ contentId }}</p>
     <hr />
     <div v-if="item">
-      <h2>{{ dataDetail.Title }}</h2>
+      <h2>{{ itemDetail.Title }}</h2>
 
       <ul>
-        <li>
+        <li v-if="item.Altitude">
           {{ $t('altitude') }}: {{ item.Altitude
           }}{{ item.AltitudeUnitofMeasure }}
+        </li>
+        <li v-if="item.Difficulty">
+          {{ $t('difficulty') }}: {{ item.Difficulty }}
         </li>
         <li v-if="googleMapsLink">
           <a :href="googleMapsLink" target="_blank">Google Maps</a>
         </li>
-        <li v-if="dataContactInfos.City">
-          {{ $t('location') }}: {{ dataContactInfos.City }}
+        <li v-if="itemContactInfos.City">
+          {{ $t('location') }}: {{ itemContactInfos.City }}
         </li>
-        <li v-if="dataContactInfos.Url">
+        <li v-if="itemContactInfos.Url">
           {{ $t('web') }}:
-          <a :href="dataContactInfos.Url" target="_blank">{{
-            dataContactInfos.Url
+          <a :href="itemContactInfos.Url" target="_blank">{{
+            itemContactInfos.Url
           }}</a>
         </li>
-        <li v-if="dataContactInfos.Phonenumber">
-          {{ $t('phone') }}: {{ dataContactInfos.Phonenumber }}
+        <li v-if="itemContactInfos.Phonenumber">
+          {{ $t('phone') }}: {{ itemContactInfos.Phonenumber }}
         </li>
       </ul>
 
-      <p v-html="dataDetail.BaseText"></p>
+      <p v-if="itemDetail.BaseText" v-html="itemDetail.BaseText"></p>
 
+      <!-- POI / Activity -->
+      <div v-if="itemAdditionalPoiInfos">
+        <div v-if="itemAdditionalPoiInfos.MainType">
+          <b>{{ $t('mainType') }}:</b> {{ itemAdditionalPoiInfos.MainType }}
+        </div>
+        <div v-if="itemAdditionalPoiInfos.SubType">
+          <b>{{ $t('subType') }}:</b> {{ itemAdditionalPoiInfos.SubType }}
+        </div>
+      </div>
+
+      <div>
+        <ul>
+          <li v-for="(value, key) of itemPoiProps" :key="key">
+            <b>{{ $t(`props.${key}`) }}:</b>
+            {{ value === true ? $t('yes') : value }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Gastronomy -->
       <div v-if="itemCategories.length">
         <b>{{ $t('categories') }}</b>
         <ul>
@@ -63,16 +86,26 @@
         </ul>
       </div>
 
+      <!-- COMMON -->
       <div v-if="itemOperationSchedule.length">
         <b>{{ $t('operationSchedule') }}</b>
         <div v-for="(schedule, i) of itemOperationSchedule" :key="i">
-          <ul>
-            <li v-for="(time, j) of schedule.OperationScheduleTime" :key="j">
-              {{ $t(`timeCodes.${time.Timecode}`) }} von {{ time.Start }} bis
-              {{ time.End }}
-              ({{ getItemScheduleDays(time) }})
-            </li>
-          </ul>
+          <!-- Opened || Closed -->
+          <div v-if="schedule.Type === '1' || schedule.Type === '2'">
+            <b>{{ $t(`scheduleTypes.${schedule.Type}`) }}:</b>
+            <ul v-if="schedule.OperationScheduleTime">
+              <li v-for="(time, j) of schedule.OperationScheduleTime" :key="j">
+                {{ $t(`timeCodes.${time.Timecode}`) }} von {{ time.Start }} bis
+                {{ time.End }}
+                ({{ getItemScheduleDays(time) }})
+              </li>
+            </ul>
+          </div>
+          <!-- Season -->
+          <div v-if="schedule.Type === '3'">
+            {{ schedule.Start | dateFormat }} bis
+            {{ schedule.Stop | dateFormat }}
+          </div>
         </div>
       </div>
 
@@ -84,7 +117,7 @@
 </template>
 
 <script>
-import { GastronomyApi } from '@/api';
+import { GastronomyApi, PoiApi, ActivityApi } from '@/api';
 
 const GASTRONOMY_TYPES = [
   'DishCodes',
@@ -110,6 +143,10 @@ export default {
       type: String,
       required: true,
     },
+    contentType: {
+      type: String,
+      required: true,
+    },
     isListAvailable: {
       type: Boolean,
       default: false,
@@ -126,16 +163,53 @@ export default {
     };
   },
   computed: {
-    dataDetail() {
+    itemDetail() {
       return this.item?.Detail?.[this.language] || {};
     },
-    dataContactInfos() {
+    itemContactInfos() {
       return this.item?.ContactInfos?.[this.language] || {};
     },
     googleMapsLink() {
       return this.item?.Latitude && this.item?.Longitude
         ? `https://www.google.com/maps/search/?api=1&query=${this.item.Latitude},${this.item.Longitude}`
         : null;
+    },
+    itemAdditionalPoiInfos() {
+      const infos = this.item?.AdditionalPoiInfos?.[this.language] || {};
+      return infos.MainType || infos.SubType ? infos : null;
+    },
+    itemPoiProps() {
+      if (!this.item) {
+        return {};
+      }
+
+      const showProps = [
+        'IsOpen',
+        'AltitudeDifference',
+        'AltitudeLowestPoint',
+        'AltitudeHighestPoint',
+        'AltitudeSumUp',
+        'AltitudeSumDown',
+        'DistanceLength',
+        'DistanceDuration',
+        'HasFreeEntrance',
+        'BikeTransport',
+        'LiftAvailable',
+        'RunToValley',
+        'IsWithLight',
+        'HasRentals',
+        'IsPrepared',
+        'FeetClimb',
+      ];
+
+      const props = {};
+      for (const key of showProps) {
+        if (!!this.item[key] && this.item[key] !== '0.0') {
+          props[key] = this.item[key];
+        }
+      }
+
+      return props;
     },
     itemCategories() {
       return (
@@ -186,7 +260,10 @@ export default {
         const stop = new Date(s.Stop);
         const now = new Date();
         return (
-          now.getTime() <= stop.getTime() && now.getTime() >= start.getTime()
+          (((s.Type === '1' || s.Type === '2') && s.OperationScheduleTime) ||
+            s.Type === '3') &&
+          now.getTime() <= stop.getTime() &&
+          now.getTime() >= start.getTime()
         );
       });
     },
@@ -198,9 +275,14 @@ export default {
     },
   },
   created() {
-    this.gastronomyApi = new GastronomyApi();
-    this.loadGastronomyTypeList();
-    this.loadGastronomyItem();
+    if (this.contentType === 'Gastronomy') {
+      this.loadGastronomyItem();
+      this.loadGastronomyTypeList();
+    } else if (this.contentType === 'POI') {
+      this.loadPoiItem();
+    } else if (this.contentType === 'Activity') {
+      this.loadActivityItem();
+    }
   },
   filters: {
     dateFormat(dateString) {
@@ -220,6 +302,18 @@ export default {
         .gastronomyGetAllGastronomyTypesList()
         .then((value) => {
           this.gastronomyTypes = value.data;
+        });
+    },
+    loadPoiItem() {
+      new PoiApi().poiGetPoiSingle(this.contentId).then((value) => {
+        this.item = value.data;
+      });
+    },
+    loadActivityItem() {
+      new ActivityApi()
+        .activityGetActivitySingle(this.contentId)
+        .then((value) => {
+          this.item = value.data;
         });
     },
     close() {
