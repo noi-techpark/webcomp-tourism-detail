@@ -1,5 +1,6 @@
 {
     "altitude": "Höhe",
+    "difficulty": "Schwierigkeit",
     "location": "Ort",
     "phone": "Telefon",
     "web": "Web",
@@ -14,6 +15,10 @@
         "FacilityCodes_CreditCard": "Zahlungsmittel",
         "FacilityCodes_Equipment": "Ausstattung",
         "FacilityCodes_QualitySeals": "Qualitätssiegel"
+    },
+    "scheduleTypes": {
+        "1": "Geöffnet",
+        "2": "Geschlossen"
     },
     "timeCodes": {
         "1": "Allgemeine Öffnungszeiten",
@@ -30,9 +35,33 @@
         "Saturday": "Sa",
         "Sunday": "So"
     },
+    "mainType": "Hauptkategorie",
+    "subType": "Unterkategorie",
+    "altitudeDifference": "Höhenunterschied",
+    "altitudeHighestPoint": "Höchster Punkt",
+    "altitudeLowestPoint": "Niedrigster Punkt",
     "Gastronomy": "Gastronomie",
     "Activity": "Aktivitäten",
     "POI": "Sehenswürdigkeiten",
+    "props": {
+        "AltitudeDifference": "Höhendifferenz",
+        "AltitudeLowestPoint": "Tiefster Punkt",
+        "AltitudeHighestPoint": "Höchster Punkt",
+        "AltitudeSumUp": "Höhenmeter aufwärts",
+        "AltitudeSumDown": "Höhenmeter abwärts",
+        "DistanceLength": "Länge",
+        "DistanceDuration": "Dauer",
+        "BikeTransport": "Fahrradtransport",
+        "HasFreeEntrance": "Freier Eintritt",
+        "LiftAvailable": "Lift verfügbar",
+        "RunToValley": "####",
+        "IsWithLight": "Beleuchted",
+        "HasRentals": "Verleih verfügbar",
+        "IsPrepared": "Prepartiert",
+        "FeetClimb": "Begehbar",
+        "IsOpen": "Geöffnet"
+    },
+    "yes": "Ja",
     "paging": {
         "next": "weiter",
         "back": "zurück"
