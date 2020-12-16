@@ -7,7 +7,7 @@
         @next-page="nextPage"
         @last-page="lastPage"
         @go-to-page="goToPage"></paging>
-    <div v-if="items.length > 0" class="list">
+    <template v-if="items.length > 0">
       <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)" class="item-container">
         <hr class="solid">
         <div class="list-item">
@@ -22,7 +22,7 @@
           <img src="@/assets/img/arrow_right.svg" width="28" height="28"/>
         </div>
       </div>
-    </div>
+    </template>
     <div v-else-if="isLoading" class="loading-spinner">
       <img src="@/assets/img/loading.gif"/>
     </div>
@@ -56,6 +56,10 @@ export default {
     contentIdList: {
       type: String,
       default: null
+    },
+    pageSize: {
+      type: Number,
+      default: 20
     }
   },
   data() {
@@ -126,7 +130,7 @@ export default {
     loadActivityList(pageNum) {
       this.isLoading = true;
       const activityApi = new ActivityApi()
-      activityApi.activityGetActivityList(null, pageNum, 20, null, null,
+      activityApi.activityGetActivityList(null, pageNum, this.pageSize, null, null,
           this.contentIdList,null,null,null,null,null,null,
           null,null,true,true,null,null,null,null,
           null,null,null,[]).then((value => {
@@ -151,7 +155,7 @@ export default {
       this.isLoading = true;
       const gastronomyApi = new GastronomyApi()
       gastronomyApi.gastronomyGetGastronomyList(
-          pageNum, 20, this.contentIdList, null, null, null, null,
+          pageNum, this.pageSize, this.contentIdList, null, null, null, null,
           null, null, null, true, true, null, null,
           null, null, null, null, null, null
       ).then((value => {
@@ -168,7 +172,7 @@ export default {
     loadPoiList(pageNum) {
       this.isLoading = true;
       const poiApi = new PoiApi()
-      poiApi.poiGetPoiFiltered(pageNum, 20, null, null, this.contentIdList, null, null,
+      poiApi.poiGetPoiFiltered(pageNum, this.pageSize, null, null, this.contentIdList, null, null,
       null, null, true, true, null, null, null, null, null,
       null, null, null, []
       ).then((value => {
@@ -336,7 +340,7 @@ export default {
   }
 
   .loading-spinner {
-    height: 100vh;
+    height: 50vh;
     width: 100%;
     display: flex;
     justify-content: center;

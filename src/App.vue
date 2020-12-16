@@ -6,7 +6,7 @@
         :is-list-available="islistAvailable"
         @close="closeDetail"
     />
-    <items-list v-else @show-detail="showDetail" :language="language" contentType="Gastronomy" :contentIdList="contentIdList"/>
+    <items-list v-else @show-detail="showDetail" :language="language" contentType="Gastronomy" :contentIdList="contentIdList" :pageSize="pageSize"/>
   </div>
 </template>
 
@@ -35,6 +35,10 @@ export default Vue.extend({
     language: {
       type: String,
       default: 'de'
+    },
+    pageSize: {
+      type: Number,
+      default: 20
     }
   },
   data() {
