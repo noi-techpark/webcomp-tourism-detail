@@ -60,6 +60,10 @@ export default {
     pageSize: {
       type: Number,
       default: 20
+    },
+    category: {
+      type: String,
+      default: null
     }
   },
   data() {
@@ -130,16 +134,13 @@ export default {
     loadActivityList(pageNum) {
       this.isLoading = true;
       const activityApi = new ActivityApi()
-      activityApi.activityGetActivityList(null, pageNum, this.pageSize, null, null,
+      activityApi.activityGetActivityList(null, pageNum, this.pageSize, this.category, null,
           this.contentIdList,null,null,null,null,null,null,
           null,null,true,true,null,null,null,null,
           null,null,null,[]).then((value => {
         this.items = value?.data?.Items ?? []
         this.currentPage = value?.data?.CurrentPage
         this.totalPages = value?.data?.TotalPages
-        for(const item of this.items) {
-          console.log(item.ImageGallery.length)
-        }
         console.log(value)
         this.isLoading = false;
       }))
@@ -155,16 +156,13 @@ export default {
       this.isLoading = true;
       const gastronomyApi = new GastronomyApi()
       gastronomyApi.gastronomyGetGastronomyList(
-          pageNum, this.pageSize, this.contentIdList, null, null, null, null,
+          pageNum, this.pageSize, this.contentIdList, null, null, null, this.category,
           null, null, null, true, true, null, null,
           null, null, null, null, null, null
       ).then((value => {
         this.items = value?.data?.Items ?? []
         this.currentPage = value?.data?.CurrentPage
         this.totalPages = value?.data?.TotalPages
-        for(const item of this.items) {
-          console.log(item.ImageGallery.length)
-        }
         console.log(value)
         this.isLoading = false;
       }))
@@ -172,7 +170,7 @@ export default {
     loadPoiList(pageNum) {
       this.isLoading = true;
       const poiApi = new PoiApi()
-      poiApi.poiGetPoiFiltered(pageNum, this.pageSize, null, null, this.contentIdList, null, null,
+      poiApi.poiGetPoiFiltered(pageNum, this.pageSize, this.category, null, this.contentIdList, null, null,
       null, null, true, true, null, null, null, null, null,
       null, null, null, []
       ).then((value => {
@@ -185,10 +183,20 @@ export default {
     },
     getGastronomyShortInfo(item) {
       const categories = this.getGastronomyTypes(item)
-      const location = this.$t('location') + ': ' + (item?.ContactInfos?.[this.language]?.City ?? '')
-      const telephone = this.$t('phone') + ': ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
-      const url = this.$t('web') + ': ' + (item?.ContactInfos?.en?.Url ?? '')
-      return categories + ', ' + location + ', ' + telephone + ', ' + url
+      let shortInfo = categories
+      if(item?.ContactInfos?.[this.language]?.City) {
+        const location = this.$t('location') + ': ' + (item.ContactInfos?.[this.language].City)
+        shortInfo += ', ' + location
+      }
+      if(item?.ContactInfos?.en?.Phonenumber) {
+        const telephone = this.$t('phone') + ': ' + (item.ContactInfos.en.Phonenumber)
+        shortInfo += ', ' + telephone
+      }
+      if(item?.ContactInfos?.en?.Url){
+        const url = this.$t('web') + ': ' + (item.ContactInfos.en.Url)
+        shortInfo += ', ' + url
+      }
+      return shortInfo
     },
     getGastronomyTypes(item) {
       const categoryCodeIds = item.CategoryCodes.map((code) =>
@@ -196,22 +204,35 @@ export default {
       )
       const categories = categoryCodeIds.map((category) => {
         if(this.language === 'de') {
-          return category?.TypeDesc?.de ?? ''
+          return category?.TypeDesc?.de ?? '-'
         } else if(this.language === 'it') {
-          return category?.TypeDesc?.it ?? ''
+          return category?.TypeDesc?.it ?? '-'
         } else {
-          return category?.TypeDesc?.en ?? ''
+          return category?.TypeDesc?.en ?? '-'
         }
       })
       return categories.join(', ')
     },
     getActivityShortInfo(item) {
       const categories = this.getActivityTypes(item)
-      const location = this.$t('location') + ': ' + (item?.ContactInfos?.[this.language]?.City ?? '')
-      const telephone = this.$t('phone') + ': ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
-      const url = this.$t('web') + ': ' + (item?.ContactInfos?.en?.Url ?? '')
-      const difficulty = 'Difficulty: ' + (item?.Difficulty ?? '')
-      return categories + ', ' + location + ', ' + telephone + ', ' + url + ', ' + difficulty
+      let shortInfo = categories
+      if(item?.ContactInfos?.[this.language]?.City) {
+        const location = this.$t('location') + ': ' + (item.ContactInfos?.[this.language].City)
+        shortInfo += ', ' + location
+      }
+      if(item?.ContactInfos?.en?.Phonenumber) {
+        const telephone = this.$t('phone') + ': ' + (item.ContactInfos.en.Phonenumber)
+        shortInfo += ', ' + telephone
+      }
+      if(item?.ContactInfos?.en?.Url){
+        const url = this.$t('web') + ': ' + (item.ContactInfos.en.Url)
+        shortInfo += ', ' + url
+      }
+      if(item?.Difficulty) {
+        const difficulty = 'Difficulty: ' + (item?.Difficulty)
+        shortInfo += ', ' + difficulty
+      }
+      return shortInfo
     },
     getActivityTypes(item) {
       let categoryCodeIds = item.ActivityTypes.map((code) =>
@@ -222,11 +243,11 @@ export default {
       })
       const categories = categoryCodeIds.map((category) => {
         if(this.language === 'de') {
-          return category?.TypeDesc?.de ?? ''
+          return category?.TypeDesc?.de ?? '-'
         } else if(this.language === 'it') {
-          return category?.TypeDesc?.it ?? ''
+          return category?.TypeDesc?.it ?? '-'
         } else {
-          return category?.TypeDesc?.en ?? ''
+          return category?.TypeDesc?.en ?? '-'
         }
       })
       return categories.join(', ')
@@ -236,10 +257,20 @@ export default {
     },
     getPoiShortInfo(item) {
       const categories = this.getPoiTypes(item);
-      const location = this.$t('location') + ': ' + (item?.ContactInfos?.[this.language]?.City ?? '')
-      const telephone = this.$t('phone') + ': ' + (item?.ContactInfos?.en?.Phonenumber ?? '')
-      const url = this.$t('web') + ': ' + (item?.ContactInfos?.en?.Url ?? '')
-      return categories + ', ' + location + ', ' + telephone + ', ' + url
+      let shortInfo = categories
+      if(item?.ContactInfos?.[this.language]?.City) {
+        const location = this.$t('location') + ': ' + (item.ContactInfos?.[this.language].City)
+        shortInfo += ', ' + location
+      }
+      if(item?.ContactInfos?.en?.Phonenumber) {
+        const telephone = this.$t('phone') + ': ' + (item.ContactInfos.en.Phonenumber)
+        shortInfo += ', ' + telephone
+      }
+      if(item?.ContactInfos?.en?.Url){
+        const url = this.$t('web') + ': ' + (item.ContactInfos.en.Url)
+        shortInfo += ', ' + url
+      }
+      return shortInfo
     },
     getPoiTypes(item) {
       const poiType = item.AdditionalPoiInfos[this.language].MainType

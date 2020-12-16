@@ -4,9 +4,11 @@
         v-if="detailContentId"
         :content-id="detailContentId"
         :is-list-available="islistAvailable"
+        :content-type="contentType"
         @close="closeDetail"
     />
-    <items-list v-else @show-detail="showDetail" :language="language" contentType="Gastronomy" :contentIdList="contentIdList" :pageSize="pageSize"/>
+    <items-list v-else @show-detail="showDetail" :language="language" :contentType="contentType"
+                :contentIdList="contentIdList" :pageSize="pageSize" :category="category"/>
   </div>
 </template>
 
@@ -22,14 +24,14 @@ export default Vue.extend({
   props: {
     contentType: {
       type: String,
-      default: 'Gastronomy'
+      default: 'Activity'
     },
     contentIdList: {
       type: String,
       default: null,
     },
-    categories: {
-      type: Array,
+    category: {
+      type: String,
       default: null
     },
     language: {
