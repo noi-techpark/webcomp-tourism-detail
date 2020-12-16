@@ -1,37 +1,72 @@
 <template>
   <div>
     <a v-if="isListAvailable" href @click.prevent="close">close</a><br />
-    <p>{{ contentId }}</p>
-    <hr />
-    <div v-if="item">
+
+    <div v-if="item" class="item">
       <h2>{{ itemDetail.Title }}</h2>
 
-      <ul>
-        <li v-if="item.Altitude">
-          {{ $t('altitude') }}: {{ item.Altitude
-          }}{{ item.AltitudeUnitofMeasure }}
-        </li>
-        <li v-if="item.Difficulty">
-          {{ $t('difficulty') }}: {{ item.Difficulty }}
-        </li>
-        <li v-if="googleMapsLink">
-          <a :href="googleMapsLink" target="_blank">Google Maps</a>
-        </li>
-        <li v-if="itemContactInfos.City">
-          {{ $t('location') }}: {{ itemContactInfos.City }}
-        </li>
-        <li v-if="itemContactInfos.Url">
-          {{ $t('web') }}:
-          <a :href="itemContactInfos.Url" target="_blank">{{
-            itemContactInfos.Url
-          }}</a>
-        </li>
-        <li v-if="itemContactInfos.Phonenumber">
-          {{ $t('phone') }}: {{ itemContactInfos.Phonenumber }}
-        </li>
-      </ul>
-
-      <p v-if="itemDetail.BaseText" v-html="itemDetail.BaseText"></p>
+      <div class="detail-box">
+        <ul class="props">
+          <li v-if="item.Difficulty">
+            <img src="@/assets/img/ic_difficulty.svg" />
+            <span class="prop-key">{{ $t('difficulty') }}:</span>
+            {{ item.Difficulty }}
+          </li>
+          <li v-if="item.Altitude">
+            <img src="@/assets/img/ic_altitudedifference.svg" />
+            <span class="prop-key">{{ $t('altitude') }}:</span>
+            {{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}
+          </li>
+          <li v-if="item.AltitudeDifference">
+            <img src="@/assets/img/ic_altitudedifference.svg" />
+            <span class="prop-key">{{ $t('props.AltitudeDifference') }}:</span>
+            {{ item.AltitudeDifference }}{{ item.AltitudeUnitofMeasure }}
+          </li>
+          <li v-if="item.AltitudeHighestPoint">
+            <img src="@/assets/img/ic_altitudehighestpoint.svg" />
+            <span class="prop-key"
+              >{{ $t('props.AltitudeHighestPoint') }}:</span
+            >
+            {{ item.AltitudeHighestPoint }}{{ item.AltitudeUnitofMeasure }}
+          </li>
+          <li v-if="item.AltitudeLowestPoint">
+            <img src="@/assets/img/ic_altitudelowestpoint.svg" />
+            <span class="prop-key">{{ $t('props.AltitudeLowestPoint') }}:</span>
+            {{ item.AltitudeLowestPoint }}{{ item.AltitudeUnitofMeasure }}
+          </li>
+          <li v-if="item.DistanceDuration">
+            <img src="@/assets/img/ic_distanceduration.svg" />
+            <span class="prop-key">{{ $t('props.DistanceDuration') }}:</span>
+            {{ item.DistanceDuration }}
+          </li>
+          <li v-if="item.DistanceLength">
+            <img src="@/assets/img/ic_distancelength.svg" />
+            <span class="prop-key">{{ $t('props.DistanceLength') }}:</span>
+            {{ item.DistanceLength }}
+          </li>
+          <li v-if="googleMapsLink">
+            <img src="@/assets/img/ic_map.svg" />
+            <a :href="googleMapsLink" target="_blank">Google Maps</a>
+          </li>
+          <li v-if="itemContactInfos.City">
+            <img src="@/assets/img/ic_map.svg" />
+            <span class="prop-key">{{ $t('location') }}:</span>
+            {{ itemContactInfos.City }}
+          </li>
+          <li v-if="itemContactInfos.Url">
+            <img src="@/assets/img/ic_external-link.svg" />
+            <span class="prop-key">{{ $t('web') }}:</span>
+            <a :href="itemContactInfos.Url" target="_blank">
+              {{ itemContactInfos.Url }}
+            </a>
+          </li>
+          <li v-if="itemContactInfos.Phonenumber">
+            <img src="@/assets/img/ic_phone.svg" />
+            <span class="prop-key">{{ $t('phone') }}:</span>
+            {{ itemContactInfos.Phonenumber }}
+          </li>
+        </ul>
+      </div>
 
       <!-- POI / Activity -->
       <div v-if="itemAdditionalPoiInfos">
@@ -43,10 +78,15 @@
         </div>
       </div>
 
-      <div>
-        <ul>
-          <li v-for="(value, key) of itemPoiProps" :key="key">
-            <b>{{ $t(`props.${key}`) }}:</b>
+      <div v-if="itemDetail.BaseText" v-html="itemDetail.BaseText"></div>
+
+      <div v-if="Object.keys(itemProps).length" class="additional-props-box">
+        <ul
+          class="props"
+          :class="{ single: Object.keys(itemProps).length === 1 }"
+        >
+          <li v-for="(value, key) of itemProps" :key="key">
+            <span class="prop-key">{{ $t(`props.${key}`) }}:</span>
             {{ value === true ? $t('yes') : value }}
           </li>
         </ul>
@@ -178,20 +218,15 @@ export default {
       const infos = this.item?.AdditionalPoiInfos?.[this.language] || {};
       return infos.MainType || infos.SubType ? infos : null;
     },
-    itemPoiProps() {
+    itemProps() {
       if (!this.item) {
         return {};
       }
 
       const showProps = [
         'IsOpen',
-        'AltitudeDifference',
-        'AltitudeLowestPoint',
-        'AltitudeHighestPoint',
         'AltitudeSumUp',
         'AltitudeSumDown',
-        'DistanceLength',
-        'DistanceDuration',
         'HasFreeEntrance',
         'BikeTransport',
         'LiftAvailable',
@@ -322,3 +357,51 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.item > div {
+  margin-bottom: 1.5rem;
+}
+h2 {
+  background-color: #e8ecf1;
+  padding: 2rem;
+  margin-bottom: 0;
+}
+.detail-box {
+  border: 1px solid #e8ecf1;
+  padding: 2rem;
+}
+.additional-props-box {
+  padding: 2rem;
+  background-color: #e8ecf1;
+}
+.props {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-style: italic;
+
+  &:not(.single) {
+    columns: 3;
+  }
+
+  > li {
+    padding: 0.2rem 0;
+  }
+
+  img {
+    height: 16px;
+    width: 16px;
+    margin-right: 0.7em;
+  }
+
+  a {
+    color: #2980b9;
+    text-decoration: none;
+  }
+
+  .prop-key {
+    color: #888888;
+  }
+}
+</style>
