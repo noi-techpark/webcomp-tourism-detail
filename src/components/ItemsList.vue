@@ -321,6 +321,7 @@ export default {
   .short-info {
     font-size: 14px;
     word-break: break-word;
+    color: #888888;
   }
 
   .page-title {
