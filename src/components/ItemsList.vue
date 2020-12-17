@@ -182,21 +182,21 @@ export default {
       }))
     },
     getGastronomyShortInfo(item) {
-      const categories = this.getGastronomyTypes(item)
-      let shortInfo = categories
+      const shortInfo = []
+      shortInfo.push(...this.getGastronomyTypes(item))
       if(item?.ContactInfos?.[this.language]?.City) {
         const location = this.$t('location') + ': ' + (item.ContactInfos?.[this.language].City)
-        shortInfo += ', ' + location
+        shortInfo.push(location)
       }
       if(item?.ContactInfos?.en?.Phonenumber) {
         const telephone = this.$t('phone') + ': ' + (item.ContactInfos.en.Phonenumber)
-        shortInfo += ', ' + telephone
+        shortInfo.push(telephone)
       }
       if(item?.ContactInfos?.en?.Url){
         const url = this.$t('web') + ': ' + (item.ContactInfos.en.Url)
-        shortInfo += ', ' + url
+        shortInfo.push(url)
       }
-      return shortInfo
+      return shortInfo.filter((info) => info != null).join(', ')
     },
     getGastronomyTypes(item) {
       const categoryCodeIds = item.CategoryCodes.map((code) =>
@@ -211,28 +211,28 @@ export default {
           return category?.TypeDesc?.en ?? '-'
         }
       })
-      return categories.join(', ')
+      return categories
     },
     getActivityShortInfo(item) {
-      const categories = this.getActivityTypes(item)
-      let shortInfo = categories
+      const shortInfo = []
+      shortInfo.push(...this.getActivityTypes(item))
       if(item?.ContactInfos?.[this.language]?.City) {
         const location = this.$t('location') + ': ' + (item.ContactInfos?.[this.language].City)
-        shortInfo += ', ' + location
+        shortInfo.push(location)
       }
       if(item?.ContactInfos?.en?.Phonenumber) {
         const telephone = this.$t('phone') + ': ' + (item.ContactInfos.en.Phonenumber)
-        shortInfo += ', ' + telephone
+        shortInfo.push(telephone)
       }
       if(item?.ContactInfos?.en?.Url){
         const url = this.$t('web') + ': ' + (item.ContactInfos.en.Url)
-        shortInfo += ', ' + url
+        shortInfo.push(url)
       }
       if(item?.Difficulty) {
         const difficulty = 'Difficulty: ' + (item?.Difficulty)
-        shortInfo += ', ' + difficulty
+        shortInfo.push(difficulty)
       }
-      return shortInfo
+      return shortInfo.filter((info) => info != null).join(', ')
     },
     getActivityTypes(item) {
       let categoryCodeIds = item.ActivityTypes.map((code) =>
@@ -250,27 +250,24 @@ export default {
           return category?.TypeDesc?.en ?? '-'
         }
       })
-      return categories.join(', ')
+      return categories
     },
     getTitle(item, language) {
       return item?.Detail?.[language]?.Title ?? ''
     },
     getPoiShortInfo(item) {
-      const categories = this.getPoiTypes(item);
-      let shortInfo = categories
+      const shortInfo = []
+      shortInfo.push(...this.getPoiTypes(item))
       if(item?.ContactInfos?.[this.language]?.City) {
-        const location = this.$t('location') + ': ' + (item.ContactInfos?.[this.language].City)
-        shortInfo += ', ' + location
+        shortInfo.push(this.$t('location') + ': ' + (item.ContactInfos?.[this.language].City))
       }
       if(item?.ContactInfos?.en?.Phonenumber) {
-        const telephone = this.$t('phone') + ': ' + (item.ContactInfos.en.Phonenumber)
-        shortInfo += ', ' + telephone
+        shortInfo.push(this.$t('phone') + ': ' + (item.ContactInfos.en.Phonenumber))
       }
       if(item?.ContactInfos?.en?.Url){
-        const url = this.$t('web') + ': ' + (item.ContactInfos.en.Url)
-        shortInfo += ', ' + url
+        shortInfo.push(this.$t('web') + ': ' + (item.ContactInfos.en.Url))
       }
-      return shortInfo
+      return shortInfo.filter((info) => info != null).join(', ')
     },
     getPoiTypes(item) {
       const poiType = item.AdditionalPoiInfos[this.language].MainType
@@ -282,7 +279,7 @@ export default {
       if(subType !== null) {
         categories.push(subType)
       }
-      return categories.join(', ')
+      return categories
     }
   },
 };
