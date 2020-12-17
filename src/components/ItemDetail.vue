@@ -149,7 +149,12 @@
         </div>
       </div>
 
-      <small>
+      <div v-if="imageGallery">
+        <img v-for="(image, i) of imageGallery" :key="i" :src="image.ImageUrl" height="250" width="250"
+        class="image"/>
+      </div>
+
+      <small class="text">
         {{ $t('lastChange') }}: {{ item.LastChange | dateFormat }}
       </small>
     </div>
@@ -203,6 +208,9 @@ export default {
     };
   },
   computed: {
+    imageGallery() {
+      return this.item?.ImageGallery || []
+    },
     itemDetail() {
       return this.item?.Detail?.[this.language] || {};
     },
@@ -467,5 +475,11 @@ ul {
 
 .text-dark {
   color: #2E3131;
+}
+
+.image {
+  padding-right: 8px;
+  padding-top: 8px;
+  object-fit: cover;
 }
 </style>

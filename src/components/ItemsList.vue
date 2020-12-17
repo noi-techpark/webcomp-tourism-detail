@@ -301,6 +301,7 @@ export default {
     max-width: 60px;
     max-height: 60px;
     background-color: #E8ECF1;
+    object-fit: cover;
   }
 
   .info {
