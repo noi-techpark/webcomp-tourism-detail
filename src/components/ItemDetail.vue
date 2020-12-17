@@ -3,46 +3,62 @@
     <a v-if="isListAvailable" href @click.prevent="close">close</a><br />
 
     <div v-if="item" class="item">
-      <h2>{{ itemDetail.Title }}</h2>
+      <div class="title">
+        <h2>{{ itemDetail.Title }}</h2>
+        <!-- Gastronomy -->
+        <div v-if="itemCategories" class="categories">
+          <div class="subtitle">{{ itemCategories }}</div>
+        </div>
+        <!-- POI / Activity -->
+        <div v-if="itemAdditionalPoiInfos">
+          <span v-if="itemAdditionalPoiInfos.MainType" class="subtitle">
+            {{ itemAdditionalPoiInfos.MainType }}
+          </span>
+          <span v-if="itemAdditionalPoiInfos.SubType" class="subtype">
+            {{ itemAdditionalPoiInfos.SubType }}
+          </span>
+        </div>
+      </div>
 
       <div class="detail-box">
+
         <ul class="props">
           <li v-if="item.Difficulty">
             <img src="@/assets/img/ic_difficulty.svg" />
             <span class="prop-key">{{ $t('difficulty') }}:</span>
-            {{ item.Difficulty }}
+            <span class="text-dark">{{ item.Difficulty }}</span>
           </li>
           <li v-if="item.Altitude">
             <img src="@/assets/img/ic_altitudedifference.svg" />
             <span class="prop-key">{{ $t('altitude') }}:</span>
-            {{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}
+            <span class="text-dark">{{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
           <li v-if="item.AltitudeDifference">
             <img src="@/assets/img/ic_altitudedifference.svg" />
             <span class="prop-key">{{ $t('props.AltitudeDifference') }}:</span>
-            {{ item.AltitudeDifference }}{{ item.AltitudeUnitofMeasure }}
+            <span class="text-dark">{{ item.AltitudeDifference }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
           <li v-if="item.AltitudeHighestPoint">
             <img src="@/assets/img/ic_altitudehighestpoint.svg" />
             <span class="prop-key"
               >{{ $t('props.AltitudeHighestPoint') }}:</span
             >
-            {{ item.AltitudeHighestPoint }}{{ item.AltitudeUnitofMeasure }}
+            <span class="text-dark">{{ item.AltitudeHighestPoint }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
           <li v-if="item.AltitudeLowestPoint">
             <img src="@/assets/img/ic_altitudelowestpoint.svg" />
             <span class="prop-key">{{ $t('props.AltitudeLowestPoint') }}:</span>
-            {{ item.AltitudeLowestPoint }}{{ item.AltitudeUnitofMeasure }}
+            <span class="text-dark">{{ item.AltitudeLowestPoint }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
           <li v-if="item.DistanceDuration">
             <img src="@/assets/img/ic_distanceduration.svg" />
             <span class="prop-key">{{ $t('props.DistanceDuration') }}:</span>
-            {{ item.DistanceDuration }}
+            <span class="text-dark">{{ item.DistanceDuration }}</span>
           </li>
           <li v-if="item.DistanceLength">
             <img src="@/assets/img/ic_distancelength.svg" />
             <span class="prop-key">{{ $t('props.DistanceLength') }}:</span>
-            {{ item.DistanceLength }}
+            <span class="text-dark">{{ item.DistanceLength }}</span>
           </li>
           <li v-if="googleMapsLink">
             <img src="@/assets/img/ic_map.svg" />
@@ -51,7 +67,7 @@
           <li v-if="itemContactInfos.City">
             <img src="@/assets/img/ic_map.svg" />
             <span class="prop-key">{{ $t('location') }}:</span>
-            {{ itemContactInfos.City }}
+            <span class="text-dark">{{ itemContactInfos.City }}</span>
           </li>
           <li v-if="itemContactInfos.Url">
             <img src="@/assets/img/ic_external-link.svg" />
@@ -63,89 +79,73 @@
           <li v-if="itemContactInfos.Phonenumber">
             <img src="@/assets/img/ic_phone.svg" />
             <span class="prop-key">{{ $t('phone') }}:</span>
-            {{ itemContactInfos.Phonenumber }}
+            <span class="text-dark">{{ itemContactInfos.Phonenumber }}</span>
           </li>
         </ul>
       </div>
 
-      <!-- POI / Activity -->
-      <div v-if="itemAdditionalPoiInfos">
-        <div v-if="itemAdditionalPoiInfos.MainType">
-          <b>{{ $t('mainType') }}:</b> {{ itemAdditionalPoiInfos.MainType }}
-        </div>
-        <div v-if="itemAdditionalPoiInfos.SubType">
-          <b>{{ $t('subType') }}:</b> {{ itemAdditionalPoiInfos.SubType }}
+      <div v-if="itemDetail.BaseText" v-html="itemDetail.BaseText" class="text"></div>
+
+      <!-- COMMON -->
+      <div v-if="itemOperationSchedule.length">
+        <div class="subtitle">{{ $t('operationSchedule') }}</div>
+        <div>
+          <div v-for="(schedule, i) of itemOperationSchedule" :key="i">
+            <!-- Opened || Closed -->
+            <div v-if="schedule.Type === '1' || schedule.Type === '2'">
+              <b :style="[schedule.Type === '1' ? {'color': '#9BC320'} : {'color': 'red'}]">{{ $t(`scheduleTypes.${schedule.Type}`) }}</b>
+              <ul v-if="schedule.OperationScheduleTime">
+                <div v-for="(time, j) of schedule.OperationScheduleTime" :key="j" class="text">
+                  <span class="text-dark">{{ $t(`timeCodes.${time.Timecode}`) }}</span> von {{ time.Start }} bis
+                  {{ time.End }}
+                  ({{ getItemScheduleDays(time) }})
+                </div>
+              </ul>
+            </div>
+            <!-- Season -->
+            <div v-if="schedule.Type === '3'">
+              {{ schedule.Start | dateFormat }} bis
+              {{ schedule.Stop | dateFormat }}
+            </div>
+          </div>
         </div>
       </div>
-
-      <div v-if="itemDetail.BaseText" v-html="itemDetail.BaseText"></div>
 
       <div v-if="Object.keys(itemProps).length" class="additional-props-box">
         <ul
           class="props"
           :class="{ single: Object.keys(itemProps).length === 1 }"
         >
-          <li v-for="(value, key) of itemProps" :key="key">
+          <li v-for="(value, key) of itemProps" :key="key" class="text">
             <span class="prop-key">{{ $t(`props.${key}`) }}:</span>
             {{ value === true ? $t('yes') : value }}
           </li>
         </ul>
       </div>
 
-      <!-- Gastronomy -->
-      <div v-if="itemCategories.length">
-        <b>{{ $t('categories') }}</b>
-        <ul>
-          <li v-for="(value, i) of itemCategories" :key="i">{{ value }}</li>
-        </ul>
-      </div>
-
       <div v-if="itemCeremonies.length">
-        <b>{{ $t('ceremonies') }}</b>
+        <div class="subtitle">{{ $t('ceremonies') }}</div>
         <ul>
-          <li v-for="(value, i) of itemCeremonies" :key="i">
-            {{ value.name }} (max. {{ value.maxSeatingCapacity }} Personen)
+          <li v-for="(value, i) of itemCeremonies" :key="i" class="text">
+            <span class="text-dark">{{ value.name }}</span> (max. {{ value.maxSeatingCapacity }} Personen)
           </li>
         </ul>
       </div>
 
       <div v-if="itemDishRates.length">
-        <b>{{ $t('dishRates') }}</b>
+        <div class="subtitle">{{ $t('dishRates') }}</div>
         <ul>
-          <li v-for="(value, i) of itemDishRates" :key="i">
-            {{ value.name }} (von {{ value.minAmount }} bis
+          <li v-for="(value, i) of itemDishRates" :key="i" class="text">
+            <span class="text-dark">{{ value.name }}</span> (von {{ value.minAmount }} bis
             {{ value.maxAmount }} {{ value.currencyCode }})
           </li>
         </ul>
       </div>
 
       <div v-for="type of itemGastronomyTypes" :key="type.type">
-        <b>{{ type.name }}</b>
-        <ul>
-          <li v-for="(value, i) of type.values" :key="i">{{ value }}</li>
-        </ul>
-      </div>
-
-      <!-- COMMON -->
-      <div v-if="itemOperationSchedule.length">
-        <b>{{ $t('operationSchedule') }}</b>
-        <div v-for="(schedule, i) of itemOperationSchedule" :key="i">
-          <!-- Opened || Closed -->
-          <div v-if="schedule.Type === '1' || schedule.Type === '2'">
-            <b>{{ $t(`scheduleTypes.${schedule.Type}`) }}:</b>
-            <ul v-if="schedule.OperationScheduleTime">
-              <li v-for="(time, j) of schedule.OperationScheduleTime" :key="j">
-                {{ $t(`timeCodes.${time.Timecode}`) }} von {{ time.Start }} bis
-                {{ time.End }}
-                ({{ getItemScheduleDays(time) }})
-              </li>
-            </ul>
-          </div>
-          <!-- Season -->
-          <div v-if="schedule.Type === '3'">
-            {{ schedule.Start | dateFormat }} bis
-            {{ schedule.Stop | dateFormat }}
-          </div>
+        <div class="subtitle">{{ type.name }}</div>
+        <div class="gastronomyTypes">
+          <div v-for="(value, i) of type.values" :key="i" class="category text">{{ value }}</div>
         </div>
       </div>
 
@@ -253,7 +253,7 @@ export default {
             this.gastronomyTypes.find((t) => t.Id === c.Id)?.TypeDesc[
               this.language
             ]
-        ) || []
+        ).join(', ') || ''
       );
     },
     itemCeremonies() {
@@ -306,7 +306,7 @@ export default {
       return (scheduleTime) =>
         SCHEDULE_DAYS.map((day) =>
           scheduleTime[day] ? this.$t(`scheduleDays.${day}`) : null
-        ).join(', ');
+        ).filter((day) => day != null).join(', ');
     },
   },
   created() {
@@ -362,10 +362,14 @@ export default {
 .item > div {
   margin-bottom: 1.5rem;
 }
-h2 {
+.title {
   background-color: #e8ecf1;
   padding: 2rem;
   margin-bottom: 0;
+}
+
+h2 {
+  margin-bottom: 2px;
 }
 .detail-box {
   border: 1px solid #e8ecf1;
@@ -382,7 +386,19 @@ h2 {
   font-style: italic;
 
   &:not(.single) {
-    columns: 3;
+    columns: 1;
+  }
+
+  @media(min-width: 768px){
+    &:not(.single) {
+      columns: 2;
+    }
+  }
+
+  @media(min-width: 992px){
+    &:not(.single) {
+      columns: 3;
+    }
   }
 
   > li {
@@ -403,5 +419,53 @@ h2 {
   .prop-key {
     color: #888888;
   }
+}
+
+.subtitle {
+  color: #212529;
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.subtype {
+  padding-top: 4px;
+  padding-bottom: 8px;
+}
+
+.categories {
+  padding-bottom: 8px;
+}
+
+.gastronomyTypes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.category{
+  padding: 4px 12px 4px 12px;
+  margin-right: 8px;
+  margin-top: 8px;
+  height: 30px;
+  border: 1px solid #CFCFCF;
+  border-radius: 30px;
+  opacity: 1;
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+.text {
+  color: #949494
+}
+
+.text-dark {
+  color: #2E3131;
 }
 </style>
