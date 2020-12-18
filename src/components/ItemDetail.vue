@@ -151,18 +151,20 @@
 
       <div v-if="imageGallery">
         <img v-for="(image, i) of imageGallery" :key="i" :src="image.ImageUrl" height="250" width="250"
-        class="image"/>
+        class="image" @click="openImageDetail(image)"/>
       </div>
 
       <small class="text">
         {{ $t('lastChange') }}: {{ item.LastChange | dateFormat }}
       </small>
     </div>
+    <image-detail :imgUrl="imageUrl" v-if="showImage" @close="closeImageDetail"></image-detail>
   </div>
 </template>
 
 <script>
 import { GastronomyApi, PoiApi, ActivityApi } from '@/api';
+import ImageDetail from "@/components/ImageDetail";
 
 const GASTRONOMY_TYPES = [
   'DishCodes',
@@ -183,6 +185,7 @@ const SCHEDULE_DAYS = [
 ];
 
 export default {
+  components: {ImageDetail},
   props: {
     contentId: {
       type: String,
@@ -205,6 +208,8 @@ export default {
     return {
       item: null,
       gastronomyTypes: [],
+      showImage: false,
+      imageUrl: null
     };
   },
   computed: {
@@ -362,6 +367,14 @@ export default {
     close() {
       this.$emit('close');
     },
+    openImageDetail(image) {
+      this.imageUrl = image.ImageUrl;
+      console.log(this.imageUrl)
+      this.showImage = true;
+    },
+    closeImageDetail(){
+      this.showImage = false;
+    }
   },
 };
 </script>
