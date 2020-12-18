@@ -27,8 +27,9 @@
       <img src="@/assets/img/loading.gif"/>
     </div>
     <div class="noResult" v-else>{{ $t('noResults')}}</div>
+    <div v-if="items.length === 1" class="item-container"></div>
     <div class="bottom-divider" v-if="items.length > 0"><hr class="solid"></div>
-    <div class="bottom-divider bottom-divider2" v-if="items.length > 0"><hr class="solid"></div>
+    <div class="bottom-divider bottom-divider2" v-if="items.length > 1"><hr class="solid"></div>
     <paging
         :current-page="currentPage"
         :total-pages="totalPages"
