@@ -159,7 +159,8 @@
         {{ $t('lastChange') }}: {{ item.LastChange | dateFormat }}
       </small>
     </div>
-    <image-detail :imgUrl="imageUrl" v-if="showImage" @close="closeImageDetail"></image-detail>
+    <image-detail :imgUrl="imageUrl" v-if="showImage"  :hasMultipleImgs="hasMultipleImgs" @close="closeImageDetail"
+                  @next-image="nextImage" @last-image="lastImage"></image-detail>
   </div>
 </template>
 
@@ -210,7 +211,8 @@ export default {
       item: null,
       gastronomyTypes: [],
       showImage: false,
-      imageUrl: null
+      imageUrl: null,
+      selectedImage: null
     };
   },
   computed: {
@@ -229,6 +231,9 @@ export default {
     },
     imageGallery() {
       return this.item?.ImageGallery || []
+    },
+    hasMultipleImgs() {
+      return this.imageGallery.length>1
     },
     itemDetail() {
       return this.item?.Detail?.[this.language] || {};
@@ -384,10 +389,31 @@ export default {
     openImageDetail(image) {
       this.imageUrl = image.ImageUrl;
       console.log(this.imageUrl)
+      this.selectedImage = image;
       this.showImage = true;
     },
     closeImageDetail(){
       this.showImage = false;
+    },
+    nextImage() {
+      const currentIndex = this.imageGallery.indexOf(this.selectedImage)
+      if(currentIndex+1 < this.imageGallery.length) {
+        this.selectedImage = this.imageGallery[currentIndex+1]
+        this.imageUrl = this.selectedImage.ImageUrl
+      } else {
+        this.selectedImage = this.imageGallery[0]
+        this.imageUrl = this.selectedImage.ImageUrl
+      }
+    },
+    lastImage() {
+      const currentIndex = this.imageGallery.indexOf(this.selectedImage)
+      if(currentIndex-1 >= 0) {
+        this.selectedImage = this.imageGallery[currentIndex-1]
+        this.imageUrl = this.selectedImage.ImageUrl
+      } else {
+        this.selectedImage = this.imageGallery[this.imageGallery.length-1]
+        this.imageUrl = this.selectedImage.ImageUrl
+      }
     }
   },
 };
