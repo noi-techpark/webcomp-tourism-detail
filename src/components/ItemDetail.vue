@@ -400,7 +400,6 @@ export default {
 .title {
   background-color: #e8ecf1;
   padding: 2rem;
-  z-index: 2;
   opacity: 0.8;
   width: 100%;
   max-height: 400px;

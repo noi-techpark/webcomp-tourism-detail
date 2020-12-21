@@ -67,6 +67,10 @@ export default {
     category: {
       type: String,
       default: null
+    },
+    currentPage: {
+      type: Number,
+      default: 1
     }
   },
   data() {
@@ -74,7 +78,6 @@ export default {
       items: [],
       gastronomyTypes: [],
       activityTypes: [],
-      currentPage: 0,
       totalPages: 0,
       isLoading: false
     };
@@ -82,12 +85,12 @@ export default {
   created() {
     if(this.contentType === 'Gastronomy') {
       this.loadGastronomyTypeList()
-      this.loadGastronomyList(1)
+      this.loadGastronomyList(this.currentPage)
     } else if(this.contentType === 'Activity') {
       this.loadActivityTypeList()
-      this.loadActivityList(1)
+      this.loadActivityList(this.currentPage)
     } else if(this.contentType === 'POI') {
-      this.loadPoiList(1)
+      this.loadPoiList(this.currentPage)
     }
   },
   computed: {
@@ -111,7 +114,7 @@ export default {
       } else {
         this.loadPoiList(this.currentPage + 1)
       }
-      this.currentPage = this.currentPage + 1
+      this.$emit('change-current-page', this.currentPage + 1);
     },
     lastPage() {
       this.items = []
@@ -122,7 +125,7 @@ export default {
       } else {
         this.loadPoiList(this.currentPage - 1)
       }
-      this.currentPage = this.currentPage - 1
+      this.$emit('change-current-page', this.currentPage - 1);
     },
     goToPage(pageNum) {
       this.items = []
@@ -133,7 +136,7 @@ export default {
       } else {
         this.loadPoiList(pageNum)
       }
-      this.currentPage = pageNum
+      this.$emit('change-current-page', pageNum);
     },
     showDetail(contentId) {
       this.$emit('show-detail', contentId);
@@ -153,7 +156,7 @@ export default {
           null,null,true,true,null,null,null,null,
           null,null,null,[]).then((value => {
         this.items = value?.data?.Items ?? []
-        this.currentPage = value?.data?.CurrentPage
+        this.$emit('change-current-page', value?.data?.CurrentPage);
         this.totalPages = value?.data?.TotalPages
         console.log(value)
         this.isLoading = false;
@@ -175,7 +178,7 @@ export default {
           null, null, null, null, null, null
       ).then((value => {
         this.items = value?.data?.Items ?? []
-        this.currentPage = value?.data?.CurrentPage
+        this.$emit('change-current-page', value?.data?.CurrentPage);
         this.totalPages = value?.data?.TotalPages
         console.log(value)
         this.isLoading = false;
@@ -189,7 +192,7 @@ export default {
       null, null, null, []
       ).then((value => {
         this.items = value?.data?.Items ?? []
-        this.currentPage = value?.data?.CurrentPage
+        this.$emit('change-current-page', value?.data?.CurrentPage);
         this.totalPages = value?.data?.TotalPages
         console.log(value)
         this.isLoading = false;
