@@ -11,7 +11,9 @@
       <div v-for="item of items" :key="item.id" @click.prevent="showDetail(item.Id)" class="item-container">
         <hr class="solid">
         <div class="list-item">
-          <div class="thumbnail" v-if="item.ImageGallery === null || item.ImageGallery.length === 0"></div>
+          <div v-if="item.ImageGallery === null || item.ImageGallery.length === 0">
+            <img class="thumbnail" :src="placeholderImage"/>
+          </div>
           <div v-else><img class="thumbnail" :src="item.ImageGallery[0].ImageUrl"/></div>
           <div class="info">
             <div class="title">{{ getTitle(item, language) }}</div>
@@ -86,6 +88,17 @@ export default {
       this.loadActivityList(1)
     } else if(this.contentType === 'POI') {
       this.loadPoiList(1)
+    }
+  },
+  computed: {
+    placeholderImage() {
+      if(this.contentType === 'Gastronomy') {
+        return require('../assets/img/gastro-placeholder.svg')
+      } else if(this.contentType === 'Activity') {
+        return require('../assets/img/Activity-Placeholder.svg')
+      } else {
+        return require('../assets/img/POI-Placeholder.svg')
+      }
     }
   },
   methods: {
