@@ -66,5 +66,6 @@
         "next": "weiter",
         "back": "zurück"
     },
-    "noResults": "Keine Ergebnisse gefunden"
+    "noResults": "Keine Ergebnisse gefunden",
+    "back": "Zurück"
 }

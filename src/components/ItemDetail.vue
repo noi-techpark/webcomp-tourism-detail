@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a v-if="isListAvailable" href @click.prevent="close">Zurück</a><br />
+    <a v-if="isListAvailable" href @click.prevent="close">{{ $t('back')}}</a><br />
     <div v-if="item" class="item">
       <div class="title-container" :style="titleImage">
         <div class="title" >
