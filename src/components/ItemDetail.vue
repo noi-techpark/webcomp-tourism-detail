@@ -1,22 +1,23 @@
 <template>
   <div>
-    <a v-if="isListAvailable" href @click.prevent="close">close</a><br />
-
+    <a v-if="isListAvailable" href @click.prevent="close">Zurück</a><br />
     <div v-if="item" class="item">
-      <div class="title">
-        <h2>{{ itemDetail.Title }}</h2>
-        <!-- Gastronomy -->
-        <div v-if="itemCategories" class="categories">
-          <div class="subtitle">{{ itemCategories }}</div>
-        </div>
-        <!-- POI / Activity -->
-        <div v-if="itemAdditionalPoiInfos">
+      <div class="title-container" :style="titleImage">
+        <div class="title" >
+          <h2>{{ itemDetail.Title }}</h2>
+          <!-- Gastronomy -->
+          <div v-if="itemCategories" class="categories">
+            <div class="subtitle">{{ itemCategories }}</div>
+          </div>
+          <!-- POI / Activity -->
+          <div v-if="itemAdditionalPoiInfos">
           <span v-if="itemAdditionalPoiInfos.MainType" class="subtitle">
             {{ itemAdditionalPoiInfos.MainType }}
           </span>
-          <span v-if="itemAdditionalPoiInfos.SubType" class="subtype">
+            <span v-if="itemAdditionalPoiInfos.SubType" class="subtype">
             {{ itemAdditionalPoiInfos.SubType }}
           </span>
+          </div>
         </div>
       </div>
 
@@ -213,6 +214,19 @@ export default {
     };
   },
   computed: {
+    titleImage() {
+      const image = this.item?.ImageGallery[0]
+      if(image == null) {
+        return {};
+      } else {
+        return {
+          backgroundImage: 'url('+ image.ImageUrl + ') ',
+          height: '400px',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }
+      }
+    },
     imageGallery() {
       return this.item?.ImageGallery || []
     },
@@ -386,7 +400,10 @@ export default {
 .title {
   background-color: #e8ecf1;
   padding: 2rem;
-  margin-bottom: 0 !important;
+  z-index: 2;
+  opacity: 0.8;
+  width: 100%;
+  max-height: 400px;
 }
 
 h2 {
@@ -495,4 +512,19 @@ ul {
   padding-top: 8px;
   object-fit: cover;
 }
+
+.title-image {
+  max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 0 !important;
+  overflow: hidden;
+}
+
 </style>

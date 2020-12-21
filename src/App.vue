@@ -24,7 +24,7 @@ export default Vue.extend({
   props: {
     contentType: {
       type: String,
-      default: 'Activity'
+      default: 'POI'
     },
     contentIdList: {
       type: String,
@@ -53,7 +53,7 @@ export default Vue.extend({
       return this.contentIdList !== null ? this.contentIdList.split(',') : [];
     },
     islistAvailable() {
-      return this.contentIds.length > 1;
+      return this.contentIds.length != 1;
     },
   },
   watch: {
