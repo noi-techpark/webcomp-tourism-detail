@@ -326,7 +326,7 @@ export default {
   }
 
   hr.solid {
-    border-top: 1px solid #CFCFCF;
+    border-top: 1px solid #E8ECF1;
     margin: 8px 40px 8px 40px;
   }
 

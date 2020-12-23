@@ -24,63 +24,67 @@
       <div class="detail-box">
 
         <ul class="props">
-          <li v-if="item.Difficulty">
+          <li v-if="item.Difficulty" class="info-item">
             <img src="@/assets/img/ic_difficulty.svg" />
             <span class="prop-key">{{ $t('difficulty') }}:</span>
             <span class="text-dark">{{ item.Difficulty }}</span>
           </li>
-          <li v-if="item.Altitude">
+          <li v-if="item.Altitude" class="info-item">
             <img src="@/assets/img/ic_altitudedifference.svg" />
             <span class="prop-key">{{ $t('altitude') }}: </span>
             <span class="text-dark">{{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
-          <li v-if="item.AltitudeDifference">
+          <li v-if="item.AltitudeDifference" class="info-item">
             <img src="@/assets/img/ic_altitudedifference.svg" />
             <span class="prop-key">{{ $t('props.AltitudeDifference') }}: </span>
             <span class="text-dark">{{ item.AltitudeDifference }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
-          <li v-if="item.AltitudeHighestPoint">
+          <li v-if="item.AltitudeHighestPoint" class="info-item">
             <img src="@/assets/img/ic_altitudehighestpoint.svg" />
             <span class="prop-key"
               >{{ $t('props.AltitudeHighestPoint') }}: </span
             >
             <span class="text-dark">{{ item.AltitudeHighestPoint }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
-          <li v-if="item.AltitudeLowestPoint">
+          <li v-if="item.AltitudeLowestPoint" class="info-item">
             <img src="@/assets/img/ic_altitudelowestpoint.svg" />
             <span class="prop-key">{{ $t('props.AltitudeLowestPoint') }}: </span>
             <span class="text-dark">{{ item.AltitudeLowestPoint }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
-          <li v-if="item.DistanceDuration">
+          <li v-if="item.DistanceDuration" class="info-item">
             <img src="@/assets/img/ic_distanceduration.svg" />
             <span class="prop-key">{{ $t('props.DistanceDuration') }}: </span>
             <span class="text-dark">{{ item.DistanceDuration }}</span>
           </li>
-          <li v-if="item.DistanceLength">
+          <li v-if="item.DistanceLength" class="info-item">
             <img src="@/assets/img/ic_distancelength.svg" />
             <span class="prop-key">{{ $t('props.DistanceLength') }}: </span>
             <span class="text-dark">{{ item.DistanceLength }}</span>
           </li>
-          <li v-if="googleMapsLink">
+          <li v-if="googleMapsLink" class="info-item">
             <img src="@/assets/img/ic_map.svg" />
             <a :href="googleMapsLink" target="_blank">Google Maps</a>
           </li>
-          <li v-if="itemContactInfos.City">
+          <li v-if="itemContactInfos.City" class="info-item">
             <img src="@/assets/img/ic_map.svg" />
             <span class="prop-key">{{ $t('location') }}: </span>
             <span class="text-dark">{{ itemContactInfos.City }}</span>
           </li>
-          <li v-if="itemContactInfos.Url">
+          <li v-if="itemContactInfos.Url" class="info-item">
             <img src="@/assets/img/ic_external-link.svg" />
             <span class="prop-key">{{ $t('web') }}: </span>
             <a :href="itemContactInfos.Url" target="_blank">
               {{ itemContactInfos.Url }}
             </a>
           </li>
-          <li v-if="itemContactInfos.Phonenumber">
+          <li v-if="itemContactInfos.Phonenumber" class="info-item">
             <img src="@/assets/img/ic_phone.svg" />
             <span class="prop-key">{{ $t('phone') }}: </span>
             <span class="text-dark">{{ itemContactInfos.Phonenumber }}</span>
+          </li>
+          <li v-if="itemOperationSchedule" class="info-item">
+            <img src="@/assets/img/ic_calendar.svg" />
+            <span :style="[itemOperationSchedule[0].Type === '1' ? {'color': '#9BC320'} : {'color': 'red'}]">{{ $t(`scheduleTypes.${itemOperationSchedule[0].Type}`) }}</span>
           </li>
         </ul>
       </div>
@@ -94,7 +98,6 @@
           <div v-for="(schedule, i) of itemOperationSchedule" :key="i">
             <!-- Opened || Closed -->
             <div v-if="schedule.Type === '1' || schedule.Type === '2'">
-              <b :style="[schedule.Type === '1' ? {'color': '#9BC320'} : {'color': 'red'}]">{{ $t(`scheduleTypes.${schedule.Type}`) }}</b>
               <ul v-if="schedule.OperationScheduleTime">
                 <div v-for="(time, j) of schedule.OperationScheduleTime" :key="j" class="text">
                   <span class="text-dark">{{ $t(`timeCodes.${time.Timecode}`) }}</span> von {{ time.Start }} bis
@@ -550,6 +553,12 @@ ul {
   justify-content: flex-end;
   margin-bottom: 0 !important;
   overflow: hidden;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center
 }
 
 </style>
