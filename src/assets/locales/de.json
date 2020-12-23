@@ -67,5 +67,8 @@
         "back": "zurück"
     },
     "noResults": "Keine Ergebnisse gefunden",
-    "back": "Zurück"
+    "back": "Zurück",
+    "category": "Kategorie",
+    "categories": "Kategorien",
+    "subcategory": "Unterkategorie"
 }

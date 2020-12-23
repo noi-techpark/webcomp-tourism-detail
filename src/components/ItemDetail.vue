@@ -1,22 +1,29 @@
 <template>
   <div>
-    <a v-if="isListAvailable" href @click.prevent="close">{{ $t('back')}}</a><br />
+    <div class="back-button" @click.prevent="close">
+      <img src="@/assets/img/arrow_left.svg" />
+      <span v-if="isListAvailable" style="color: #888888">{{ $t('back')}}</span>
+    </div>
     <div v-if="item" class="item">
       <div class="title-container" :style="titleImage">
         <div class="title" >
           <h2>{{ itemDetail.Title }}</h2>
           <!-- Gastronomy -->
-          <div v-if="itemCategories" class="categories">
-            <div class="subtitle">{{ itemCategories }}</div>
+          <div v-if="itemCategories" class="props">
+            <div>
+              <span class="prop-key" v-if="item.CategoryCodes.length > 1">{{$t('categories')}}:</span>
+              <span class="prop-key" v-else>{{$t('category')}}:</span>
+              {{ itemCategories }}
+            </div>
           </div>
           <!-- POI / Activity -->
           <div v-if="itemAdditionalPoiInfos">
-          <span v-if="itemAdditionalPoiInfos.MainType" class="subtitle">
-            {{ itemAdditionalPoiInfos.MainType }}
-          </span>
-            <span v-if="itemAdditionalPoiInfos.SubType" class="subtype">
-            {{ itemAdditionalPoiInfos.SubType }}
-          </span>
+          <div v-if="itemAdditionalPoiInfos.MainType" class="props">
+            <span class="prop-key">{{$t('category')}}:</span>{{ itemAdditionalPoiInfos.MainType }}
+          </div>
+            <div v-if="itemAdditionalPoiInfos.SubType" class="props">
+            <span class="prop-key">{{$t('subcategory')}}:</span>{{ itemAdditionalPoiInfos.SubType }}
+          </div>
           </div>
         </div>
       </div>
@@ -24,65 +31,53 @@
       <div class="detail-box">
 
         <ul class="props">
-          <li v-if="item.Difficulty" class="info-item">
+          <li v-if="item.Difficulty">
             <img src="@/assets/img/ic_difficulty.svg" />
-            <span class="prop-key">{{ $t('difficulty') }}:</span>
             <span class="text-dark">{{ item.Difficulty }}</span>
           </li>
-          <li v-if="item.Altitude" class="info-item">
+          <li v-if="item.Altitude">
             <img src="@/assets/img/ic_altitudedifference.svg" />
-            <span class="prop-key">{{ $t('altitude') }}: </span>
             <span class="text-dark">{{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
-          <li v-if="item.AltitudeDifference" class="info-item">
+          <li v-if="item.AltitudeDifference">
             <img src="@/assets/img/ic_altitudedifference.svg" />
-            <span class="prop-key">{{ $t('props.AltitudeDifference') }}: </span>
             <span class="text-dark">{{ item.AltitudeDifference }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
-          <li v-if="item.AltitudeHighestPoint" class="info-item">
+          <li v-if="item.AltitudeHighestPoint">
             <img src="@/assets/img/ic_altitudehighestpoint.svg" />
-            <span class="prop-key"
-              >{{ $t('props.AltitudeHighestPoint') }}: </span
-            >
             <span class="text-dark">{{ item.AltitudeHighestPoint }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
-          <li v-if="item.AltitudeLowestPoint" class="info-item">
+          <li v-if="item.AltitudeLowestPoint">
             <img src="@/assets/img/ic_altitudelowestpoint.svg" />
-            <span class="prop-key">{{ $t('props.AltitudeLowestPoint') }}: </span>
             <span class="text-dark">{{ item.AltitudeLowestPoint }}{{ item.AltitudeUnitofMeasure }}</span>
           </li>
-          <li v-if="item.DistanceDuration" class="info-item">
+          <li v-if="item.DistanceDuration">
             <img src="@/assets/img/ic_distanceduration.svg" />
-            <span class="prop-key">{{ $t('props.DistanceDuration') }}: </span>
             <span class="text-dark">{{ item.DistanceDuration }}</span>
           </li>
-          <li v-if="item.DistanceLength" class="info-item">
+          <li v-if="item.DistanceLength">
             <img src="@/assets/img/ic_distancelength.svg" />
-            <span class="prop-key">{{ $t('props.DistanceLength') }}: </span>
             <span class="text-dark">{{ item.DistanceLength }}</span>
           </li>
-          <li v-if="googleMapsLink" class="info-item">
+          <li v-if="googleMapsLink">
             <img src="@/assets/img/ic_map.svg" />
             <a :href="googleMapsLink" target="_blank">Google Maps</a>
           </li>
-          <li v-if="itemContactInfos.City" class="info-item">
+          <li v-if="itemContactInfos.City">
             <img src="@/assets/img/ic_map.svg" />
-            <span class="prop-key">{{ $t('location') }}: </span>
             <span class="text-dark">{{ itemContactInfos.City }}</span>
           </li>
-          <li v-if="itemContactInfos.Url" class="info-item">
+          <li v-if="itemContactInfos.Url">
             <img src="@/assets/img/ic_external-link.svg" />
-            <span class="prop-key">{{ $t('web') }}: </span>
             <a :href="itemContactInfos.Url" target="_blank">
               {{ itemContactInfos.Url }}
             </a>
           </li>
-          <li v-if="itemContactInfos.Phonenumber" class="info-item">
+          <li v-if="itemContactInfos.Phonenumber">
             <img src="@/assets/img/ic_phone.svg" />
-            <span class="prop-key">{{ $t('phone') }}: </span>
             <span class="text-dark">{{ itemContactInfos.Phonenumber }}</span>
           </li>
-          <li v-if="itemOperationSchedule" class="info-item">
+          <li v-if="itemOperationSchedule && (itemOperationSchedule.Type === '1' || itemOperationSchedule === '2')" class="info-item">
             <img src="@/assets/img/ic_calendar.svg" />
             <span :style="[itemOperationSchedule[0].Type === '1' ? {'color': '#9BC320'} : {'color': 'red'}]">{{ $t(`scheduleTypes.${itemOperationSchedule[0].Type}`) }}</span>
           </li>
@@ -147,14 +142,14 @@
       </div>
 
       <div v-for="type of itemGastronomyTypes" :key="type.type">
-        <div class="subtitle">{{ type.name }}</div>
+        <div style="text-align: center; color: #949494">{{ type.name }}</div>
         <div class="gastronomyTypes">
-          <div v-for="(value, i) of type.values" :key="i" class="category text">{{ value }}</div>
+          <div v-for="(value, i) of type.values" :key="i" class="category">{{ value }}</div>
         </div>
       </div>
 
       <div v-if="imageGallery">
-        <img v-for="(image, i) of imageGallery" :key="i" :src="image.ImageUrl" height="250" width="250"
+        <img v-for="(image, i) of imageGallery" :key="i" :src="image.ImageUrl" height="200" width="200"
         class="image" @click="openImageDetail(image)"/>
       </div>
 
@@ -424,13 +419,13 @@ export default {
 
 <style lang="scss" scoped>
 .item > div {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.0rem;
 }
 .title {
   background-color: #e8ecf1;
   padding: 2rem;
   opacity: 0.8;
-  width: 100%;
+  max-width: 100%;
   max-height: 400px;
 }
 
@@ -484,6 +479,7 @@ h2 {
 
   .prop-key {
     color: #888888;
+    padding-right: 4px;
   }
 }
 
@@ -508,6 +504,7 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .category{
@@ -515,16 +512,18 @@ h2 {
   margin-right: 8px;
   margin-top: 8px;
   height: 30px;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #E8ECF1;
   border-radius: 30px;
   opacity: 1;
   text-align: center;
   align-items: center;
   display: flex;
+  color: #CFCFCF;
 }
 
 ul {
   padding-inline-start: 0px;
+  margin: 0;
 }
 
 .text {
@@ -559,6 +558,13 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  padding-bottom: 4px;
+  cursor: pointer
 }
 
 </style>
