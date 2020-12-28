@@ -5,6 +5,7 @@
         :content-id="detailContentId"
         :is-list-available="islistAvailable"
         :content-type="contentType"
+        :language="language"
         @close="closeDetail"
     />
     <items-list v-else @show-detail="showDetail" @change-current-page="changeCurrentPage" :language="language" :contentType="contentType"
@@ -28,7 +29,7 @@ export default Vue.extend({
     },
     contentIdList: {
       type: String,
-      default: null,
+      default: "GASTROA7D574DE766311D3A84700104BE4ECF9,GASTRO4BD454B678F397F407538C59D54920D4",
     },
     category: {
       type: String,
@@ -36,7 +37,7 @@ export default Vue.extend({
     },
     language: {
       type: String,
-      default: 'de'
+      default: 'en'
     },
     pageSize: {
       type: Number,
