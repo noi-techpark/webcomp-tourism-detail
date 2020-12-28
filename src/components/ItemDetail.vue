@@ -581,6 +581,8 @@ ul {
 
 h1 {
   font-size: 36px;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 </style>
