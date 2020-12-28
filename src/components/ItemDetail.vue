@@ -105,22 +105,26 @@
             <span class="prop-key">{{ $t('phone') }}: </span>
             <span class="text-dark">{{ itemContactInfos.Phonenumber }}</span>
           </li>
-          <li
-            v-if="
-              itemOperationSchedule &&
-                (itemOperationSchedule.Type === '1' ||
-                  itemOperationSchedule === '2')
-            "
-            class="info-item"
-          >
+          <li v-if="this.contentType === 'Gastronomy'">
+            <img src="@/assets/img/ic_calendar.svg" />
+            <span v-if="isGastronomyItemOpen === true" style="color: #9BC320">{{
+              $t(`scheduleTypes.1`)
+            }}</span>
+            <span v-if="isGastronomyItemOpen === false" style="color: red">{{
+              $t(`scheduleTypes.2`)
+            }}</span>
+          </li>
+          <li v-else-if="item.IsOpen != null">
             <img src="@/assets/img/ic_calendar.svg" />
             <span
               :style="[
-                itemOperationSchedule[0].Type === '1'
-                  ? { color: '#9BC320' }
-                  : { color: 'red' },
+                item.IsOpen === true ? { color: '#9BC320' } : { color: 'red' },
               ]"
-              >{{ $t(`scheduleTypes.${itemOperationSchedule[0].Type}`) }}</span
+              >{{
+                item.IsOpen === true
+                  ? $t('scheduleTypes.1')
+                  : $t('scheduleTypes.2')
+              }}</span
             >
           </li>
         </ul>
@@ -133,10 +137,10 @@
       ></div>
 
       <!-- COMMON -->
-      <div v-if="itemOperationSchedule.length">
+      <div v-if="isGastronomyItemOpen.length">
         <div class="subtitle">{{ $t('operationSchedule') }}</div>
         <div>
-          <div v-for="(schedule, i) of itemOperationSchedule" :key="i">
+          <div v-for="(schedule, i) of isGastronomyItemOpen" :key="i">
             <!-- Opened || Closed -->
             <div v-if="schedule.Type === '1' || schedule.Type === '2'">
               <ul v-if="schedule.OperationScheduleTime">
@@ -324,7 +328,6 @@ export default {
       }
 
       const showProps = [
-        'IsOpen',
         'AltitudeSumUp',
         'AltitudeSumDown',
         'HasFreeEntrance',
@@ -389,8 +392,8 @@ export default {
           .map((t) => t.TypeDesc[this.language]),
       })).filter((t) => t.values.length);
     },
-    itemOperationSchedule() {
-      return this.item.OperationSchedule.filter((s) => {
+    isGastronomyItemOpen() {
+      const schedules = this.item.OperationSchedule.filter((s) => {
         const start = new Date(s.Start);
         const stop = new Date(s.Stop);
         const now = new Date();
@@ -401,6 +404,20 @@ export default {
           now.getTime() >= start.getTime()
         );
       });
+      console.log(schedules);
+      const schedule =
+        schedules !== null && schedules.length > 0 ? schedules[0] : null;
+      console.log(schedule);
+      let open = false;
+      if (schedule !== null) {
+        for (const time of schedule.OperationScheduleTime) {
+          console.log(time.State);
+          if (time.State === 1) {
+            open = true;
+          }
+        }
+      }
+      return open;
     },
     getItemScheduleDays() {
       return (scheduleTime) =>

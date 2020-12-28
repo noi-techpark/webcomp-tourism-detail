@@ -56,7 +56,7 @@ export default Vue.extend({
     },
     contentIdList: {
       type: String,
-      default: null
+      default: null,
     },
     category: {
       type: String,
@@ -64,7 +64,7 @@ export default Vue.extend({
     },
     language: {
       type: String,
-      default: 'en',
+      default: 'de',
     },
     pageSize: {
       type: Number,
