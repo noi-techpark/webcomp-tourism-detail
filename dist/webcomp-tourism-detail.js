@@ -385,7 +385,7 @@ module.exports = __webpack_require__.p + "img/ic_phone.3f26b1f3.svg";
 /***/ "0e40":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{}");
+module.exports = JSON.parse("{\"altitude\":\"Altitude\",\"difficulty\":\"Difficulty\",\"location\":\"Place\",\"phone\":\"Phone\",\"web\":\"Web\",\"categories\":\"Categories\",\"ceremonies\":\"Events\",\"dishRates\":\"Food\",\"operationSchedule\":\"Opening hours\",\"lastChange\":\"Last updated\",\"gastronomyTypes\":{\"DishCodes\":\"Food\",\"CuisineCodes\":\"Kitchen\",\"FacilityCodes_CreditCard\":\"Means of payment\",\"FacilityCodes_Equipment\":\"Equipment\",\"FacilityCodes_QualitySeals\":\"Quality seal\"},\"scheduleTypes\":{\"1\":\"Open\",\"2\":\"Closed\"},\"timeCodes\":{\"1\":\"General opening hours\",\"2\":\"Warm meals\",\"3\":\"Pizza\",\"4\":\"Snacks\"},\"scheduleDays\":{\"Monday\":\"Mon\",\"Tuesday\":\"Tue\",\"Wednesday\":\"Wed\",\"Thuresday\":\"Thu\",\"Friday\":\"Fri\",\"Saturday\":\"Sat\",\"Sunday\":\"Sun\"},\"mainType\":\"Main Category\",\"subType\":\"Subcategory\",\"altitudeDifference\":\"Height difference\",\"altitudeHighestPoint\":\"Highest point\",\"altitudeLowestPoint\":\"Lowest point\",\"Gastronomy\":\"Gastronomy\",\"Activity\":\"Activities\",\"POI\":\"Interesting places\",\"props\":{\"AltitudeDifference\":\"Height difference\",\"AltitudeLowestPoint\":\"Lowest point\",\"AltitudeHighestPoint\":\"Highest point\",\"AltitudeSumUp\":\"Elevation meters upwards\",\"AltitudeSumDown\":\"Downhill meters\",\"DistanceLength\":\"Length\",\"DistanceDuration\":\"Duration\",\"BikeTransport\":\"Bicycle transport\",\"HasFreeEntrance\":\"Free admission\",\"LiftAvailable\":\"Lifts available\",\"RunToValley\":\"####\",\"IsWithLight\":\"Illuminated\",\"HasRentals\":\"Rental available\",\"IsPrepared\":\"Prepared\",\"FeetClimb\":\"Walkable\",\"IsOpen\":\"Open\"},\"yes\":\"Yes\",\"paging\":{\"next\":\"Next\",\"back\":\"Back\"},\"noResults\":\"No results found\",\"back\":\"Back\",\"category\":\"Category\",\"subcategory\":\"Subcategory\"}");
 
 /***/ }),
 
@@ -830,7 +830,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ "274c":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{}");
+module.exports = JSON.parse("{\"altitude\":\"Altitudine\",\"difficulty\":\"Difficoltà\",\"location\":\"Luogo\",\"phone\":\"Telefono\",\"web\":\"Web\",\"categories\":\"Categorie\",\"ceremonies\":\"Eventi\",\"dishRates\":\"Cibo\",\"operationSchedule\":\"Orari di apertura\",\"lastChange\":\"Ultimo aggiornamento\",\"gastronomyTypes\":{\"DishCodes\":\"Speisen\",\"CuisineCodes\":\"Cucina\",\"FacilityCodes_CreditCard\":\"Pagamento\",\"FacilityCodes_Equipment\":\"Attrezzatura\",\"FacilityCodes_QualitySeals\":\"Sigillo di qualità\"},\"scheduleTypes\":{\"1\":\"Aperto\",\"2\":\"Chiuso\"},\"timeCodes\":{\"1\":\"Orari di apertura generali\",\"2\":\"Pasti caldi\",\"3\":\"Pizza\",\"4\":\"Snacks\"},\"scheduleDays\":{\"Monday\":\"Lun\",\"Tuesday\":\"Mar\",\"Wednesday\":\"Mer\",\"Thuresday\":\"Gio\",\"Friday\":\"Ven\",\"Saturday\":\"Sab\",\"Sunday\":\"Do\"},\"mainType\":\"Categoria Principale\",\"subType\":\"Sottocategoria\",\"altitudeDifference\":\"Differenza di altezza\",\"altitudeHighestPoint\":\"Punto più alto\",\"altitudeLowestPoint\":\"Punto più basso\",\"Gastronomy\":\"Gastronomia\",\"Activity\":\"Attività\",\"POI\":\"Posti interessanti\",\"props\":{\"AltitudeDifference\":\"Differenza di altezza\",\"AltitudeLowestPoint\":\"Punto più basso\",\"AltitudeHighestPoint\":\"Punto più alto\",\"AltitudeSumUp\":\"Dislivello in salita\",\"AltitudeSumDown\":\"Metri in discesa\",\"DistanceLength\":\"Lunghezza\",\"DistanceDuration\":\"Durata\",\"BikeTransport\":\"Trasporto biciclette\",\"HasFreeEntrance\":\"Ingresso libero\",\"LiftAvailable\":\"Impianti di risalita disponibile\",\"RunToValley\":\"####\",\"IsWithLight\":\"Illuminato\",\"HasRentals\":\"Possibilità di noleggio\",\"IsPrepared\":\"Preparato\",\"FeetClimb\":\"Calpestabile\",\"IsOpen\":\"Aperto\"},\"yes\":\"Si\",\"paging\":{\"next\":\"Continua\",\"back\":\"Indietro\"},\"noResults\":\"Nessun risultato trovato\",\"back\":\"Indietro\",\"category\":\"Categoria\",\"subcategory\":\"Sottocategoria\"}");
 
 /***/ }),
 
@@ -2950,6 +2950,23 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
 
 /***/ }),
 
+/***/ "5483":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("5ed9");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to Shadow Root
+var add = __webpack_require__("35d6").default
+module.exports.__inject__ = function (shadowRoot) {
+  add("9273072c", content, shadowRoot)
+};
+
+/***/ }),
+
 /***/ "5692":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3412,12 +3429,12 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0eb59858-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=4a9ec026&shadow
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0eb59858-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=110190f1&shadow
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[(_vm.detailContentId)?_c('item-detail',{attrs:{"content-id":_vm.detailContentId,"is-list-available":_vm.islistAvailable,"content-type":_vm.contentType,"language":_vm.language},on:{"close":_vm.closeDetail}}):_c('items-list',{attrs:{"language":_vm.language,"contentType":_vm.contentType,"contentIdList":_vm.contentIdList,"pageSize":_vm.pageSize,"category":_vm.category,"currentPage":_vm.currentPage},on:{"show-detail":_vm.showDetail,"change-current-page":_vm.changeCurrentPage}})],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=4a9ec026&shadow
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=110190f1&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0eb59858-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ItemsList.vue?vue&type=template&id=91f8f1ca&scoped=true&
 var ItemsListvue_type_template_id_91f8f1ca_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"list"},[_c('h2',{staticClass:"page-title"},[_vm._v(_vm._s(_vm.$t(_vm.contentType)))]),_c('paging',{attrs:{"current-page":_vm.currentPage,"total-pages":_vm.totalPages},on:{"next-page":_vm.nextPage,"last-page":_vm.lastPage,"go-to-page":_vm.goToPage}}),(_vm.items.length > 0)?_vm._l((_vm.items),function(item){return _c('div',{key:item.id,staticClass:"item-container",on:{"click":function($event){$event.preventDefault();return _vm.showDetail(item.Id)}}},[_c('hr',{staticClass:"solid"}),_c('div',{staticClass:"list-item"},[(item.ImageGallery === null || item.ImageGallery.length === 0)?_c('div',[_c('img',{staticClass:"thumbnail",attrs:{"src":_vm.placeholderImage}})]):_c('div',[_c('img',{staticClass:"thumbnail",attrs:{"src":item.ImageGallery[0].ImageUrl}})]),_c('div',{staticClass:"info"},[_c('div',{staticClass:"title"},[_vm._v(_vm._s(_vm.getTitle(item, _vm.language)))]),(_vm.contentType === 'Gastronomy')?_c('div',{staticClass:"short-info"},[_vm._v(" "+_vm._s(_vm.getGastronomyShortInfo(item))+" ")]):(_vm.contentType === 'Activity')?_c('div',{staticClass:"short-info"},[_vm._v(" "+_vm._s(_vm.getActivityShortInfo(item))+" ")]):(_vm.contentType === 'POI')?_c('div',{staticClass:"short-info"},[_vm._v(" "+_vm._s(_vm.getPoiShortInfo(item))+" ")]):_vm._e()]),_c('img',{attrs:{"src":__webpack_require__("ac9e"),"width":"28","height":"28"}})])])}):(_vm.isLoading)?_c('div',{staticClass:"loading-spinner"},[_c('img',{attrs:{"src":__webpack_require__("f8b2")}})]):_c('div',{staticClass:"noResult"},[_vm._v(_vm._s(_vm.$t('noResults')))]),(_vm.items.length === 1)?_c('div',{staticClass:"item-container"}):_vm._e(),(_vm.items.length > 0)?_c('div',{staticClass:"bottom-divider"},[_c('hr',{staticClass:"solid"})]):_vm._e(),(_vm.items.length > 1)?_c('div',{staticClass:"bottom-divider bottom-divider2"},[_c('hr',{staticClass:"solid"})]):_vm._e(),_c('paging',{attrs:{"current-page":_vm.currentPage,"total-pages":_vm.totalPages},on:{"next-page":_vm.nextPage,"last-page":_vm.lastPage,"go-to-page":_vm.goToPage}})],2)}
@@ -22815,19 +22832,13 @@ var ItemsList_component = normalizeComponent(
 )
 
 /* harmony default export */ var ItemsList = (ItemsList_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0eb59858-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ItemDetail.vue?vue&type=template&id=8df8e56c&scoped=true&
-var ItemDetailvue_type_template_id_8df8e56c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.isListAvailable)?_c('div',{staticClass:"back-button",on:{"click":function($event){$event.preventDefault();return _vm.close($event)}}},[_c('img',{attrs:{"src":__webpack_require__("b8b6")}}),_c('span',{staticStyle:{"color":"#888888"}},[_vm._v(_vm._s(_vm.$t('back')))])]):_vm._e(),(_vm.item)?_c('div',{staticClass:"item"},[_c('div',{staticClass:"title-container",style:(_vm.titleImage)},[_c('div',{staticClass:"title"},[_c('h1',[_vm._v(_vm._s(_vm.itemDetail.Title))]),(_vm.itemCategories)?_c('div',{staticClass:"props"},[_c('div',[(_vm.item.CategoryCodes.length > 1)?_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('categories'))+":")]):_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('category'))+":")]),_vm._v(" "+_vm._s(_vm.itemCategories)+" ")])]):_vm._e(),(_vm.itemAdditionalPoiInfos)?_c('div',[(_vm.itemAdditionalPoiInfos.MainType)?_c('div',{staticClass:"props"},[_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('category'))+":")]),_vm._v(_vm._s(_vm.itemAdditionalPoiInfos.MainType)+" ")]):_vm._e(),(_vm.itemAdditionalPoiInfos.SubType)?_c('div',{staticClass:"props"},[_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('subcategory'))+":")]),_vm._v(_vm._s(_vm.itemAdditionalPoiInfos.SubType)+" ")]):_vm._e()]):_vm._e()])]),_c('div',{staticClass:"detail-box"},[_c('ul',{staticClass:"props"},[(_vm.item.Difficulty)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("4c48")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('difficulty'))+":")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.Difficulty))])]):_vm._e(),(_vm.item.Altitude)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("cf3f")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('altitude'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.Altitude)+_vm._s(_vm.item.AltitudeUnitofMeasure))])]):_vm._e(),(_vm.item.AltitudeDifference)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("cf3f")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.AltitudeDifference'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.AltitudeDifference)+_vm._s(_vm.item.AltitudeUnitofMeasure))])]):_vm._e(),(_vm.item.AltitudeHighestPoint)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("1717")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.AltitudeHighestPoint'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.AltitudeHighestPoint)+_vm._s(_vm.item.AltitudeUnitofMeasure))])]):_vm._e(),(_vm.item.AltitudeLowestPoint)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("42c6")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.AltitudeLowestPoint'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.AltitudeLowestPoint)+_vm._s(_vm.item.AltitudeUnitofMeasure))])]):_vm._e(),(_vm.item.DistanceDuration)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("7b50")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.DistanceDuration'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.DistanceDuration))])]):_vm._e(),(_vm.item.DistanceLength)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("da15")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.DistanceLength'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.DistanceLength))])]):_vm._e(),(_vm.googleMapsLink)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("8d59")}}),_c('a',{attrs:{"href":_vm.googleMapsLink,"target":"_blank"}},[_vm._v("Google Maps")])]):_vm._e(),(_vm.itemContactInfos.City)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("8d59")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('location'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.itemContactInfos.City))])]):_vm._e(),(_vm.itemContactInfos.Url)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("a349")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('web'))+": ")]),_c('a',{attrs:{"href":_vm.itemContactInfos.Url,"target":"_blank"}},[_vm._v(" "+_vm._s(_vm.itemContactInfos.Url)+" ")])]):_vm._e(),(_vm.itemContactInfos.Phonenumber)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("0e09")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('phone'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.itemContactInfos.Phonenumber))])]):_vm._e(),(
-            _vm.itemOperationSchedule &&
-              (_vm.itemOperationSchedule.Type === '1' ||
-                _vm.itemOperationSchedule === '2')
-          )?_c('li',{staticClass:"info-item"},[_c('img',{attrs:{"src":__webpack_require__("1649")}}),_c('span',{style:([
-              _vm.itemOperationSchedule[0].Type === '1'
-                ? { color: '#9BC320' }
-                : { color: 'red' } ])},[_vm._v(_vm._s(_vm.$t(("scheduleTypes." + (_vm.itemOperationSchedule[0].Type)))))])]):_vm._e()])]),(_vm.itemDetail.BaseText)?_c('div',{staticClass:"text",domProps:{"innerHTML":_vm._s(_vm.itemDetail.BaseText)}}):_vm._e(),(_vm.itemOperationSchedule.length)?_c('div',[_c('div',{staticClass:"subtitle"},[_vm._v(_vm._s(_vm.$t('operationSchedule')))]),_c('div',_vm._l((_vm.itemOperationSchedule),function(schedule,i){return _c('div',{key:i},[(schedule.Type === '1' || schedule.Type === '2')?_c('div',[(schedule.OperationScheduleTime)?_c('ul',_vm._l((schedule.OperationScheduleTime),function(time,j){return _c('div',{key:j,staticClass:"text"},[_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.$t(("timeCodes." + (time.Timecode)))))]),_vm._v(" von "+_vm._s(time.Start)+" bis "+_vm._s(time.End)+" ("+_vm._s(_vm.getItemScheduleDays(time))+") ")])}),0):_vm._e()]):_vm._e(),(schedule.Type === '3')?_c('div',[_vm._v(" "+_vm._s(_vm._f("dateFormat")(schedule.Start))+" bis "+_vm._s(_vm._f("dateFormat")(schedule.Stop))+" ")]):_vm._e()])}),0)]):_vm._e(),(Object.keys(_vm.itemProps).length)?_c('div',{staticClass:"additional-props-box"},[_c('ul',{staticClass:"props",class:{ single: Object.keys(_vm.itemProps).length === 1 }},_vm._l((_vm.itemProps),function(value,key){return _c('li',{key:key,staticClass:"text"},[_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t(("props." + key)))+":")]),_vm._v(" "+_vm._s(value === true ? _vm.$t('yes') : value)+" ")])}),0)]):_vm._e(),(_vm.itemCeremonies.length)?_c('div',[_c('div',{staticClass:"subtitle"},[_vm._v(_vm._s(_vm.$t('ceremonies')))]),_c('ul',_vm._l((_vm.itemCeremonies),function(value,i){return _c('li',{key:i,staticClass:"text"},[_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(value.name))]),_vm._v(" (max. "+_vm._s(value.maxSeatingCapacity)+" Personen) ")])}),0)]):_vm._e(),(_vm.itemDishRates.length)?_c('div',[_c('div',{staticClass:"subtitle"},[_vm._v(_vm._s(_vm.$t('dishRates')))]),_c('ul',_vm._l((_vm.itemDishRates),function(value,i){return _c('li',{key:i,staticClass:"text"},[_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(value.name))]),_vm._v(" (von "+_vm._s(value.minAmount)+" bis "+_vm._s(value.maxAmount)+" "+_vm._s(value.currencyCode)+") ")])}),0)]):_vm._e(),_vm._l((_vm.itemGastronomyTypes),function(type){return _c('div',{key:type.type},[_c('div',{staticStyle:{"text-align":"center","color":"#949494"}},[_vm._v(_vm._s(type.name))]),_c('div',{staticClass:"gastronomyTypes"},_vm._l((type.values),function(value,i){return _c('div',{key:i,staticClass:"category"},[_vm._v(" "+_vm._s(value)+" ")])}),0)])}),(_vm.imageGallery)?_c('div',_vm._l((_vm.imageGallery),function(image,i){return _c('img',{key:i,staticClass:"image",attrs:{"src":image.ImageUrl,"height":"200","width":"200"},on:{"click":function($event){return _vm.openImageDetail(image)}}})}),0):_vm._e(),_c('small',{staticClass:"text"},[_vm._v(" "+_vm._s(_vm.$t('lastChange'))+": "+_vm._s(_vm._f("dateFormat")(_vm.item.LastChange))+" ")])],2):_vm._e(),(_vm.showImage)?_c('image-detail',{attrs:{"imgUrl":_vm.imageUrl,"hasMultipleImgs":_vm.hasMultipleImgs},on:{"close":_vm.closeImageDetail,"next-image":_vm.nextImage,"last-image":_vm.lastImage}}):_vm._e()],1)}
-var ItemDetailvue_type_template_id_8df8e56c_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0eb59858-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ItemDetail.vue?vue&type=template&id=2bad5678&scoped=true&
+var ItemDetailvue_type_template_id_2bad5678_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.isListAvailable)?_c('div',{staticClass:"back-button",on:{"click":function($event){$event.preventDefault();return _vm.close($event)}}},[_c('img',{attrs:{"src":__webpack_require__("b8b6")}}),_c('span',{staticStyle:{"color":"#888888"}},[_vm._v(_vm._s(_vm.$t('back')))])]):_vm._e(),(_vm.item)?_c('div',{staticClass:"item"},[_c('div',{staticClass:"title-container",style:(_vm.titleImage)},[_c('div',{staticClass:"title"},[_c('h1',[_vm._v(_vm._s(_vm.itemDetail.Title))]),(_vm.itemCategories)?_c('div',{staticClass:"props"},[_c('div',[(_vm.item.CategoryCodes.length > 1)?_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('categories'))+":")]):_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('category'))+":")]),_vm._v(" "+_vm._s(_vm.itemCategories)+" ")])]):_vm._e(),(_vm.itemAdditionalPoiInfos)?_c('div',[(_vm.itemAdditionalPoiInfos.MainType)?_c('div',{staticClass:"props"},[_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('category'))+":")]),_vm._v(_vm._s(_vm.itemAdditionalPoiInfos.MainType)+" ")]):_vm._e(),(_vm.itemAdditionalPoiInfos.SubType)?_c('div',{staticClass:"props"},[_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('subcategory'))+":")]),_vm._v(_vm._s(_vm.itemAdditionalPoiInfos.SubType)+" ")]):_vm._e()]):_vm._e()])]),_c('div',{staticClass:"detail-box"},[_c('ul',{staticClass:"props"},[(_vm.item.Difficulty)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("4c48")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('difficulty'))+":")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.Difficulty))])]):_vm._e(),(_vm.item.Altitude)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("cf3f")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('altitude'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.Altitude)+_vm._s(_vm.item.AltitudeUnitofMeasure))])]):_vm._e(),(_vm.item.AltitudeDifference)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("cf3f")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.AltitudeDifference'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.AltitudeDifference)+_vm._s(_vm.item.AltitudeUnitofMeasure))])]):_vm._e(),(_vm.item.AltitudeHighestPoint)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("1717")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.AltitudeHighestPoint'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.AltitudeHighestPoint)+_vm._s(_vm.item.AltitudeUnitofMeasure))])]):_vm._e(),(_vm.item.AltitudeLowestPoint)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("42c6")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.AltitudeLowestPoint'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.AltitudeLowestPoint)+_vm._s(_vm.item.AltitudeUnitofMeasure))])]):_vm._e(),(_vm.item.DistanceDuration)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("7b50")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.DistanceDuration'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.DistanceDuration))])]):_vm._e(),(_vm.item.DistanceLength)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("da15")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('props.DistanceLength'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.item.DistanceLength))])]):_vm._e(),(_vm.googleMapsLink)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("8d59")}}),_c('a',{attrs:{"href":_vm.googleMapsLink,"target":"_blank"}},[_vm._v("Google Maps")])]):_vm._e(),(_vm.itemContactInfos.City)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("8d59")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('location'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.itemContactInfos.City))])]):_vm._e(),(_vm.itemContactInfos.Url)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("a349")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('web'))+": ")]),_c('a',{attrs:{"href":_vm.itemContactInfos.Url,"target":"_blank"}},[_vm._v(" "+_vm._s(_vm.itemContactInfos.Url)+" ")])]):_vm._e(),(_vm.itemContactInfos.Phonenumber)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("0e09")}}),_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t('phone'))+": ")]),_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.itemContactInfos.Phonenumber))])]):_vm._e(),(this.contentType === 'Gastronomy')?_c('li',[_c('img',{attrs:{"src":__webpack_require__("1649")}}),(_vm.isGastronomyItemOpen === true)?_c('span',{staticStyle:{"color":"#9BC320"}},[_vm._v(_vm._s(_vm.$t("scheduleTypes.1")))]):_vm._e(),(_vm.isGastronomyItemOpen === false)?_c('span',{staticStyle:{"color":"red"}},[_vm._v(_vm._s(_vm.$t("scheduleTypes.2")))]):_vm._e()]):(_vm.item.IsOpen != null)?_c('li',[_c('img',{attrs:{"src":__webpack_require__("1649")}}),_c('span',{style:([
+              _vm.item.IsOpen === true ? { color: '#9BC320' } : { color: 'red' } ])},[_vm._v(_vm._s(_vm.item.IsOpen === true ? _vm.$t('scheduleTypes.1') : _vm.$t('scheduleTypes.2')))])]):_vm._e()])]),(_vm.itemDetail.BaseText)?_c('div',{staticClass:"text",domProps:{"innerHTML":_vm._s(_vm.itemDetail.BaseText)}}):_vm._e(),(_vm.isGastronomyItemOpen.length)?_c('div',[_c('div',{staticClass:"subtitle"},[_vm._v(_vm._s(_vm.$t('operationSchedule')))]),_c('div',_vm._l((_vm.isGastronomyItemOpen),function(schedule,i){return _c('div',{key:i},[(schedule.Type === '1' || schedule.Type === '2')?_c('div',[(schedule.OperationScheduleTime)?_c('ul',_vm._l((schedule.OperationScheduleTime),function(time,j){return _c('div',{key:j,staticClass:"text"},[_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(_vm.$t(("timeCodes." + (time.Timecode)))))]),_vm._v(" von "+_vm._s(time.Start)+" bis "+_vm._s(time.End)+" ("+_vm._s(_vm.getItemScheduleDays(time))+") ")])}),0):_vm._e()]):_vm._e(),(schedule.Type === '3')?_c('div',[_vm._v(" "+_vm._s(_vm._f("dateFormat")(schedule.Start))+" bis "+_vm._s(_vm._f("dateFormat")(schedule.Stop))+" ")]):_vm._e()])}),0)]):_vm._e(),(Object.keys(_vm.itemProps).length)?_c('div',{staticClass:"additional-props-box"},[_c('ul',{staticClass:"props",class:{ single: Object.keys(_vm.itemProps).length === 1 }},_vm._l((_vm.itemProps),function(value,key){return _c('li',{key:key,staticClass:"text"},[_c('span',{staticClass:"prop-key"},[_vm._v(_vm._s(_vm.$t(("props." + key)))+":")]),_vm._v(" "+_vm._s(value === true ? _vm.$t('yes') : value)+" ")])}),0)]):_vm._e(),(_vm.itemCeremonies.length)?_c('div',[_c('div',{staticClass:"subtitle"},[_vm._v(_vm._s(_vm.$t('ceremonies')))]),_c('ul',_vm._l((_vm.itemCeremonies),function(value,i){return _c('li',{key:i,staticClass:"text"},[_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(value.name))]),_vm._v(" (max. "+_vm._s(value.maxSeatingCapacity)+" Personen) ")])}),0)]):_vm._e(),(_vm.itemDishRates.length)?_c('div',[_c('div',{staticClass:"subtitle"},[_vm._v(_vm._s(_vm.$t('dishRates')))]),_c('ul',_vm._l((_vm.itemDishRates),function(value,i){return _c('li',{key:i,staticClass:"text"},[_c('span',{staticClass:"text-dark"},[_vm._v(_vm._s(value.name))]),_vm._v(" (von "+_vm._s(value.minAmount)+" bis "+_vm._s(value.maxAmount)+" "+_vm._s(value.currencyCode)+") ")])}),0)]):_vm._e(),_vm._l((_vm.itemGastronomyTypes),function(type){return _c('div',{key:type.type},[_c('div',{staticStyle:{"text-align":"center","color":"#949494"}},[_vm._v(_vm._s(type.name))]),_c('div',{staticClass:"gastronomyTypes"},_vm._l((type.values),function(value,i){return _c('div',{key:i,staticClass:"category"},[_vm._v(" "+_vm._s(value)+" ")])}),0)])}),(_vm.imageGallery)?_c('div',_vm._l((_vm.imageGallery),function(image,i){return _c('img',{key:i,staticClass:"image",attrs:{"src":image.ImageUrl,"height":"200","width":"200"},on:{"click":function($event){return _vm.openImageDetail(image)}}})}),0):_vm._e(),_c('small',{staticClass:"text"},[_vm._v(" "+_vm._s(_vm.$t('lastChange'))+": "+_vm._s(_vm._f("dateFormat")(_vm.item.LastChange))+" ")])],2):_vm._e(),(_vm.showImage)?_c('image-detail',{attrs:{"imgUrl":_vm.imageUrl,"hasMultipleImgs":_vm.hasMultipleImgs},on:{"close":_vm.closeImageDetail,"next-image":_vm.nextImage,"last-image":_vm.lastImage}}):_vm._e()],1)}
+var ItemDetailvue_type_template_id_2bad5678_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ItemDetail.vue?vue&type=template&id=8df8e56c&scoped=true&
+// CONCATENATED MODULE: ./src/components/ItemDetail.vue?vue&type=template&id=2bad5678&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0eb59858-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ImageDetail.vue?vue&type=template&id=530dccbf&scoped=true&
 var ImageDetailvue_type_template_id_530dccbf_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal"},[_c('span',{staticClass:"close",on:{"click":_vm.closeImage}},[_vm._v("×")]),_c('div',{staticClass:"modal-content",staticStyle:{"display":"flex","align-items":"center","justify-content":"space-between"},style:(_vm.imageStyle)},[(_vm.hasMultipleImgs)?_c('div',{staticClass:"img-button",on:{"click":_vm.lastImage}},[_c('img',{attrs:{"src":__webpack_require__("b8b6"),"width":"50","height":"50"}})]):_vm._e(),(_vm.hasMultipleImgs)?_c('div',{staticClass:"img-button",on:{"click":_vm.nextImage}},[_c('img',{attrs:{"src":__webpack_require__("ac9e"),"width":"50","height":"50"}})]):_vm._e()])])}
@@ -23157,6 +23168,10 @@ var ImageDetail_component = normalizeComponent(
 //
 //
 //
+//
+//
+//
+//
 
 
 const GASTRONOMY_TYPES = ['DishCodes', 'CuisineCodes', 'FacilityCodes_CreditCard', 'FacilityCodes_Equipment', 'FacilityCodes_QualitySeals'];
@@ -23252,7 +23267,7 @@ const SCHEDULE_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thuresday', 'Friday', 
         return {};
       }
 
-      const showProps = ['IsOpen', 'AltitudeSumUp', 'AltitudeSumDown', 'HasFreeEntrance', 'BikeTransport', 'LiftAvailable', 'RunToValley', 'IsWithLight', 'HasRentals', 'IsPrepared', 'FeetClimb'];
+      const showProps = ['AltitudeSumUp', 'AltitudeSumDown', 'HasFreeEntrance', 'BikeTransport', 'LiftAvailable', 'RunToValley', 'IsWithLight', 'HasRentals', 'IsPrepared', 'FeetClimb'];
       const props = {};
 
       for (const key of showProps) {
@@ -23310,13 +23325,29 @@ const SCHEDULE_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thuresday', 'Friday', 
       })).filter(t => t.values.length);
     },
 
-    itemOperationSchedule() {
-      return this.item.OperationSchedule.filter(s => {
+    isGastronomyItemOpen() {
+      const schedules = this.item.OperationSchedule.filter(s => {
         const start = new Date(s.Start);
         const stop = new Date(s.Stop);
         const now = new Date();
         return ((s.Type === '1' || s.Type === '2') && s.OperationScheduleTime || s.Type === '3') && now.getTime() <= stop.getTime() && now.getTime() >= start.getTime();
       });
+      console.log(schedules);
+      const schedule = schedules !== null && schedules.length > 0 ? schedules[0] : null;
+      console.log(schedule);
+      let open = false;
+
+      if (schedule !== null) {
+        for (const time of schedule.OperationScheduleTime) {
+          console.log(time.State);
+
+          if (time.State === 1) {
+            open = true;
+          }
+        }
+      }
+
+      return open;
     },
 
     getItemScheduleDays() {
@@ -23416,7 +23447,7 @@ const SCHEDULE_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thuresday', 'Friday', 
 
 function ItemDetail_injectStyles (context) {
   
-  var style0 = __webpack_require__("f214")
+  var style0 = __webpack_require__("ccb9")
 if (style0.__inject__) style0.__inject__(context)
 
 }
@@ -23425,11 +23456,11 @@ if (style0.__inject__) style0.__inject__(context)
 
 var ItemDetail_component = normalizeComponent(
   components_ItemDetailvue_type_script_lang_js_,
-  ItemDetailvue_type_template_id_8df8e56c_scoped_true_render,
-  ItemDetailvue_type_template_id_8df8e56c_scoped_true_staticRenderFns,
+  ItemDetailvue_type_template_id_2bad5678_scoped_true_render,
+  ItemDetailvue_type_template_id_2bad5678_scoped_true_staticRenderFns,
   false,
   ItemDetail_injectStyles,
-  "8df8e56c",
+  "2bad5678",
   null
   ,true
 )
@@ -25619,7 +25650,7 @@ const i18n = new vue_i18n_esm({
     },
     language: {
       type: String,
-      default: 'en'
+      default: 'de'
     },
     pageSize: {
       type: Number,
@@ -25741,6 +25772,20 @@ var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "#app{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "5ed9":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".item>div[data-v-2bad5678]{margin-bottom:1rem}.title[data-v-2bad5678]{background-color:#e8ecf1;padding:2rem;opacity:.8;max-width:100%;max-height:400px}h2[data-v-2bad5678]{margin-bottom:2px}.detail-box[data-v-2bad5678]{border:1px solid #e8ecf1;padding:2rem}.additional-props-box[data-v-2bad5678]{padding:2rem;background-color:#e8ecf1}.props[data-v-2bad5678]{list-style:none;padding:0;margin:0;font-style:italic}.props[data-v-2bad5678]:not(.single){-moz-columns:1;columns:1}@media(min-width:768px){.props[data-v-2bad5678]:not(.single){-moz-columns:2;columns:2}}@media(min-width:992px){.props[data-v-2bad5678]:not(.single){-moz-columns:3;columns:3}}.props>li[data-v-2bad5678]{padding:.2rem 0}.props img[data-v-2bad5678]{height:16px;width:16px;margin-right:.7em}.props a[data-v-2bad5678]{color:#2980b9;text-decoration:none}.props .prop-key[data-v-2bad5678]{color:#888;padding-right:4px}.subtitle[data-v-2bad5678]{color:#212529;font-size:18px;font-weight:700;padding-top:4px;padding-bottom:4px}.subtype[data-v-2bad5678]{padding-top:4px}.categories[data-v-2bad5678],.subtype[data-v-2bad5678]{padding-bottom:8px}.gastronomyTypes[data-v-2bad5678]{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center}.category[data-v-2bad5678]{padding:4px 12px 4px 12px;margin-right:8px;margin-top:8px;height:30px;border:1px solid #e8ecf1;border-radius:30px;opacity:1;text-align:center;align-items:center;display:flex;color:#cfcfcf}ul[data-v-2bad5678]{-webkit-padding-start:0;padding-inline-start:0;margin:0}.text[data-v-2bad5678]{color:#949494}.text-dark[data-v-2bad5678]{color:#2e3131}.image[data-v-2bad5678]{padding-right:8px;padding-top:8px}.image[data-v-2bad5678],.title-image[data-v-2bad5678]{-o-object-fit:cover;object-fit:cover}.title-image[data-v-2bad5678]{max-height:400px;width:100%}.title-container[data-v-2bad5678]{display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:0!important;overflow:hidden}.info-item[data-v-2bad5678]{flex-direction:row}.back-button[data-v-2bad5678],.info-item[data-v-2bad5678]{display:flex;align-items:center}.back-button[data-v-2bad5678]{padding-bottom:4px;cursor:pointer}h1[data-v-2bad5678]{font-size:36px;overflow-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}", ""]);
 // Exports
 module.exports = exports;
 
@@ -26174,23 +26219,6 @@ module.exports = [
   'valueOf'
 ];
 
-
-/***/ }),
-
-/***/ "7983":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("a3c9");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add CSS to Shadow Root
-var add = __webpack_require__("35d6").default
-module.exports.__inject__ = function (shadowRoot) {
-  add("46d1f438", content, shadowRoot)
-};
 
 /***/ }),
 
@@ -27428,20 +27456,6 @@ module.exports = __webpack_require__.p + "img/ic_external-link.bb64ec3c.svg";
 
 /***/ }),
 
-/***/ "a3c9":
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, ".item>div[data-v-8df8e56c]{margin-bottom:1rem}.title[data-v-8df8e56c]{background-color:#e8ecf1;padding:2rem;opacity:.8;max-width:100%;max-height:400px}h2[data-v-8df8e56c]{margin-bottom:2px}.detail-box[data-v-8df8e56c]{border:1px solid #e8ecf1;padding:2rem}.additional-props-box[data-v-8df8e56c]{padding:2rem;background-color:#e8ecf1}.props[data-v-8df8e56c]{list-style:none;padding:0;margin:0;font-style:italic}.props[data-v-8df8e56c]:not(.single){-moz-columns:1;columns:1}@media(min-width:768px){.props[data-v-8df8e56c]:not(.single){-moz-columns:2;columns:2}}@media(min-width:992px){.props[data-v-8df8e56c]:not(.single){-moz-columns:3;columns:3}}.props>li[data-v-8df8e56c]{padding:.2rem 0}.props img[data-v-8df8e56c]{height:16px;width:16px;margin-right:.7em}.props a[data-v-8df8e56c]{color:#2980b9;text-decoration:none}.props .prop-key[data-v-8df8e56c]{color:#888;padding-right:4px}.subtitle[data-v-8df8e56c]{color:#212529;font-size:18px;font-weight:700;padding-top:4px;padding-bottom:4px}.subtype[data-v-8df8e56c]{padding-top:4px}.categories[data-v-8df8e56c],.subtype[data-v-8df8e56c]{padding-bottom:8px}.gastronomyTypes[data-v-8df8e56c]{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center}.category[data-v-8df8e56c]{padding:4px 12px 4px 12px;margin-right:8px;margin-top:8px;height:30px;border:1px solid #e8ecf1;border-radius:30px;opacity:1;text-align:center;align-items:center;display:flex;color:#cfcfcf}ul[data-v-8df8e56c]{-webkit-padding-start:0;padding-inline-start:0;margin:0}.text[data-v-8df8e56c]{color:#949494}.text-dark[data-v-8df8e56c]{color:#2e3131}.image[data-v-8df8e56c]{padding-right:8px;padding-top:8px}.image[data-v-8df8e56c],.title-image[data-v-8df8e56c]{-o-object-fit:cover;object-fit:cover}.title-image[data-v-8df8e56c]{max-height:400px;width:100%}.title-container[data-v-8df8e56c]{display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:0!important;overflow:hidden}.info-item[data-v-8df8e56c]{flex-direction:row}.back-button[data-v-8df8e56c],.info-item[data-v-8df8e56c]{display:flex;align-items:center}.back-button[data-v-8df8e56c]{padding-bottom:4px;cursor:pointer}h1[data-v-8df8e56c]{font-size:36px;overflow-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}", ""]);
-// Exports
-module.exports = exports;
-
-
-/***/ }),
-
 /***/ "a691":
 /***/ (function(module, exports) {
 
@@ -28371,7 +28385,7 @@ module.exports = function (object, names) {
 /***/ "cb40":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"altitude\":\"Höhe\",\"difficulty\":\"Schwierigkeit\",\"location\":\"Ort\",\"phone\":\"Telefon\",\"web\":\"Web\",\"categories\":\"Kategorien\",\"ceremonies\":\"Veranstaltungen\",\"dishRates\":\"Speisen\",\"operationSchedule\":\"Öffnungszeiten\",\"lastChange\":\"Letzte Aktualisierung\",\"gastronomyTypes\":{\"DishCodes\":\"Speisen\",\"CuisineCodes\":\"Küche\",\"FacilityCodes_CreditCard\":\"Zahlungsmittel\",\"FacilityCodes_Equipment\":\"Ausstattung\",\"FacilityCodes_QualitySeals\":\"Qualitätssiegel\"},\"scheduleTypes\":{\"1\":\"Geöffnet\",\"2\":\"Geschlossen\"},\"timeCodes\":{\"1\":\"Allgemeine Öffnungszeiten\",\"2\":\"Warme Mahlzeiten\",\"3\":\"Pizza\",\"4\":\"Snacks\"},\"scheduleDays\":{\"Monday\":\"Mo\",\"Tuesday\":\"Di\",\"Wednesday\":\"Mi\",\"Thuresday\":\"Do\",\"Friday\":\"Fr\",\"Saturday\":\"Sa\",\"Sunday\":\"So\"},\"mainType\":\"Hauptkategorie\",\"subType\":\"Unterkategorie\",\"altitudeDifference\":\"Höhenunterschied\",\"altitudeHighestPoint\":\"Höchster Punkt\",\"altitudeLowestPoint\":\"Niedrigster Punkt\",\"Gastronomy\":\"Gastronomie\",\"Activity\":\"Aktivitäten\",\"POI\":\"Interessante Orte\",\"props\":{\"AltitudeDifference\":\"Höhendifferenz\",\"AltitudeLowestPoint\":\"Tiefster Punkt\",\"AltitudeHighestPoint\":\"Höchster Punkt\",\"AltitudeSumUp\":\"Höhenmeter aufwärts\",\"AltitudeSumDown\":\"Höhenmeter abwärts\",\"DistanceLength\":\"Länge\",\"DistanceDuration\":\"Dauer\",\"BikeTransport\":\"Fahrradtransport\",\"HasFreeEntrance\":\"Freier Eintritt\",\"LiftAvailable\":\"Lift verfügbar\",\"RunToValley\":\"####\",\"IsWithLight\":\"Beleuchted\",\"HasRentals\":\"Verleih verfügbar\",\"IsPrepared\":\"Prepartiert\",\"FeetClimb\":\"Begehbar\",\"IsOpen\":\"Geöffnet\"},\"yes\":\"Ja\",\"paging\":{\"next\":\"weiter\",\"back\":\"zurück\"},\"noResults\":\"Keine Ergebnisse gefunden\",\"back\":\"Zurück\",\"category\":\"Kategorie\",\"subcategory\":\"Unterkategorie\"}");
+module.exports = JSON.parse("{\"altitude\":\"Höhe\",\"difficulty\":\"Schwierigkeit\",\"location\":\"Ort\",\"phone\":\"Telefon\",\"web\":\"Web\",\"categories\":\"Kategorien\",\"ceremonies\":\"Events\",\"dishRates\":\"Speisen\",\"operationSchedule\":\"Öffnungszeiten\",\"lastChange\":\"Letzte Aktualisierung\",\"gastronomyTypes\":{\"DishCodes\":\"Speisen\",\"CuisineCodes\":\"Kitchen\",\"FacilityCodes_CreditCard\":\"Zahlungsmittel\",\"FacilityCodes_Equipment\":\"Ausstattung\",\"FacilityCodes_QualitySeals\":\"Qualitätssiegel\"},\"scheduleTypes\":{\"1\":\"Geöffnet\",\"2\":\"Geschlossen\"},\"timeCodes\":{\"1\":\"Allgemeine Öffnungszeiten\",\"2\":\"Warme Mahlzeiten\",\"3\":\"Pizza\",\"4\":\"Snacks\"},\"scheduleDays\":{\"Monday\":\"Mo\",\"Tuesday\":\"Di\",\"Wednesday\":\"Mi\",\"Thuresday\":\"Do\",\"Friday\":\"Fr\",\"Saturday\":\"Sa\",\"Sunday\":\"So\"},\"mainType\":\"Hauptkategorie\",\"subType\":\"Unterkategorie\",\"altitudeDifference\":\"Höhenunterschied\",\"altitudeHighestPoint\":\"Höchster Punkt\",\"altitudeLowestPoint\":\"Niedrigster Punkt\",\"Gastronomy\":\"Gastronomie\",\"Activity\":\"Aktivitäten\",\"POI\":\"Interessante Orte\",\"props\":{\"AltitudeDifference\":\"Höhendifferenz\",\"AltitudeLowestPoint\":\"Tiefster Punkt\",\"AltitudeHighestPoint\":\"Höchster Punkt\",\"AltitudeSumUp\":\"Höhenmeter aufwärts\",\"AltitudeSumDown\":\"Höhenmeter abwärts\",\"DistanceLength\":\"Länge\",\"DistanceDuration\":\"Dauer\",\"BikeTransport\":\"Fahrradtransport\",\"HasFreeEntrance\":\"Freier Eintritt\",\"LiftAvailable\":\"Lift verfügbar\",\"RunToValley\":\"####\",\"IsWithLight\":\"Beleuchted\",\"HasRentals\":\"Verleih verfügbar\",\"IsPrepared\":\"Präpariert\",\"FeetClimb\":\"Begehbar\",\"IsOpen\":\"Geöffnet\"},\"yes\":\"Ja\",\"paging\":{\"next\":\"weiter\",\"back\":\"zurück\"},\"noResults\":\"Keine Ergebnisse gefunden\",\"back\":\"Zurück\",\"category\":\"Kategorie\",\"subcategory\":\"Unterkategorie\"}");
 
 /***/ }),
 
@@ -28388,6 +28402,18 @@ var EXISTS = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
   return EXISTS ? document.createElement(it) : {};
 };
+
+
+/***/ }),
+
+/***/ "ccb9":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_2bad5678_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5483");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_2bad5678_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_2bad5678_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_2bad5678_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_2bad5678_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
@@ -29315,18 +29341,6 @@ var ArrayPrototype = Array.prototype;
 module.exports = function (it) {
   return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
 };
-
-
-/***/ }),
-
-/***/ "f214":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_8df8e56c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7983");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_8df8e56c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_8df8e56c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_8df8e56c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemDetail_vue_vue_type_style_index_0_id_8df8e56c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
