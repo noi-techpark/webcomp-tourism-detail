@@ -26,7 +26,25 @@
 import Vue from 'vue';
 import ItemsList from './components/ItemsList.vue';
 import ItemDetail from './components/ItemDetail.vue';
+import VueI18n from 'vue-i18n';
+
+import messagesEn from '@/assets/locales/en.json';
+import messagesDe from '@/assets/locales/de.json';
+import messagesIt from '@/assets/locales/it.json';
+
+Vue.use(VueI18n);
+
+const i18n = new VueI18n({
+  locale: 'de',
+  messages: {
+    en: messagesEn,
+    de: messagesDe,
+    it: messagesIt,
+  },
+});
+
 export default Vue.extend({
+  i18n,
   components: {
     ItemsList,
     ItemDetail,
@@ -38,8 +56,7 @@ export default Vue.extend({
     },
     contentIdList: {
       type: String,
-      default:
-        'GASTROA7D574DE766311D3A84700104BE4ECF9,GASTRO4BD454B678F397F407538C59D54920D4',
+      default: null
     },
     category: {
       type: String,
