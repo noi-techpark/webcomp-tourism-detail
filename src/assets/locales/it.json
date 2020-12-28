@@ -45,7 +45,7 @@
   "POI": "Posti interessanti",
   "props": {
     "AltitudeDifference": "Differenza di altezza",
-    "AltitudeLowestPoint": "Punto più profondo",
+    "AltitudeLowestPoint": "Punto più basso",
     "AltitudeHighestPoint": "Punto più alto",
     "AltitudeSumUp": "Dislivello in salita",
     "AltitudeSumDown": "Metri in discesa",
