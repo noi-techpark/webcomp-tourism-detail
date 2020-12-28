@@ -1,15 +1,24 @@
 <template>
   <div id="app">
     <item-detail
-        v-if="detailContentId"
-        :content-id="detailContentId"
-        :is-list-available="islistAvailable"
-        :content-type="contentType"
-        :language="language"
-        @close="closeDetail"
+      v-if="detailContentId"
+      :content-id="detailContentId"
+      :is-list-available="islistAvailable"
+      :content-type="contentType"
+      :language="language"
+      @close="closeDetail"
     />
-    <items-list v-else @show-detail="showDetail" @change-current-page="changeCurrentPage" :language="language" :contentType="contentType"
-                :contentIdList="contentIdList" :pageSize="pageSize" :category="category" :currentPage="currentPage"/>
+    <items-list
+      v-else
+      @show-detail="showDetail"
+      @change-current-page="changeCurrentPage"
+      :language="language"
+      :contentType="contentType"
+      :contentIdList="contentIdList"
+      :pageSize="pageSize"
+      :category="category"
+      :currentPage="currentPage"
+    />
   </div>
 </template>
 
@@ -25,29 +34,30 @@ export default Vue.extend({
   props: {
     contentType: {
       type: String,
-      default: 'Gastronomy'
+      default: 'Gastronomy',
     },
     contentIdList: {
       type: String,
-      default: "GASTROA7D574DE766311D3A84700104BE4ECF9,GASTRO4BD454B678F397F407538C59D54920D4",
+      default:
+        'GASTROA7D574DE766311D3A84700104BE4ECF9,GASTRO4BD454B678F397F407538C59D54920D4',
     },
     category: {
       type: String,
-      default: null
+      default: null,
     },
     language: {
       type: String,
-      default: 'en'
+      default: 'en',
     },
     pageSize: {
       type: Number,
-      default: 20
-    }
+      default: 20,
+    },
   },
   data() {
     return {
       detailContentId: null,
-      currentPage: 1
+      currentPage: 1,
     };
   },
   computed: {
@@ -80,7 +90,7 @@ export default Vue.extend({
     },
     changeCurrentPage(pageNum) {
       this.currentPage = pageNum;
-    }
+    },
   },
 });
 </script>
