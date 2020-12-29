@@ -47,7 +47,7 @@ Options:\
     - POI: 'null' = Filter disabled, possible values: BITMASK 'Doctors, Pharmacies = 1','Shops = 2','Culture and sights= 4','Nightlife and entertainment = 8','Public institutions = 16','Sports and leisure = 32','Traffic and transport = 64', 'Service providers' = 128, 'Craft' = 256
 Default: null
 
-#### langugage
+#### language
 
 Language of the data 
 
