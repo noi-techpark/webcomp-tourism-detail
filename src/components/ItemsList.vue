@@ -166,7 +166,6 @@ export default {
       const activityApi = new ActivityApi();
       activityApi.activityGetAllActivityTypesList().then((value) => {
         this.activityTypes = value.data;
-        console.log(value);
       });
     },
     loadActivityList(pageNum) {
@@ -203,7 +202,6 @@ export default {
           this.items = value?.data?.Items ?? [];
           this.$emit('change-current-page', value?.data?.CurrentPage);
           this.totalPages = value?.data?.TotalPages;
-          console.log(value);
           this.isLoading = false;
         });
     },
@@ -211,7 +209,6 @@ export default {
       const gastronomyApi = new GastronomyApi();
       gastronomyApi.gastronomyGetAllGastronomyTypesList().then((value) => {
         this.gastronomyTypes = value.data;
-        console.log(value);
       });
     },
     loadGastronomyList(pageNum) {
@@ -244,7 +241,6 @@ export default {
           this.items = value?.data?.Items ?? [];
           this.$emit('change-current-page', value?.data?.CurrentPage);
           this.totalPages = value?.data?.TotalPages;
-          console.log(value);
           this.isLoading = false;
         });
     },
@@ -278,7 +274,6 @@ export default {
           this.items = value?.data?.Items ?? [];
           this.$emit('change-current-page', value?.data?.CurrentPage);
           this.totalPages = value?.data?.TotalPages;
-          console.log(value);
           this.isLoading = false;
         });
     },

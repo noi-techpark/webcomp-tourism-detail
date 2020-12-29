@@ -404,14 +404,11 @@ export default {
           now.getTime() >= start.getTime()
         );
       });
-      console.log(schedules);
       const schedule =
         schedules !== null && schedules.length > 0 ? schedules[0] : null;
-      console.log(schedule);
       let open = false;
       if (schedule !== null) {
         for (const time of schedule.OperationScheduleTime) {
-          console.log(time.State);
           if (time.State === 1) {
             open = true;
           }
@@ -475,7 +472,6 @@ export default {
     },
     openImageDetail(image) {
       this.imageUrl = image.ImageUrl;
-      console.log(this.imageUrl);
       this.selectedImage = image;
       this.showImage = true;
     },
