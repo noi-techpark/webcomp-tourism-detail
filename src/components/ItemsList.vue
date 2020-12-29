@@ -454,6 +454,7 @@ hr.solid {
   display: flex;
   flex-direction: column;
   width: 100%;
+  cursor: pointer;
 }
 
 .bottom-divider {
