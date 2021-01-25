@@ -1,27 +1,92 @@
 {
-  "title": "Webcomponent Boilerplate",
-  "description": "A webcomponent boilerplate that can be used to build your own boilerplate.",
-  "descriptionAbstract": "A webcomponent boilerplate",
+  "title": "Tourism Detail",
+  "description": "",
+  "descriptionAbstract": "",
   "license": "AGPL-3.0",
-  "repositoryUrl": "https://github.com/noi-techpark/webcomp-boilerplate",
-  "authors": [
+  "copyrightHolders": [
     {
       "name": "NOI",
       "email": "info@noi.bz.it",
-      "organization": "NOI S.p.A",
+      "organization": "NOI AG/SpA Südtirol - Alto Adige",
       "organizationUrl": "https://noi.bz.it"
     }
   ],
-  "image": null,
-  "searchTags": [],
+  "authors": [
+    {
+      "name": "KONVERTO",
+      "email": "info@konverto.eu",
+      "organization": "KONVERTO AG",
+      "organizationUrl": "https://konverto.eu"
+    }
+  ],
+  "image": "",
+  "searchTags": [
+    "activities", "poi", "gastronomy"
+  ],
   "dist": {
     "basePath": "dist",
     "files": [
-      "app.min.js"
+      "webcomp-tourism-detail.min.js"
     ]
   },
   "configuration": {
-    "tagName": "webcomponent-boilerplate",
-    "options": []
+    "tagName": "webcomp-tourism-detail",
+    "options": [
+      {
+        "key": "contentType",
+        "type": "select",
+        "label": "Type of list items",
+        "required": false,
+        "options": {
+          "default": "Gastronomy",
+          "values": [
+            "Gastronomy",
+            "Activity",
+            "POI"
+          ]
+        }
+      },
+      {
+        "key": "contentIdList",
+        "type": "text",
+        "label": "List of content ids",
+        "required": false,
+        "options": {
+          "default": ""
+        }
+      },
+      {
+        "key": "category",
+        "type": "text",
+        "label": "Id of category.\n - Gastronomy: BITMASK values: 1 = (Restaurant), 2 = (Bar / Café / Bistro), 4 = (Pub / Disco), 8 = (Apres Ski), 16 = (Jausenstation), 32 = (Pizzeria), 64 = (Bäuerlicher Schankbetrieb), 128 = (Buschenschank), 256 = (Hofschank), 512 = (Törggele Lokale), 1024 = (Schnellimbiss), 2048 = (Mensa), 4096 = (Vinothek /Weinhaus / Taverne), 8192 = (Eisdiele), 16348 = (Gasthaus), 32768 = (Gasthof), 65536 = (Braugarten), 131072 = (Schutzhütte), 262144 = (Alm), 524288 = (Skihütte)\n- Activity: 'null' = Filter disabled, possible values: BITMASK: 'Mountains = 1','Cycling = 2','Local tours = 4','Horses = 8','Hiking = 16','Running and fitness = 32','Cross-country ski-track = 64','Tobbogan run = 128','Slopes = 256','Lifts = 512'\n- POI: 'null' = Filter disabled, possible values: BITMASK 'Doctors, Pharmacies = 1','Shops = 2','Culture and sights= 4','Nightlife and entertainment = 8','Public institutions = 16','Sports and leisure = 32','Traffic and transport = 64', 'Service providers' = 128, 'Craft' = 256 Default: null",
+        "required": false,
+        "options": {
+          "default": ""
+        }
+      },
+      {
+        "key": "language",
+        "type": "select",
+        "label": "language",
+        "required": false,
+        "options": {
+          "values": [
+            "en",
+            "de",
+            "it"
+          ],
+          "default": "de"
+        }
+      },
+      {
+        "key": "pageSize",
+        "type": "number",
+        "label": "Number of list items per page",
+        "required": false,
+        "options": {
+          "default": 20
+        }
+      }
+    ]
   }
 }
