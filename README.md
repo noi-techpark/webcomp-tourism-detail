@@ -14,7 +14,6 @@ ToDo: Description of the project.
 ## Usage
 
 ```html
-<script src="https://unpkg.com/vue"></script>
 <script src="./webcomp-tourism-detail.min.js"></script>
 
 <webcomp-tourism-detail></webcomp-tourism-detail>
