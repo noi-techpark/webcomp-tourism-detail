@@ -329,4 +329,10 @@ export interface GBLTSPoi {
      * @memberof GBLTSPoi
      */
     wayNumber?: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof GBLTSPoi
+     */
+    number?: any;
 }

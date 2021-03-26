@@ -329,4 +329,10 @@ export interface GBLTSActivity {
      * @memberof GBLTSActivity
      */
     wayNumber?: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof GBLTSActivity
+     */
+    number?: any;
 }

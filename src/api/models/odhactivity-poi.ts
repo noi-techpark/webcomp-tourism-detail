@@ -419,4 +419,10 @@ export interface ODHActivityPoi {
      * @memberof ODHActivityPoi
      */
     wayNumber?: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof ODHActivityPoi
+     */
+    number?: any;
 }

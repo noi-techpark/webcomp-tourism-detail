@@ -20,7 +20,11 @@
           <div
             v-if="item.ImageGallery === null || item.ImageGallery.length === 0"
           >
-            <img class="thumbnail" :src="placeholderImage" />
+            <div class="thumbnail">
+              <PlaceholderGastro class="gastroSvg" viewBox="0 0 595.3 367.54" width="auto" height="60px" preserveAspectRatio="xMidYMid slice" v-if="placeholderImage === 'gastro'"></PlaceholderGastro>
+              <PlaceholderActivity class="activitySvg" viewBox="0 0 595.3 367.54" width="auto" height="60px" preserveAspectRatio="xMidYMid slice" v-if="placeholderImage === 'activity'"></PlaceholderActivity>
+              <POIPlaceholder class="poiSvg" viewBox="0 0 595.3 367.54" width="auto" height="60px" preserveAspectRatio="xMidYMid slice" v-if="placeholderImage === 'poi'"></POIPlaceholder>
+            </div>
           </div>
           <div v-else>
             <img class="thumbnail" :src="item.ImageGallery[0].ImageUrl" />
@@ -37,12 +41,14 @@
               {{ getPoiShortInfo(item) }}
             </div>
           </div>
-          <img src="@/assets/img/arrow_right.svg" width="28" height="28" />
+          <div style="min-height: 40px; min-width: 40px; max-height: 40px; max-width: 40px">
+            <arrow-icon-right viewBox="0 0 24 24" width="100%" height="100%"/>
+          </div>
         </div>
       </div>
     </template>
     <div v-else-if="isLoading" class="loading-spinner">
-      <img src="@/assets/img/loading.gif" />
+      <spinner></spinner>
     </div>
     <div class="noResult" v-else>{{ $t('noResults') }}</div>
     <div v-if="items.length === 1" class="item-container"></div>
@@ -65,9 +71,14 @@
 <script>
 import { ActivityApi, GastronomyApi, PoiApi } from '@/api';
 import Paging from '@/components/Paging';
+import ArrowIconRight from '@/assets/img/arrow_right.svg';
+import PlaceholderGastro from '@/assets/img/gastro-placeholder.svg';
+import PlaceholderActivity from '@/assets/img/Activity-Placeholder.svg';
+import POIPlaceholder from '@/assets/img/POI-Placeholder.svg';
+import Spinner from "@/components/Spinner";
 
 export default {
-  components: { Paging },
+  components: {Spinner, Paging, ArrowIconRight, PlaceholderGastro, PlaceholderActivity, POIPlaceholder },
   props: {
     language: {
       type: String,
@@ -117,11 +128,11 @@ export default {
   computed: {
     placeholderImage() {
       if (this.contentType === 'Gastronomy') {
-        return require('../assets/img/gastro-placeholder.svg');
+        return 'gastro'
       } else if (this.contentType === 'Activity') {
-        return require('../assets/img/Activity-Placeholder.svg');
+        return 'activity'
       } else {
-        return require('../assets/img/POI-Placeholder.svg');
+        return 'poi'
       }
     },
   },
@@ -209,7 +220,7 @@ export default {
       const gastronomyApi = new GastronomyApi();
       gastronomyApi.gastronomyGetAllGastronomyTypesList().then((value) => {
         this.gastronomyTypes = value.data;
-      });
+      })
     },
     loadGastronomyList(pageNum) {
       this.isLoading = true;
@@ -388,7 +399,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .list-item {
   display: flex;
   flex-direction: row;
@@ -403,6 +414,18 @@ export default {
   max-height: 60px;
   background-color: #e8ecf1;
   object-fit: cover;
+}
+
+.poiSvg g{
+  .a,.d{fill:none;}.b{fill:#e8ecf1;}.c{clip-path:url(#a);}.d{stroke:#fff;stroke-miterlimit:10;stroke-width:9px;}.e{fill:#fff;}
+}
+
+.gastroSvg g {
+  .a,.e{fill:none;}.b{fill:#e8ecf1;}.c{clip-path:url(#a);}.d{fill:#fff;}.e{stroke:#fff;stroke-miterlimit:10;stroke-width:9px;}
+}
+
+.activitySvg g {
+  .a{fill:#e8ecf1;}.b{fill:#fff;}
 }
 
 .info {
@@ -475,7 +498,7 @@ hr.solid {
 }
 
 .loading-spinner {
-  height: 50vh;
+  height: 70vh;
   width: 100%;
   display: flex;
   justify-content: center;
