@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="back-button" @click.prevent="close" v-if="isListAvailable">
-      <div style="min-height: 40px; min-width: 40px; max-height: 40px; max-width: 40px">
-        <arrow-icon-left viewBox="0 0 24 24" width="100%" height="40px"/>
+      <div
+        style="min-height: 40px; min-width: 40px; max-height: 40px; max-width: 40px"
+      >
+        <arrow-icon-left viewBox="0 0 24 24" width="100%" height="40px" />
       </div>
       <span style="color: #888888">{{ $t('back') }}</span>
     </div>
@@ -42,14 +44,18 @@
             <span class="text-dark">{{ item.Difficulty }}</span>
           </li>
           <li v-if="item.Altitude">
-            <altitude-difference class="altitude-difference icon"></altitude-difference>
+            <altitude-difference
+              class="altitude-difference icon"
+            ></altitude-difference>
             <span class="prop-key">{{ $t('altitude') }}: </span>
             <span class="text-dark"
               >{{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}</span
             >
           </li>
           <li v-if="item.AltitudeDifference">
-            <altitude-difference class="altitude-difference icon"></altitude-difference>
+            <altitude-difference
+              class="altitude-difference icon"
+            ></altitude-difference>
             <span class="prop-key">{{ $t('props.AltitudeDifference') }}: </span>
             <span class="text-dark"
               >{{ item.AltitudeDifference
@@ -57,7 +63,9 @@
             >
           </li>
           <li v-if="item.AltitudeHighestPoint">
-            <altitude-highest-point class="altitude-highest-point icon"></altitude-highest-point>
+            <altitude-highest-point
+              class="altitude-highest-point icon"
+            ></altitude-highest-point>
             <span class="prop-key"
               >{{ $t('props.AltitudeHighestPoint') }}:
             </span>
@@ -67,7 +75,9 @@
             >
           </li>
           <li v-if="item.AltitudeLowestPoint">
-            <altitude-lowest-point class="altitude-lowest-point icon"></altitude-lowest-point>
+            <altitude-lowest-point
+              class="altitude-lowest-point icon"
+            ></altitude-lowest-point>
             <span class="prop-key"
               >{{ $t('props.AltitudeLowestPoint') }}:
             </span>
@@ -77,7 +87,9 @@
             >
           </li>
           <li v-if="item.DistanceDuration">
-            <distance-duration class="distance-duration icon"></distance-duration>
+            <distance-duration
+              class="distance-duration icon"
+            ></distance-duration>
             <span class="prop-key">{{ $t('props.DistanceDuration') }}: </span>
             <span class="text-dark">{{ item.DistanceDuration }}</span>
           </li>
@@ -272,8 +284,20 @@ const SCHEDULE_DAYS = [
 ];
 
 export default {
-  components: { ImageDetail, ArrowIconLeft, Difficulty, ExternalLink, AltitudeDifference, AltitudeHighestPoint, AltitudeLowestPoint,
-    Calendar, DistanceDuration, DistanceLength, MapIcon, Phone},
+  components: {
+    ImageDetail,
+    ArrowIconLeft,
+    Difficulty,
+    ExternalLink,
+    AltitudeDifference,
+    AltitudeHighestPoint,
+    AltitudeLowestPoint,
+    Calendar,
+    DistanceDuration,
+    DistanceLength,
+    MapIcon,
+    Phone,
+  },
   props: {
     contentId: {
       type: String,
@@ -322,7 +346,7 @@ export default {
       return this.imageGallery.length > 1;
     },
     itemDetail() {
-      console.log(this.item?.Detail?.[this.language])
+      console.log(this.item?.Detail?.[this.language]);
       return this.item?.Detail?.[this.language] || {};
     },
     itemContactInfos() {
@@ -678,47 +702,138 @@ h1 {
 }
 
 .external-link {
-  .a,.b{fill:none;}.a{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.167px;}
+  .a,
+  .b {
+    fill: none;
+  }
+  .a {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.167px;
+  }
 }
 
 .difficulty {
-  .a,.b,.c{fill:none;}.b,.c{stroke:#000;stroke-width:1.25px;}.c{stroke-linecap:round;stroke-linejoin:round;}
+  .a,
+  .b,
+  .c {
+    fill: none;
+  }
+  .b,
+  .c {
+    stroke: #000;
+    stroke-width: 1.25px;
+  }
+  .c {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
 }
 
 .altitude-difference {
-  .a,.b,.c{fill:none;}.b,.c{stroke:#000;}.b{stroke-width:1.25px;}
+  .a,
+  .b,
+  .c {
+    fill: none;
+  }
+  .b,
+  .c {
+    stroke: #000;
+  }
+  .b {
+    stroke-width: 1.25px;
+  }
 }
 
 .altitude-highest-point {
-  .a,.b{fill:none;}.b{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25px;}
+  .a,
+  .b {
+    fill: none;
+  }
+  .b {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25px;
+  }
 }
 
 .altitude-lowest-point {
-  .a,.b{fill:none;}.b{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25px;}
+  .a,
+  .b {
+    fill: none;
+  }
+  .b {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25px;
+  }
 }
 
 .calendar {
-  .a,.b{fill:none;}.b{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25px;}
+  .a,
+  .b {
+    fill: none;
+  }
+  .b {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25px;
+  }
 }
 
 .distance-duration {
-  .a{fill:none;}
+  .a {
+    fill: none;
+  }
 }
 
 .distance-length {
-  .a,.b,.c{fill:none;}.b,.c{stroke:#000;}.b{stroke-width:1.25px;}
+  .a,
+  .b,
+  .c {
+    fill: none;
+  }
+  .b,
+  .c {
+    stroke: #000;
+  }
+  .b {
+    stroke-width: 1.25px;
+  }
 }
 
 .info {
-  .a,.b{fill:none;}.a{stroke:#000;stroke-width:1.25px;}
+  .a,
+  .b {
+    fill: none;
+  }
+  .a {
+    stroke: #000;
+    stroke-width: 1.25px;
+  }
 }
 
 .map-icon {
-  .a{fill:none;}
+  .a {
+    fill: none;
+  }
 }
 
 .phone {
-  .a,.b{fill:none;}.b{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25px;}
+  .a,
+  .b {
+    fill: none;
+  }
+  .b {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25px;
+  }
 }
 
 .icon {

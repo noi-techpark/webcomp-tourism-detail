@@ -21,9 +21,30 @@
             v-if="item.ImageGallery === null || item.ImageGallery.length === 0"
           >
             <div class="thumbnail">
-              <PlaceholderGastro class="gastroSvg" viewBox="0 0 595.3 367.54" width="auto" height="60px" preserveAspectRatio="xMidYMid slice" v-if="placeholderImage === 'gastro'"></PlaceholderGastro>
-              <PlaceholderActivity class="activitySvg" viewBox="0 0 595.3 367.54" width="auto" height="60px" preserveAspectRatio="xMidYMid slice" v-if="placeholderImage === 'activity'"></PlaceholderActivity>
-              <POIPlaceholder class="poiSvg" viewBox="0 0 595.3 367.54" width="auto" height="60px" preserveAspectRatio="xMidYMid slice" v-if="placeholderImage === 'poi'"></POIPlaceholder>
+              <PlaceholderGastro
+                class="gastroSvg"
+                viewBox="0 0 595.3 367.54"
+                width="auto"
+                height="60px"
+                preserveAspectRatio="xMidYMid slice"
+                v-if="placeholderImage === 'gastro'"
+              ></PlaceholderGastro>
+              <PlaceholderActivity
+                class="activitySvg"
+                viewBox="0 0 595.3 367.54"
+                width="auto"
+                height="60px"
+                preserveAspectRatio="xMidYMid slice"
+                v-if="placeholderImage === 'activity'"
+              ></PlaceholderActivity>
+              <POIPlaceholder
+                class="poiSvg"
+                viewBox="0 0 595.3 367.54"
+                width="auto"
+                height="60px"
+                preserveAspectRatio="xMidYMid slice"
+                v-if="placeholderImage === 'poi'"
+              ></POIPlaceholder>
             </div>
           </div>
           <div v-else>
@@ -41,8 +62,10 @@
               {{ getPoiShortInfo(item) }}
             </div>
           </div>
-          <div style="min-height: 40px; min-width: 40px; max-height: 40px; max-width: 40px">
-            <arrow-icon-right viewBox="0 0 24 24" width="100%" height="100%"/>
+          <div
+            style="min-height: 40px; min-width: 40px; max-height: 40px; max-width: 40px"
+          >
+            <arrow-icon-right viewBox="0 0 24 24" width="100%" height="100%" />
           </div>
         </div>
       </div>
@@ -75,10 +98,17 @@ import ArrowIconRight from '@/assets/img/arrow_right.svg';
 import PlaceholderGastro from '@/assets/img/gastro-placeholder.svg';
 import PlaceholderActivity from '@/assets/img/Activity-Placeholder.svg';
 import POIPlaceholder from '@/assets/img/POI-Placeholder.svg';
-import Spinner from "@/components/Spinner";
+import Spinner from '@/components/Spinner';
 
 export default {
-  components: {Spinner, Paging, ArrowIconRight, PlaceholderGastro, PlaceholderActivity, POIPlaceholder },
+  components: {
+    Spinner,
+    Paging,
+    ArrowIconRight,
+    PlaceholderGastro,
+    PlaceholderActivity,
+    POIPlaceholder,
+  },
   props: {
     language: {
       type: String,
@@ -128,11 +158,11 @@ export default {
   computed: {
     placeholderImage() {
       if (this.contentType === 'Gastronomy') {
-        return 'gastro'
+        return 'gastro';
       } else if (this.contentType === 'Activity') {
-        return 'activity'
+        return 'activity';
       } else {
-        return 'poi'
+        return 'poi';
       }
     },
   },
@@ -220,7 +250,7 @@ export default {
       const gastronomyApi = new GastronomyApi();
       gastronomyApi.gastronomyGetAllGastronomyTypesList().then((value) => {
         this.gastronomyTypes = value.data;
-      })
+      });
     },
     loadGastronomyList(pageNum) {
       this.isLoading = true;
@@ -416,16 +446,55 @@ export default {
   object-fit: cover;
 }
 
-.poiSvg g{
-  .a,.d{fill:none;}.b{fill:#e8ecf1;}.c{clip-path:url(#a);}.d{stroke:#fff;stroke-miterlimit:10;stroke-width:9px;}.e{fill:#fff;}
+.poiSvg g {
+  .a,
+  .d {
+    fill: none;
+  }
+  .b {
+    fill: #e8ecf1;
+  }
+  .c {
+    clip-path: url(#a);
+  }
+  .d {
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    stroke-width: 9px;
+  }
+  .e {
+    fill: #fff;
+  }
 }
 
 .gastroSvg g {
-  .a,.e{fill:none;}.b{fill:#e8ecf1;}.c{clip-path:url(#a);}.d{fill:#fff;}.e{stroke:#fff;stroke-miterlimit:10;stroke-width:9px;}
+  .a,
+  .e {
+    fill: none;
+  }
+  .b {
+    fill: #e8ecf1;
+  }
+  .c {
+    clip-path: url(#a);
+  }
+  .d {
+    fill: #fff;
+  }
+  .e {
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    stroke-width: 9px;
+  }
 }
 
 .activitySvg g {
-  .a{fill:#e8ecf1;}.b{fill:#fff;}
+  .a {
+    fill: #e8ecf1;
+  }
+  .b {
+    fill: #fff;
+  }
 }
 
 .info {
