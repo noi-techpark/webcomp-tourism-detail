@@ -2,7 +2,7 @@
   "title": "Tourism Detail",
   "description": "A web component to display a list and details of gastronomy businesses, activities and points of interests located in South Tyrol. It is possible to select a category and only display selected items or the details page of a single one.",
   "descriptionAbstract": "List and details of gastronomy businesses, activities and points of interests",
-  "license": "AGPL-3.0",
+  "license": "AGPL-3.0-or-later",
   "copyrightHolders": [
     {
       "name": "NOI",
@@ -27,6 +27,12 @@
     "basePath": "dist",
     "files": [
       "webcomp-tourism-detail.min.js"
+    ],
+    "scripts": [
+      {
+        "file": "webcomp-tourism-detail.min.js",
+        "parameter": ""
+      }
     ]
   },
   "configuration": {
