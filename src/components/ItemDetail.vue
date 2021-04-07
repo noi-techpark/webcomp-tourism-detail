@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="back-button" @click.prevent="close" v-if="isListAvailable">
-      <img src="@/assets/img/arrow_left.svg" />
+      <div
+        style="min-height: 40px; min-width: 40px; max-height: 40px; max-width: 40px"
+      >
+        <arrow-icon-left viewBox="0 0 24 24" width="100%" height="40px" />
+      </div>
       <span style="color: #888888">{{ $t('back') }}</span>
     </div>
     <div v-if="item" class="item">
@@ -35,19 +39,23 @@
       <div class="detail-box">
         <ul class="props">
           <li v-if="item.Difficulty">
-            <img src="@/assets/img/ic_difficulty.svg" />
+            <difficulty class="difficulty icon"></difficulty>
             <span class="prop-key">{{ $t('difficulty') }}:</span>
             <span class="text-dark">{{ item.Difficulty }}</span>
           </li>
           <li v-if="item.Altitude">
-            <img src="@/assets/img/ic_altitudedifference.svg" />
+            <altitude-difference
+              class="altitude-difference icon"
+            ></altitude-difference>
             <span class="prop-key">{{ $t('altitude') }}: </span>
             <span class="text-dark"
               >{{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}</span
             >
           </li>
           <li v-if="item.AltitudeDifference">
-            <img src="@/assets/img/ic_altitudedifference.svg" />
+            <altitude-difference
+              class="altitude-difference icon"
+            ></altitude-difference>
             <span class="prop-key">{{ $t('props.AltitudeDifference') }}: </span>
             <span class="text-dark"
               >{{ item.AltitudeDifference
@@ -55,7 +63,9 @@
             >
           </li>
           <li v-if="item.AltitudeHighestPoint">
-            <img src="@/assets/img/ic_altitudehighestpoint.svg" />
+            <altitude-highest-point
+              class="altitude-highest-point icon"
+            ></altitude-highest-point>
             <span class="prop-key"
               >{{ $t('props.AltitudeHighestPoint') }}:
             </span>
@@ -65,7 +75,9 @@
             >
           </li>
           <li v-if="item.AltitudeLowestPoint">
-            <img src="@/assets/img/ic_altitudelowestpoint.svg" />
+            <altitude-lowest-point
+              class="altitude-lowest-point icon"
+            ></altitude-lowest-point>
             <span class="prop-key"
               >{{ $t('props.AltitudeLowestPoint') }}:
             </span>
@@ -75,38 +87,40 @@
             >
           </li>
           <li v-if="item.DistanceDuration">
-            <img src="@/assets/img/ic_distanceduration.svg" />
+            <distance-duration
+              class="distance-duration icon"
+            ></distance-duration>
             <span class="prop-key">{{ $t('props.DistanceDuration') }}: </span>
             <span class="text-dark">{{ item.DistanceDuration }}</span>
           </li>
           <li v-if="item.DistanceLength">
-            <img src="@/assets/img/ic_distancelength.svg" />
+            <distance-length class="distance-length icon"></distance-length>
             <span class="prop-key">{{ $t('props.DistanceLength') }}: </span>
             <span class="text-dark">{{ item.DistanceLength }}</span>
           </li>
           <li v-if="googleMapsLink">
-            <img src="@/assets/img/ic_map.svg" />
+            <map-icon class="map-icon icon"></map-icon>
             <a :href="googleMapsLink" target="_blank">Google Maps</a>
           </li>
           <li v-if="itemContactInfos.City">
-            <img src="@/assets/img/ic_map.svg" />
+            <map-icon class="map-icon icon"></map-icon>
             <span class="prop-key">{{ $t('location') }}: </span>
             <span class="text-dark">{{ itemContactInfos.City }}</span>
           </li>
           <li v-if="itemContactInfos.Url">
-            <img src="@/assets/img/ic_external-link.svg" />
+            <external-link class="external-link icon"></external-link>
             <span class="prop-key">{{ $t('web') }}: </span>
             <a :href="itemContactInfos.Url" target="_blank">
               {{ itemContactInfos.Url }}
             </a>
           </li>
           <li v-if="itemContactInfos.Phonenumber">
-            <img src="@/assets/img/ic_phone.svg" />
+            <phone class="phone icon"></phone>
             <span class="prop-key">{{ $t('phone') }}: </span>
             <span class="text-dark">{{ itemContactInfos.Phonenumber }}</span>
           </li>
           <li v-if="this.contentType === 'Gastronomy'">
-            <img src="@/assets/img/ic_calendar.svg" />
+            <calendar class="calendar icon"></calendar>
             <span v-if="isGastronomyItemOpen === true" style="color: #9BC320">{{
               $t(`scheduleTypes.1`)
             }}</span>
@@ -115,7 +129,7 @@
             }}</span>
           </li>
           <li v-else-if="item.IsOpen != null">
-            <img src="@/assets/img/ic_calendar.svg" />
+            <calendar class="calendar icon"></calendar>
             <span
               :style="[
                 item.IsOpen === true ? { color: '#9BC320' } : { color: 'red' },
@@ -137,7 +151,7 @@
       ></div>
 
       <!-- COMMON -->
-      <div v-if="isGastronomyItemOpen.length">
+      <div v-if="contentType === 'Gastronomy' && isGastronomyItemOpen.length">
         <div class="subtitle">{{ $t('operationSchedule') }}</div>
         <div>
           <div v-for="(schedule, i) of isGastronomyItemOpen" :key="i">
@@ -237,6 +251,17 @@
 </template>
 
 <script>
+import ArrowIconLeft from '@/assets/img/arrow_left.svg';
+import ExternalLink from '@/assets/img/ic_external-link.svg';
+import AltitudeDifference from '@/assets/img/ic_altitudedifference.svg';
+import AltitudeHighestPoint from '@/assets/img/ic_altitudehighestpoint.svg';
+import AltitudeLowestPoint from '@/assets/img/ic_altitudelowestpoint.svg';
+import Calendar from '@/assets/img/ic_calendar.svg';
+import DistanceDuration from '@/assets/img/ic_distanceduration.svg';
+import DistanceLength from '@/assets/img/ic_distanceduration.svg';
+import MapIcon from '@/assets/img/ic_map.svg';
+import Phone from '@/assets/img/ic_phone.svg';
+import Difficulty from '@/assets/img/ic_difficulty.svg';
 import { GastronomyApi, PoiApi, ActivityApi } from '@/api';
 import ImageDetail from '@/components/ImageDetail';
 
@@ -259,7 +284,20 @@ const SCHEDULE_DAYS = [
 ];
 
 export default {
-  components: { ImageDetail },
+  components: {
+    ImageDetail,
+    ArrowIconLeft,
+    Difficulty,
+    ExternalLink,
+    AltitudeDifference,
+    AltitudeHighestPoint,
+    AltitudeLowestPoint,
+    Calendar,
+    DistanceDuration,
+    DistanceLength,
+    MapIcon,
+    Phone,
+  },
   props: {
     contentId: {
       type: String,
@@ -308,6 +346,7 @@ export default {
       return this.imageGallery.length > 1;
     },
     itemDetail() {
+      console.log(this.item?.Detail?.[this.language]);
       return this.item?.Detail?.[this.language] || {};
     },
     itemContactInfos() {
@@ -652,9 +691,152 @@ ul {
   cursor: pointer;
 }
 
+.back-button:hover {
+  cursor: pointer;
+}
+
 h1 {
   font-size: 36px;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+
+.external-link {
+  .a,
+  .b {
+    fill: none;
+  }
+  .a {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.167px;
+  }
+}
+
+.difficulty {
+  .a,
+  .b,
+  .c {
+    fill: none;
+  }
+  .b,
+  .c {
+    stroke: #000;
+    stroke-width: 1.25px;
+  }
+  .c {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.altitude-difference {
+  .a,
+  .b,
+  .c {
+    fill: none;
+  }
+  .b,
+  .c {
+    stroke: #000;
+  }
+  .b {
+    stroke-width: 1.25px;
+  }
+}
+
+.altitude-highest-point {
+  .a,
+  .b {
+    fill: none;
+  }
+  .b {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25px;
+  }
+}
+
+.altitude-lowest-point {
+  .a,
+  .b {
+    fill: none;
+  }
+  .b {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25px;
+  }
+}
+
+.calendar {
+  .a,
+  .b {
+    fill: none;
+  }
+  .b {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25px;
+  }
+}
+
+.distance-duration {
+  .a {
+    fill: none;
+  }
+}
+
+.distance-length {
+  .a,
+  .b,
+  .c {
+    fill: none;
+  }
+  .b,
+  .c {
+    stroke: #000;
+  }
+  .b {
+    stroke-width: 1.25px;
+  }
+}
+
+.info {
+  .a,
+  .b {
+    fill: none;
+  }
+  .a {
+    stroke: #000;
+    stroke-width: 1.25px;
+  }
+}
+
+.map-icon {
+  .a {
+    fill: none;
+  }
+}
+
+.phone {
+  .a,
+  .b {
+    fill: none;
+  }
+  .b {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25px;
+  }
+}
+
+.icon {
+  margin-right: 4px;
 }
 </style>

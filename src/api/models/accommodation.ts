@@ -286,6 +286,12 @@ export interface Accommodation {
      * @type {string}
      * @memberof Accommodation
      */
+    ownerRid?: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof Accommodation
+     */
     trustYouID?: any;
     /**
      * 

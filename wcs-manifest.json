@@ -1,7 +1,7 @@
 {
   "title": "Tourism Detail",
-  "description": "todo",
-  "descriptionAbstract": "todo",
+  "description": "A web component to display a list and details of gastronomy businesses, activities and points of interests located in South Tyrol. It is possible to select a category and only display selected items or the details page of a single one.",
+  "descriptionAbstract": "List and details of gastronomy businesses, activities and points of interests",
   "license": "AGPL-3.0",
   "copyrightHolders": [
     {

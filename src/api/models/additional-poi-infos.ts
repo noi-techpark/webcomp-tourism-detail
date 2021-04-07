@@ -47,4 +47,10 @@ export interface AdditionalPoiInfos {
      * @memberof AdditionalPoiInfos
      */
     language?: any;
+    /**
+     * 
+     * @type {Array&lt;string&gt;}
+     * @memberof AdditionalPoiInfos
+     */
+    categories?: any;
 }

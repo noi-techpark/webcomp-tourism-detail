@@ -47,4 +47,22 @@ export interface SmgTags {
      * @memberof SmgTags
      */
     mainEntity?: any;
+    /**
+     * 
+     * @type {Array&lt;string&gt;}
+     * @memberof SmgTags
+     */
+    source?: any;
+    /**
+     * 
+     * @type {{ [key, string]: string;}}
+     * @memberof SmgTags
+     */
+    iDMCategoryMapping?: any;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SmgTags
+     */
+    displayAsCategory?: any;
 }
