@@ -26,17 +26,17 @@
   "dist": {
     "basePath": "dist",
     "files": [
-      "webcomp-tourism-detail.min.js"
+      "odh-tourism-detail.min.js"
     ],
     "scripts": [
       {
-        "file": "webcomp-tourism-detail.min.js",
+        "file": "odh-tourism-detail.min.js",
         "parameter": ""
       }
     ]
   },
   "configuration": {
-    "tagName": "webcomp-tourism-detail",
+    "tagName": "odh-tourism-detail",
     "options": [
       {
         "key": "contentType",
