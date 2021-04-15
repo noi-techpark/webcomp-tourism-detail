@@ -24,7 +24,7 @@
               <PlaceholderGastro
                 class="gastroSvg"
                 viewBox="0 0 595.3 367.54"
-                width="auto"
+                width="60px"
                 height="60px"
                 preserveAspectRatio="xMidYMid slice"
                 v-if="placeholderImage === 'gastro'"
@@ -32,7 +32,7 @@
               <PlaceholderActivity
                 class="activitySvg"
                 viewBox="0 0 595.3 367.54"
-                width="auto"
+                width="60px"
                 height="60px"
                 preserveAspectRatio="xMidYMid slice"
                 v-if="placeholderImage === 'activity'"
@@ -40,7 +40,7 @@
               <POIPlaceholder
                 class="poiSvg"
                 viewBox="0 0 595.3 367.54"
-                width="auto"
+                width="60px"
                 height="60px"
                 preserveAspectRatio="xMidYMid slice"
                 v-if="placeholderImage === 'poi'"
