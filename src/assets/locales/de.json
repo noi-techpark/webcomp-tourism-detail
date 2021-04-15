@@ -69,5 +69,8 @@
     "noResults": "Keine Ergebnisse gefunden",
     "back": "Zurück",
     "category": "Kategorie",
-    "subcategory": "Unterkategorie"
+    "subcategory": "Unterkategorie",
+    "from": "Von",
+    "to": "Bis",
+    "persons": "Personen"
 }

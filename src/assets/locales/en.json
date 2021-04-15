@@ -69,5 +69,8 @@
   "noResults": "No results found",
   "back": "Back",
   "category": "Category",
-  "subcategory": "Subcategory"
+  "subcategory": "Subcategory",
+  "from": "From",
+  "to": "To",
+  "persons": "People"
 }
