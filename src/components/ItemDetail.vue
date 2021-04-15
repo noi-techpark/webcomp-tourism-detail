@@ -6,7 +6,7 @@
       >
         <arrow-icon-left viewBox="0 0 24 24" width="100%" height="40px" />
       </div>
-      <span style="color: #888888">{{ $t('back') }}</span>
+      <span>{{ $t('back') }}</span>
     </div>
     <div v-if="item" class="item">
       <div class="title-container" :style="titleImage">
@@ -49,7 +49,7 @@
             ></altitude-difference>
             <span class="prop-key">{{ $t('altitude') }}: </span>
             <span class="text-dark"
-              >{{ item.Altitude }}{{ item.AltitudeUnitofMeasure }}</span
+              >{{ item.Altitude }} m</span
             >
           </li>
           <li v-if="item.AltitudeDifference">
@@ -59,7 +59,7 @@
             <span class="prop-key">{{ $t('props.AltitudeDifference') }}: </span>
             <span class="text-dark"
               >{{ item.AltitudeDifference
-              }}{{ item.AltitudeUnitofMeasure }}</span
+              }} m</span
             >
           </li>
           <li v-if="item.AltitudeHighestPoint">
@@ -71,7 +71,7 @@
             </span>
             <span class="text-dark"
               >{{ item.AltitudeHighestPoint
-              }}{{ item.AltitudeUnitofMeasure }}</span
+              }} m</span
             >
           </li>
           <li v-if="item.AltitudeLowestPoint">
@@ -83,7 +83,7 @@
             </span>
             <span class="text-dark"
               >{{ item.AltitudeLowestPoint
-              }}{{ item.AltitudeUnitofMeasure }}</span
+              }} m</span
             >
           </li>
           <li v-if="item.DistanceDuration">
@@ -96,7 +96,7 @@
           <li v-if="item.DistanceLength">
             <distance-length class="distance-length icon"></distance-length>
             <span class="prop-key">{{ $t('props.DistanceLength') }}: </span>
-            <span class="text-dark">{{ item.DistanceLength }}</span>
+            <span class="text-dark">{{ item.DistanceLength }} m</span>
           </li>
           <li v-if="googleMapsLink">
             <map-icon class="map-icon icon"></map-icon>
@@ -166,7 +166,7 @@
                   <span class="text-dark">{{
                     $t(`timeCodes.${time.Timecode}`)
                   }}</span>
-                  von {{ time.Start }} bis
+                  {{ $t('from') }} {{ time.Start }} {{ $t('to') }}
                   {{ time.End }}
                   ({{ getItemScheduleDays(time) }})
                 </div>
@@ -174,7 +174,7 @@
             </div>
             <!-- Season -->
             <div v-if="schedule.Type === '3'">
-              {{ schedule.Start | dateFormat }} bis
+              {{ schedule.Start | dateFormat }} {{ $t('to') }}
               {{ schedule.Stop | dateFormat }}
             </div>
           </div>
@@ -198,7 +198,7 @@
         <ul>
           <li v-for="(value, i) of itemCeremonies" :key="i" class="text">
             <span class="text-dark">{{ value.name }}</span> (max.
-            {{ value.maxSeatingCapacity }} Personen)
+            {{ value.maxSeatingCapacity }} {{ $t('persons') }})
           </li>
         </ul>
       </div>
@@ -207,8 +207,8 @@
         <div class="subtitle">{{ $t('dishRates') }}</div>
         <ul>
           <li v-for="(value, i) of itemDishRates" :key="i" class="text">
-            <span class="text-dark">{{ value.name }}</span> (von
-            {{ value.minAmount }} bis {{ value.maxAmount }}
+            <span class="text-dark">{{ value.name }}</span> ({{ $t('from') }}
+            {{ value.minAmount }} {{ $t('to') }} {{ value.maxAmount }}
             {{ value.currencyCode }})
           </li>
         </ul>
@@ -569,6 +569,7 @@ h2 {
   padding: 0;
   margin: 0;
   font-style: italic;
+  font-weight: bold;
 
   &:not(.single) {
     columns: 1;
@@ -588,6 +589,9 @@ h2 {
 
   > li {
     padding: 0.2rem 0;
+    .icon {
+      padding-top: 2px;
+    }
   }
 
   img {
@@ -602,8 +606,9 @@ h2 {
   }
 
   .prop-key {
-    color: #888888;
+    color: #2e3131;
     padding-right: 4px;
+    font-weight: normal;
   }
 }
 
@@ -651,7 +656,7 @@ ul {
 }
 
 .text {
-  color: #949494;
+  color: #2e3131;
 }
 
 .text-dark {
