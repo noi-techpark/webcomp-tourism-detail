@@ -21,14 +21,14 @@ ToDo: Description of the project.
 
 ### Attributes
 
-#### contentType
+#### content-type
 
 Content type of the webcomponent data
 
 Type: string\
 Options: ["Gastronomy", "Activity", "POI"]
 
-#### contentIdList
+#### content-id-list
 
 List of content Ids separated by a comma. Example: "1,2,3"
 
@@ -54,7 +54,7 @@ Type: string\
 Options: ["de", "en", "it"]
 Default: "de"
 
-#### pageSize
+#### page-size
 
 Number of items that are shown in one page
 
