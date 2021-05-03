@@ -214,7 +214,7 @@ export default {
       const activityApi = new ActivityApi();
       activityApi
         .activityGetActivityList(
-          null,
+          this.language,
           pageNum,
           this.pageSize,
           this.category,
@@ -274,7 +274,7 @@ export default {
           null,
           null,
           null,
-          null,
+          this.language,
           null,
           null
         )
@@ -306,7 +306,7 @@ export default {
           null,
           null,
           null,
-          null,
+          this.language,
           null,
           null,
           []
@@ -575,7 +575,12 @@ hr.solid {
 }
 
 .noResult {
-  margin-left: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
 }
 
 .arrow-icon {
