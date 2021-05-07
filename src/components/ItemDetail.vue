@@ -8,7 +8,8 @@
       </div>
       <span>{{ $t('back') }}</span>
     </div>
-    <div v-if="item" class="item">
+    <div v-if="isItemEmpty" class="item-empty">{{ $t('noItemData')}}</div>
+    <div v-else-if="item" class="item">
       <div class="title-container" :style="titleImage">
         <div class="title">
           <h1>{{ itemDetail.Title }}</h1>
@@ -346,7 +347,6 @@ export default {
       return this.imageGallery.length > 1;
     },
     itemDetail() {
-      console.log(this.item?.Detail?.[this.language]);
       return this.item?.Detail?.[this.language] || {};
     },
     itemContactInfos() {
@@ -463,6 +463,9 @@ export default {
           .filter((day) => day != null)
           .join(', ');
     },
+    isItemEmpty() {
+      return Object.keys(this.itemDetail).length === 0;
+    },
   },
   created() {
     if (this.contentType === 'Gastronomy') {
@@ -482,7 +485,7 @@ export default {
   methods: {
     loadGastronomyItem() {
       new GastronomyApi()
-        .gastronomyGetGastronomySingle(this.contentId)
+        .gastronomyGetGastronomySingle(this.contentId, null, this.language)
         .then((value) => {
           this.item = value.data;
         });
@@ -495,13 +498,13 @@ export default {
         });
     },
     loadPoiItem() {
-      new PoiApi().poiGetPoiSingle(this.contentId).then((value) => {
+      new PoiApi().poiGetPoiSingle(this.contentId, null, this.language).then((value) => {
         this.item = value.data;
       });
     },
     loadActivityItem() {
       new ActivityApi()
-        .activityGetActivitySingle(this.contentId)
+        .activityGetActivitySingle(this.contentId, null, this.language)
         .then((value) => {
           this.item = value.data;
         });
@@ -843,5 +846,13 @@ h1 {
 
 .icon {
   margin-right: 4px;
+}
+
+.item-empty {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
 }
 </style>

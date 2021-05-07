@@ -72,5 +72,6 @@
   "subcategory": "Sottocategoria",
   "from": "da",
   "to": "a",
-  "persons": "persone"
+  "persons": "persone",
+  "noItemData": "Nessun dato disponibile per la lingua impostata"
 }
