@@ -63,7 +63,7 @@
             </div>
           </div>
           <div
-            style="min-height: 40px; min-width: 40px; max-height: 40px; max-width: 40px"
+            class="arrow-icon"
           >
             <arrow-icon-right viewBox="0 0 24 24" width="100%" height="100%" />
           </div>
@@ -214,7 +214,7 @@ export default {
       const activityApi = new ActivityApi();
       activityApi
         .activityGetActivityList(
-          null,
+          this.language,
           pageNum,
           this.pageSize,
           this.category,
@@ -274,7 +274,7 @@ export default {
           null,
           null,
           null,
-          null,
+          this.language,
           null,
           null
         )
@@ -306,7 +306,7 @@ export default {
           null,
           null,
           null,
-          null,
+          this.language,
           null,
           null,
           []
@@ -575,6 +575,19 @@ hr.solid {
 }
 
 .noResult {
-  margin-left: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+}
+
+.arrow-icon {
+  min-height: 40px;
+  min-width: 40px;
+  max-height: 40px;
+  max-width: 40px;
+  display: flex;
 }
 </style>

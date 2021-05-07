@@ -72,5 +72,6 @@
   "subcategory": "Subcategory",
   "from": "From",
   "to": "To",
-  "persons": "People"
+  "persons": "People",
+  "noItemData": "No data available for the set language"
 }

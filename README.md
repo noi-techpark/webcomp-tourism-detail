@@ -10,11 +10,11 @@ single one.
 - [Tourism Details](#tourism-details)
   - [Usage](#usage)
     - [Attributes](#attributes)
-      - [contentType](#contenttype)
-      - [contentIdList](#contentidlist)
+      - [content-type](#content-type)
+      - [content-id-list](#content-id-list)
       - [category](#category)
       - [language](#language)
-      - [pageSize](#pagesize)
+      - [page-size](#page-size)
   - [Getting started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Source code](#source-code)
@@ -38,20 +38,19 @@ single one.
 
 ```html
 <script src="./odh-tourism-detail.min.js"></script>
-
 <odh-tourism-detail></odh-tourism-detail>
 ```
 
 ### Attributes
 
-#### contentType
+#### content-type
 
 Content type of the webcomponent data
 
 Type: string\
 Options: ["Gastronomy", "Activity", "POI"]
 
-#### contentIdList
+#### content-id-list
 
 List of content Ids separated by a comma. Example: "1,2,3"
 
@@ -77,7 +76,7 @@ Type: string\
 Options: ["de", "en", "it"]
 Default: "de"
 
-#### pageSize
+#### page-size
 
 Number of items that are shown in one page
 
