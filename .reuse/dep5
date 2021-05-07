@@ -1,9 +1,9 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: webcomp-recipe
+Upstream-Name: webcomp-tourism-detail
 Upstream-Contact: Peter Moser <p.moser@noi.bz.it>
-Source: https://github.com/noi-techpark/webcomp-recipe
+Source: https://github.com/noi-techpark/webcomp-tourism-detail
 
-Files: src/* work/* dist/odh-*.js odh-*.js .browserslistrc .eslintignore .eslintrc.js .prettierignore .prettierrc babel.config.js vue.config.js webcomp-recipe.iml dist/*.html
+Files: src/* work/* dist/* odh-*.js .browserslistrc .eslintignore .eslintrc.js .prettierignore .prettierrc babel.config.js vue.config.js webcomp-tourism-detail.iml dist/*.html
 Copyright: (c) 2021 Konverto <info@konverto.eu>
 License: AGPL-3.0-or-later
 
