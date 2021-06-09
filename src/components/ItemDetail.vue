@@ -8,7 +8,7 @@
       </div>
       <span>{{ $t('back') }}</span>
     </div>
-    <div v-if="isItemEmpty" class="item-empty">{{ $t('noItemData')}}</div>
+    <div v-if="isItemEmpty && !isLoading" class="item-empty">{{ $t('noItemData')}}</div>
     <div v-else-if="item" class="item">
       <div class="title-container" :style="titleImage">
         <div class="title">
@@ -324,6 +324,7 @@ export default {
       showImage: false,
       imageUrl: null,
       selectedImage: null,
+      isLoading: false
     };
   },
   computed: {
@@ -468,6 +469,7 @@ export default {
     },
   },
   created() {
+    this.isLoading = true;
     if (this.contentType === 'Gastronomy') {
       this.loadGastronomyItem();
       this.loadGastronomyTypeList();
@@ -488,6 +490,7 @@ export default {
         .gastronomyGetGastronomySingle(this.contentId, '', this.language)
         .then((value) => {
           this.item = value.data;
+          this.isLoading = false;
         });
     },
     loadGastronomyTypeList() {
@@ -500,6 +503,7 @@ export default {
     loadPoiItem() {
       new PoiApi().poiGetPoiSingle(this.contentId, '', this.language).then((value) => {
         this.item = value.data;
+        this.isLoading = false;
       });
     },
     loadActivityItem() {
@@ -507,6 +511,7 @@ export default {
         .activityGetActivitySingle(this.contentId, '', this.language)
         .then((value) => {
           this.item = value.data;
+          this.isLoading = false;
         });
     },
     close() {
