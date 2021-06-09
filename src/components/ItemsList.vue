@@ -234,7 +234,7 @@ export default {
           null,
           null,
           null,
-          null,
+          '',
           null,
           null,
           []
@@ -273,10 +273,8 @@ export default {
           null,
           null,
           null,
-          null,
+          '',
           this.language,
-          null,
-          null
         )
         .then((value) => {
           this.items = value?.data?.Items ?? [];
@@ -305,7 +303,7 @@ export default {
           null,
           null,
           null,
-          null,
+          '',
           this.language,
           null,
           null,

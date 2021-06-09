@@ -485,7 +485,7 @@ export default {
   methods: {
     loadGastronomyItem() {
       new GastronomyApi()
-        .gastronomyGetGastronomySingle(this.contentId, null, this.language)
+        .gastronomyGetGastronomySingle(this.contentId, '', this.language)
         .then((value) => {
           this.item = value.data;
         });
@@ -498,13 +498,13 @@ export default {
         });
     },
     loadPoiItem() {
-      new PoiApi().poiGetPoiSingle(this.contentId, null, this.language).then((value) => {
+      new PoiApi().poiGetPoiSingle(this.contentId, '', this.language).then((value) => {
         this.item = value.data;
       });
     },
     loadActivityItem() {
       new ActivityApi()
-        .activityGetActivitySingle(this.contentId, null, this.language)
+        .activityGetActivitySingle(this.contentId, '', this.language)
         .then((value) => {
           this.item = value.data;
         });
