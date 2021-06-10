@@ -1,21 +1,43 @@
-# Tourism Details Web Component
+# Tourism Details
 
-ToDo: Description of the project.
+[![REUSE status](https://api.reuse.software/badge/github.com/noi-techpark/webcomp-tourism-detail)](https://api.reuse.software/info/github.com/noi-techpark/webcomp-tourism-detail)
 
-## Table of contents
+A web component to display a list and details of gastronomy businesses,
+activities and points of interests located in South Tyrol. It is possible to
+select a category and only display selected items or the details page of a
+single one.
 
-- [Usage](#usage)
-- [Gettings started](#getting-started)
-- [Tests and linting](#tests-and-linting)
-- [Deployment](#deployment)
-- [Docker environment](#docker-environment)
-- [Information](#information)
+- [Tourism Details](#tourism-details)
+  - [Usage](#usage)
+    - [Attributes](#attributes)
+      - [content-type](#content-type)
+      - [content-id-list](#content-id-list)
+      - [category](#category)
+      - [language](#language)
+      - [page-size](#page-size)
+  - [Getting started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Source code](#source-code)
+    - [Dependencies](#dependencies)
+    - [Build](#build)
+  - [Tests and linting](#tests-and-linting)
+  - [Deployment](#deployment)
+  - [Docker environment](#docker-environment)
+    - [Installation](#installation)
+    - [Dependenices](#dependenices)
+    - [Start and stop the containers](#start-and-stop-the-containers)
+    - [Running commands inside the container](#running-commands-inside-the-container)
+  - [Information](#information)
+    - [Support](#support)
+    - [Contributing](#contributing)
+    - [Documentation](#documentation)
+    - [Boilerplate](#boilerplate)
+    - [License](#license)
 
 ## Usage
 
 ```html
 <script src="./odh-tourism-detail.min.js"></script>
-
 <odh-tourism-detail></odh-tourism-detail>
 ```
 
@@ -34,6 +56,11 @@ List of content Ids separated by a comma. Example: "1,2,3"
 
 Type: String
 Default: null
+
+To find content IDs of the content types shown under `content-type` go to
+https://tourism.opendatahub.bz.it/swagger and look at the categories `Activity`,
+`Poi`, and `Gastronomy`. Make sure that the content type and the IDs match,
+otherwise you will get an empty result.
 
 #### category
 
@@ -75,7 +102,7 @@ To build the project, the following prerequisites must be met:
 
 For a ready to use Docker environment with all prerequisites already installed and prepared, you can check out the [Docker environment](#docker-environment) section.
 
-`### Source code`
+### Source code
 
 Get a copy of the repository:
 

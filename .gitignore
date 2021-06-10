@@ -16,7 +16,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-dist/demo.html
-dist/odh-tourism-detail.js
-dist/odh-tourism-detail.js.map
-dist/odh-tourism-detail.min.js.map
+# Do not ignore dist folders, since we need them to release the web component on
+# the main store
