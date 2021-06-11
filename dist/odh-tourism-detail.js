@@ -11539,7 +11539,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(node_modules_axios);
 // Some imports not used depending on template conditions
 // @ts-ignore
 
-const BASE_PATH = "http://tourism.opendatahub.bz.it/".replace(/\/+$/, "");
+const BASE_PATH = "https://tourism.opendatahub.bz.it/".replace(/\/+$/, "");
 /**
  *
  * @export
