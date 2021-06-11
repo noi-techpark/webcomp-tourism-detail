@@ -8,7 +8,9 @@
       </div>
       <span>{{ $t('back') }}</span>
     </div>
-    <div v-if="isItemEmpty" class="item-empty">{{ $t('noItemData')}}</div>
+    <div v-if="isItemEmpty && !isLoading" class="item-empty">
+      {{ $t('noItemData') }}
+    </div>
     <div v-else-if="item" class="item">
       <div class="title-container" :style="titleImage">
         <div class="title">
@@ -49,19 +51,14 @@
               class="altitude-difference icon"
             ></altitude-difference>
             <span class="prop-key">{{ $t('altitude') }}: </span>
-            <span class="text-dark"
-              >{{ item.Altitude }} m</span
-            >
+            <span class="text-dark">{{ item.Altitude }} m</span>
           </li>
           <li v-if="item.AltitudeDifference">
             <altitude-difference
               class="altitude-difference icon"
             ></altitude-difference>
             <span class="prop-key">{{ $t('props.AltitudeDifference') }}: </span>
-            <span class="text-dark"
-              >{{ item.AltitudeDifference
-              }} m</span
-            >
+            <span class="text-dark">{{ item.AltitudeDifference }} m</span>
           </li>
           <li v-if="item.AltitudeHighestPoint">
             <altitude-highest-point
@@ -70,10 +67,7 @@
             <span class="prop-key"
               >{{ $t('props.AltitudeHighestPoint') }}:
             </span>
-            <span class="text-dark"
-              >{{ item.AltitudeHighestPoint
-              }} m</span
-            >
+            <span class="text-dark">{{ item.AltitudeHighestPoint }} m</span>
           </li>
           <li v-if="item.AltitudeLowestPoint">
             <altitude-lowest-point
@@ -82,10 +76,7 @@
             <span class="prop-key"
               >{{ $t('props.AltitudeLowestPoint') }}:
             </span>
-            <span class="text-dark"
-              >{{ item.AltitudeLowestPoint
-              }} m</span
-            >
+            <span class="text-dark">{{ item.AltitudeLowestPoint }} m</span>
           </li>
           <li v-if="item.DistanceDuration">
             <distance-duration
@@ -324,6 +315,7 @@ export default {
       showImage: false,
       imageUrl: null,
       selectedImage: null,
+      isLoading: false,
     };
   },
   computed: {
@@ -468,6 +460,7 @@ export default {
     },
   },
   created() {
+    this.isLoading = true;
     if (this.contentType === 'Gastronomy') {
       this.loadGastronomyItem();
       this.loadGastronomyTypeList();
@@ -485,9 +478,10 @@ export default {
   methods: {
     loadGastronomyItem() {
       new GastronomyApi()
-        .gastronomyGetGastronomySingle(this.contentId, null, this.language)
+        .gastronomyGetGastronomySingle(this.contentId, '', this.language)
         .then((value) => {
           this.item = value.data;
+          this.isLoading = false;
         });
     },
     loadGastronomyTypeList() {
@@ -498,15 +492,19 @@ export default {
         });
     },
     loadPoiItem() {
-      new PoiApi().poiGetPoiSingle(this.contentId, null, this.language).then((value) => {
-        this.item = value.data;
-      });
+      new PoiApi()
+        .poiGetPoiSingle(this.contentId, '', this.language)
+        .then((value) => {
+          this.item = value.data;
+          this.isLoading = false;
+        });
     },
     loadActivityItem() {
       new ActivityApi()
-        .activityGetActivitySingle(this.contentId, null, this.language)
+        .activityGetActivitySingle(this.contentId, '', this.language)
         .then((value) => {
           this.item = value.data;
+          this.isLoading = false;
         });
     },
     close() {
