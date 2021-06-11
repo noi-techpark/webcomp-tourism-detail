@@ -62,9 +62,7 @@
               {{ getPoiShortInfo(item) }}
             </div>
           </div>
-          <div
-            class="arrow-icon"
-          >
+          <div class="arrow-icon">
             <arrow-icon-right viewBox="0 0 24 24" width="100%" height="100%" />
           </div>
         </div>
@@ -274,7 +272,7 @@ export default {
           null,
           null,
           '',
-          this.language,
+          this.language
         )
         .then((value) => {
           this.items = value?.data?.Items ?? [];
