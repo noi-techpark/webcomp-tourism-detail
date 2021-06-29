@@ -473,10 +473,10 @@ export default {
   filters: {
     dateFormat(dateString) {
       const d = new Date(dateString);
-      const day = d.getDate() < 10 ? "0" + d.getDate() : d.getDate();
+      const day = d.getDate() < 10 ? '0' + d.getDate() : d.getDate();
       let month = d.getMonth() + 1;
-      month = month < 10 ? "0" + month : month;
-      return `${day}/${month}/${d.getFullYear()}`
+      month = month < 10 ? '0' + month : month;
+      return `${day}/${month}/${d.getFullYear()}`;
     },
   },
   methods: {

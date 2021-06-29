@@ -21,12 +21,18 @@
   ],
   "image": "wcs-logo.png",
   "searchTags": [
-    "activities", "poi", "gastronomy"
+    "activities",
+    "poi",
+    "gastronomy"
   ],
   "dist": {
     "basePath": "dist",
     "files": [
-      "odh-tourism-detail.min.js"
+      "odh-tourism-detail.min.js",
+      "odh-tourism-detail.js.map",
+      "odh-tourism-detail.js",
+      "demo.html",
+      "odh-tourism-detail.min.js.map"
     ],
     "scripts": [
       {
