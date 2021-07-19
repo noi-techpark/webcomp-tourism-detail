@@ -230,10 +230,7 @@
       <small class="text">
         {{ $t('lastChange') }}: {{ item.LastChange | dateFormat }}
       </small>
-      <small class="text-id">
-        ID: {{ this.contentId }}
-      </small>
-
+      <small class="text-id"> ID: {{ this.contentId }} </small>
     </div>
     <image-detail
       :imgUrl="imageUrl"
