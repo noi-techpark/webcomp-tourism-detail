@@ -61,7 +61,7 @@
       {
         "key": "content-id-list",
         "type": "text",
-        "label": "List of content ids",
+        "label": "List of content ids (see bottom right of a detail card; must match with the content type)",
         "required": false,
         "options": {
           "default": ""
