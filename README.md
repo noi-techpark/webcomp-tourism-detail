@@ -1,6 +1,7 @@
 # Tourism Details
 
 [![REUSE status](https://api.reuse.software/badge/github.com/noi-techpark/webcomp-tourism-detail)](https://api.reuse.software/info/github.com/noi-techpark/webcomp-tourism-detail)
+[![CI](https://github.com/noi-techpark/webcomp-tourism-detail/actions/workflows/ci.yml/badge.svg)](https://github.com/noi-techpark/webcomp-tourism-detail/actions/workflows/ci.yml)
 
 A web component to display a list and details of gastronomy businesses,
 activities and points of interests located in South Tyrol. It is possible to
