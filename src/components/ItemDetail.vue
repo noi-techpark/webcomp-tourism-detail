@@ -321,7 +321,7 @@ export default {
   },
   computed: {
     titleImage() {
-      const image = this.item?.ImageGallery[0];
+      const image = this.item?.ImageGallery != null ? this.item?.ImageGallery[0] : null;
       if (image == null) {
         return {};
       } else {
