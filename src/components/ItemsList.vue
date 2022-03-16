@@ -375,7 +375,7 @@ export default {
       let categoryCodeIds = item.ActivityTypes.map((code) =>
         this.activityTypes.find((x) => x.Id === code.Id)
       );
-      categoryCodeIds = categoryCodeIds.filter(function(el) {
+      categoryCodeIds = categoryCodeIds.filter(function (el) {
         return el != null;
       });
       const categories = categoryCodeIds.map((category) => {
