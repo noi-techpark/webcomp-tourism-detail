@@ -152,6 +152,8 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
             if (radius !== undefined) {
                 localVarQueryParameter['radius'] = radius;
             }
+            
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -311,6 +313,8 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
                 localVarQueryParameter['searchfilter'] = searchfilter;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -439,6 +443,8 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
                 localVarQueryParameter['fields'] = fields;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -498,6 +504,8 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
                 localVarQueryParameter['language'] = language;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -551,6 +559,8 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
+
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -614,6 +624,8 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
             if (updatefrom !== undefined) {
                 localVarQueryParameter['updatefrom'] = updatefrom;
             }
+
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {

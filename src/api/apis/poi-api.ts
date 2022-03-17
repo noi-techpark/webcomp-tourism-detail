@@ -40,9 +40,12 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
 
             // authentication oauth2 required
             // oauth required
@@ -62,7 +65,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -79,7 +82,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
         poiGetAllPoiTypesSingle: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling poiGetAllPoiTypesSingle.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling poiGetAllPoiTypesSingle.');
             }
             const localVarPath = `/api/PoiTypes/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -89,9 +92,12 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
 
             // authentication oauth2 required
             // oauth required
@@ -111,7 +117,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -136,7 +142,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -165,6 +171,8 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
                 localVarQueryParameter['updatefrom'] = updatefrom;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -174,7 +182,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -214,7 +222,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -303,6 +311,8 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
                 localVarQueryParameter['searchfilter'] = searchfilter;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -312,7 +322,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -349,7 +359,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -426,6 +436,8 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
                 localVarQueryParameter['radius'] = radius;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -435,7 +447,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -470,7 +482,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -539,6 +551,8 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
                 localVarQueryParameter['suedtirolmobil'] = suedtirolmobil;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -548,7 +562,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -567,7 +581,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
         poiGetPoiSingle: async (id: string, fields?: string, language?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling poiGetPoiSingle.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling poiGetPoiSingle.');
             }
             const localVarPath = `/api/Poi/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -577,7 +591,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -607,7 +621,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -625,7 +639,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
         poiGetPoiSingleLocalized: async (id: string, language?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling poiGetPoiSingleLocalized.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling poiGetPoiSingleLocalized.');
             }
             const localVarPath = `/api/PoiLocalized/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -635,7 +649,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -652,6 +666,8 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
                 localVarQueryParameter['language'] = language;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -661,7 +677,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -675,7 +691,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
  * PoiApi - functional programming interface
  * @export
  */
-export const PoiApiFp = function(configuration?: Configuration) {
+export const PoiApiFp = function (configuration?: Configuration) {
     return {
         /**
          * 
@@ -686,7 +702,7 @@ export const PoiApiFp = function(configuration?: Configuration) {
         async poiGetAllPoiTypesList(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PoiTypes>>> {
             const localVarAxiosArgs = await PoiApiAxiosParamCreator(configuration).poiGetAllPoiTypesList(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = { ...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url };
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -700,7 +716,7 @@ export const PoiApiFp = function(configuration?: Configuration) {
         async poiGetAllPoiTypesSingle(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoiTypes>> {
             const localVarAxiosArgs = await PoiApiAxiosParamCreator(configuration).poiGetAllPoiTypesSingle(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = { ...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url };
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -717,7 +733,7 @@ export const PoiApiFp = function(configuration?: Configuration) {
         async poiGetAllPoisChanged(pagenumber?: number, pagesize?: number, seed?: string, updatefrom?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GBLTSPoi>>> {
             const localVarAxiosArgs = await PoiApiAxiosParamCreator(configuration).poiGetAllPoisChanged(pagenumber, pagesize, seed, updatefrom, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = { ...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url };
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -749,7 +765,7 @@ export const PoiApiFp = function(configuration?: Configuration) {
         async poiGetPoiFiltered(pagenumber?: number, pagesize?: number, poitype?: string, subtype?: string, idlist?: string, locfilter?: string, areafilter?: string, highlight?: boolean, odhtagfilter?: string, active?: boolean, odhactive?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, updatefrom?: string, searchfilter?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GBLTSPoi>>> {
             const localVarAxiosArgs = await PoiApiAxiosParamCreator(configuration).poiGetPoiFiltered(pagenumber, pagesize, poitype, subtype, idlist, locfilter, areafilter, highlight, odhtagfilter, active, odhactive, seed, latitude, longitude, radius, fields, language, updatefrom, searchfilter, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = { ...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url };
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -778,7 +794,7 @@ export const PoiApiFp = function(configuration?: Configuration) {
         async poiGetPoiLocalized(language?: string, pagenumber?: number, pagesize?: number, poitype?: string, subtype?: string, idlist?: string, locfilter?: string, areafilter?: string, highlight?: boolean, odhtagfilter?: string, active?: boolean, odhactive?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GBLTSActivityPoiLocalized>>> {
             const localVarAxiosArgs = await PoiApiAxiosParamCreator(configuration).poiGetPoiLocalized(language, pagenumber, pagesize, poitype, subtype, idlist, locfilter, areafilter, highlight, odhtagfilter, active, odhactive, seed, latitude, longitude, radius, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = { ...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url };
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -805,7 +821,7 @@ export const PoiApiFp = function(configuration?: Configuration) {
         async poiGetPoiReduced(language?: string, poitype?: string, subtype?: string, locfilter?: string, areafilter?: string, highlight?: boolean, odhtagfilter?: string, active?: boolean, odhactive?: boolean, latitude?: string, longitude?: string, radius?: string, fields?: string, suedtirolmobil?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ActivityPoiReduced>>> {
             const localVarAxiosArgs = await PoiApiAxiosParamCreator(configuration).poiGetPoiReduced(language, poitype, subtype, locfilter, areafilter, highlight, odhtagfilter, active, odhactive, latitude, longitude, radius, fields, suedtirolmobil, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = { ...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url };
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -821,7 +837,7 @@ export const PoiApiFp = function(configuration?: Configuration) {
         async poiGetPoiSingle(id: string, fields?: string, language?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GBLTSPoi>> {
             const localVarAxiosArgs = await PoiApiAxiosParamCreator(configuration).poiGetPoiSingle(id, fields, language, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = { ...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url };
                 return axios.request(axiosRequestArgs);
             };
         },
@@ -836,7 +852,7 @@ export const PoiApiFp = function(configuration?: Configuration) {
         async poiGetPoiSingleLocalized(id: string, language?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GBLTSActivityPoiLocalized>> {
             const localVarAxiosArgs = await PoiApiAxiosParamCreator(configuration).poiGetPoiSingleLocalized(id, language, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                const axiosRequestArgs = { ...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url };
                 return axios.request(axiosRequestArgs);
             };
         },
