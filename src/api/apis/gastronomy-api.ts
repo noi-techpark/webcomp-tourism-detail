@@ -310,6 +310,8 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
                 localVarQueryParameter['searchfilter'] = searchfilter;
             }
 
+            localVarQueryParameter['origin'] = "webcomp-tourism-detail";
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
