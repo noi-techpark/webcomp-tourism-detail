@@ -29,11 +29,7 @@
   "dist": {
     "basePath": "dist",
     "files": [
-      "odh-tourism-detail.min.js",
-      "odh-tourism-detail.js.map",
-      "odh-tourism-detail.js",
-      "demo.html",
-      "odh-tourism-detail.min.js.map"
+      "odh-tourism-detail.min.js"
     ],
     "scripts": [
       {
