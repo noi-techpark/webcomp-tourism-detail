@@ -18,6 +18,9 @@
       :pageSize="pageSize"
       :category="category"
       :currentPage="currentPage"
+      :withImageOnly="withImageOnly"
+      :enablePlaceholder="enablePlaceholder"
+      :locFilter="locFilter"
     />
   </div>
 </template>
@@ -52,7 +55,7 @@ export default Vue.extend({
   props: {
     contentType: {
       type: String,
-      default: 'Activity',
+      default: 'ODHActivityPoi',
     },
     contentIdList: {
       type: String,
@@ -70,6 +73,26 @@ export default Vue.extend({
       type: Number,
       default: 20,
     },
+    tagIdList: {
+      type: String,
+      default: null,
+    },
+    locFilter: {
+      type: String,
+      default: null,
+    },
+    sourceFilter: {
+      type: String,
+      default: null,
+    },
+    withImageOnly: {
+      type: Boolean,
+      default: false,
+    },
+    enablePlaceholder: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -85,6 +108,14 @@ export default Vue.extend({
     },
     islistAvailable() {
       return this.contentIds.length != 1;
+    },
+    tagIds() {
+      return this.tagIdList !== null
+        ? this.tagIdList.split(',').filter((e) => e)
+        : [];
+    },
+    istaglistAvailable() {
+      return this.tagIdList.length != 1;
     },
   },
   watch: {

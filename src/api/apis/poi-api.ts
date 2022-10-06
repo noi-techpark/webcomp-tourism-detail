@@ -33,7 +33,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          */
         poiGetAllPoiTypesList: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/PoiTypes`;
+            const localVarPath = `/v1/PoiTypes`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -84,7 +84,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (id === null || id === undefined) {
                 throw new RequiredError('id', 'Required parameter id was null or undefined when calling poiGetAllPoiTypesSingle.');
             }
-            const localVarPath = `/api/PoiTypes/{id}`
+            const localVarPath = `/v1/PoiTypes/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -135,7 +135,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          */
         poiGetAllPoisChanged: async (pagenumber?: number, pagesize?: number, seed?: string, updatefrom?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/PoiChanged`;
+            const localVarPath = `/v1/PoiChanged`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -194,7 +194,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
          * @summary GET Poi List
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, available Subtypes depends on the poitype BITMASK), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs, &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -215,7 +215,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          */
         poiGetPoiFiltered: async (pagenumber?: number, pagesize?: number, poitype?: string, subtype?: string, idlist?: string, locfilter?: string, areafilter?: string, highlight?: boolean, odhtagfilter?: string, active?: boolean, odhactive?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, updatefrom?: string, searchfilter?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Poi`;
+            const localVarPath = `/v1/Poi`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -335,7 +335,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, available Subtypes depends on the poitype BITMASK), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs, &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -352,7 +352,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          */
         poiGetPoiLocalized: async (language?: string, pagenumber?: number, pagesize?: number, poitype?: string, subtype?: string, idlist?: string, locfilter?: string, areafilter?: string, highlight?: boolean, odhtagfilter?: string, active?: boolean, odhactive?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/PoiLocalized`;
+            const localVarPath = `/v1/PoiLocalized`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -458,7 +458,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
          * 
          * @summary GET Poi List Reduced
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected poiType), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [areafilter] AreaFilter (Alternate Locfilter, can be combined with locfilter) (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), skr + SKIREGIONID &#x3D; (Filter by Skiregion), ska + SKIAREAID &#x3D; (Filter by Skiarea), are + AREAID &#x3D; (Filter by LTS Area), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -475,7 +475,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          */
         poiGetPoiReduced: async (language?: string, poitype?: string, subtype?: string, locfilter?: string, areafilter?: string, highlight?: boolean, odhtagfilter?: string, active?: boolean, odhactive?: boolean, latitude?: string, longitude?: string, radius?: string, fields?: string, suedtirolmobil?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/PoiReduced`;
+            const localVarPath = `/v1/PoiReduced`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -583,7 +583,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (id === null || id === undefined) {
                 throw new RequiredError('id', 'Required parameter id was null or undefined when calling poiGetPoiSingle.');
             }
-            const localVarPath = `/api/Poi/{id}`
+            const localVarPath = `/v1/Poi/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -641,7 +641,7 @@ export const PoiApiAxiosParamCreator = function (configuration?: Configuration) 
             if (id === null || id === undefined) {
                 throw new RequiredError('id', 'Required parameter id was null or undefined when calling poiGetPoiSingleLocalized.');
             }
-            const localVarPath = `/api/PoiLocalized/{id}`
+            const localVarPath = `/v1/PoiLocalized/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -742,7 +742,7 @@ export const PoiApiFp = function (configuration?: Configuration) {
          * @summary GET Poi List
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, available Subtypes depends on the poitype BITMASK), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs, &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -775,7 +775,7 @@ export const PoiApiFp = function (configuration?: Configuration) {
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, available Subtypes depends on the poitype BITMASK), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs, &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -802,7 +802,7 @@ export const PoiApiFp = function (configuration?: Configuration) {
          * 
          * @summary GET Poi List Reduced
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected poiType), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [areafilter] AreaFilter (Alternate Locfilter, can be combined with locfilter) (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), skr + SKIREGIONID &#x3D; (Filter by Skiregion), ska + SKIAREAID &#x3D; (Filter by Skiarea), are + AREAID &#x3D; (Filter by LTS Area), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -902,7 +902,7 @@ export const PoiApiFactory = function (configuration?: Configuration, basePath?:
          * @summary GET Poi List
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, available Subtypes depends on the poitype BITMASK), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs, &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -931,7 +931,7 @@ export const PoiApiFactory = function (configuration?: Configuration, basePath?:
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, available Subtypes depends on the poitype BITMASK), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs, &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -954,7 +954,7 @@ export const PoiApiFactory = function (configuration?: Configuration, basePath?:
          * 
          * @summary GET Poi List Reduced
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
-         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+         * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected poiType), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [areafilter] AreaFilter (Alternate Locfilter, can be combined with locfilter) (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), skr + SKIREGIONID &#x3D; (Filter by Skiregion), ska + SKIAREAID &#x3D; (Filter by Skiarea), are + AREAID &#x3D; (Filter by LTS Area), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -1046,7 +1046,7 @@ export class PoiApi extends BaseAPI {
      * @summary GET Poi List
      * @param {number} [pagenumber] Pagenumber, (default:1)
      * @param {number} [pagesize] Elements per Page, (default:10)
-     * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+     * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
      * @param {string} [subtype] Subtype of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, available Subtypes depends on the poitype BITMASK), (default:&#x27;null&#x27;)
      * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs, &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
      * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -1076,7 +1076,7 @@ export class PoiApi extends BaseAPI {
      * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
      * @param {number} [pagenumber] Pagenumber, (default:1)
      * @param {number} [pagesize] Elements per Page, (default:10)
-     * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+     * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
      * @param {string} [subtype] Subtype of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, available Subtypes depends on the poitype BITMASK), (default:&#x27;null&#x27;)
      * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs, &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
      * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -1100,7 +1100,7 @@ export class PoiApi extends BaseAPI {
      * 
      * @summary GET Poi List Reduced
      * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
-     * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/PoiTypes
+     * @param {string} [poitype] Type of the Poi (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK &#x27;Doctors, Pharmacies &#x3D; 1&#x27;,&#x27;Shops &#x3D; 2&#x27;,&#x27;Culture and sights&#x3D; 4&#x27;,&#x27;Nightlife and entertainment &#x3D; 8&#x27;,&#x27;Public institutions &#x3D; 16&#x27;,&#x27;Sports and leisure &#x3D; 32&#x27;,&#x27;Traffic and transport &#x3D; 64&#x27;, &#x27;Service providers&#x27; &#x3D; 128, &#x27;Craft&#x27; &#x3D; 256), (default:&#x27;511&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/PoiTypes
      * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected poiType), (default:&#x27;null&#x27;)
      * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
      * @param {string} [areafilter] AreaFilter (Alternate Locfilter, can be combined with locfilter) (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), skr + SKIREGIONID &#x3D; (Filter by Skiregion), ska + SKIAREAID &#x3D; (Filter by Skiarea), are + AREAID &#x3D; (Filter by LTS Area), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)

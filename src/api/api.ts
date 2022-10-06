@@ -14,4 +14,5 @@
  export * from './apis/activity-api';
  export * from './apis/gastronomy-api';
  export * from './apis/poi-api';
+ export * from './apis/odhactivitypoi-api';
 

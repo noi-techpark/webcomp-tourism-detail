@@ -32,7 +32,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -53,7 +53,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
          * @throws {RequiredError}
          */
         activityGetActivityFilteredLocalized: async (language?: string, pagenumber?: number, pagesize?: number, activitytype?: string, subtype?: string, idlist?: string, locfilter?: string, areafilter?: string, distancefilter?: string, altitudefilter?: string, durationfilter?: string, highlight?: boolean, difficultyfilter?: string, odhtagfilter?: string, active?: boolean, odhactive?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/ActivityLocalized`;
+            const localVarPath = `/v1/ActivityLocalized`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -177,7 +177,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
          * @param {string} [language] Language field selector, displays data and fields available in the selected language (default:&#x27;null&#x27; all languages are displayed)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -201,7 +201,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
          * @throws {RequiredError}
          */
         activityGetActivityList: async (language?: string, pagenumber?: number, pagesize?: number, activitytype?: string, subtype?: string, idlist?: string, locfilter?: string, areafilter?: string, distancefilter?: string, altitudefilter?: string, durationfilter?: string, highlight?: boolean, difficultyfilter?: string, odhtagfilter?: string, active?: boolean, odhactive?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, updatefrom?: string, searchfilter?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Activity`;
+            const localVarPath = `/v1/Activity`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -335,7 +335,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @summary GET Activity List Reduced
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [areafilter] AreaFilter (Alternate Locfilter, can be combined with locfilter) (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), skr + SKIREGIONID &#x3D; (Filter by Skiregion), ska + SKIAREAID &#x3D; (Filter by Skiarea), are + AREAID &#x3D; (Filter by LTS Area), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -355,7 +355,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
          * @throws {RequiredError}
          */
         activityGetActivityReduced: async (language?: string, activitytype?: string, subtype?: string, locfilter?: string, areafilter?: string, distancefilter?: string, altitudefilter?: string, durationfilter?: string, highlight?: boolean, difficultyfilter?: string, odhtagfilter?: string, active?: boolean, odhactive?: boolean, latitude?: string, longitude?: string, radius?: string, fields?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/ActivityReduced`;
+            const localVarPath = `/v1/ActivityReduced`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -475,7 +475,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling activityGetActivitySingle.');
             }
-            const localVarPath = `/api/Activity/{id}`
+            const localVarPath = `/v1/Activity/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -535,7 +535,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling activityGetActivitySingleLocalized.');
             }
-            const localVarPath = `/api/ActivityLocalized/{id}`
+            const localVarPath = `/v1/ActivityLocalized/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -589,7 +589,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
          * @throws {RequiredError}
          */
         activityGetAllActivityChanged: async (pagenumber?: number, pagesize?: number, seed?: string, updatefrom?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/ActivityChanged`;
+            const localVarPath = `/v1/ActivityChanged`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -650,7 +650,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
          * @throws {RequiredError}
          */
         activityGetAllActivityTypesList: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/ActivityTypes`;
+            const localVarPath = `/v1/ActivityTypes`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -698,7 +698,7 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling activityGetAllActivityTypesSingle.');
             }
-            const localVarPath = `/api/ActivityTypes/{id}`
+            const localVarPath = `/v1/ActivityTypes/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -750,7 +750,7 @@ export const ActivityApiFp = function(configuration?: Configuration) {
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -783,7 +783,7 @@ export const ActivityApiFp = function(configuration?: Configuration) {
          * @param {string} [language] Language field selector, displays data and fields available in the selected language (default:&#x27;null&#x27; all languages are displayed)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -817,7 +817,7 @@ export const ActivityApiFp = function(configuration?: Configuration) {
          * 
          * @summary GET Activity List Reduced
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [areafilter] AreaFilter (Alternate Locfilter, can be combined with locfilter) (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), skr + SKIREGIONID &#x3D; (Filter by Skiregion), ska + SKIAREAID &#x3D; (Filter by Skiarea), are + AREAID &#x3D; (Filter by LTS Area), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -933,7 +933,7 @@ export const ActivityApiFactory = function (configuration?: Configuration, baseP
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -962,7 +962,7 @@ export const ActivityApiFactory = function (configuration?: Configuration, baseP
          * @param {string} [language] Language field selector, displays data and fields available in the selected language (default:&#x27;null&#x27; all languages are displayed)
          * @param {number} [pagenumber] Pagenumber, (default:1)
          * @param {number} [pagesize] Elements per Page, (default:10)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -992,7 +992,7 @@ export const ActivityApiFactory = function (configuration?: Configuration, baseP
          * 
          * @summary GET Activity List Reduced
          * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
-         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+         * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
          * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
          * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
          * @param {string} [areafilter] AreaFilter (Alternate Locfilter, can be combined with locfilter) (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), skr + SKIREGIONID &#x3D; (Filter by Skiregion), ska + SKIAREAID &#x3D; (Filter by Skiarea), are + AREAID &#x3D; (Filter by LTS Area), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -1085,7 +1085,7 @@ export class ActivityApi extends BaseAPI {
      * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
      * @param {number} [pagenumber] Pagenumber, (default:1)
      * @param {number} [pagesize] Elements per Page, (default:10)
-     * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+     * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
      * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
      * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs), (default:&#x27;null&#x27;)
      * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -1115,7 +1115,7 @@ export class ActivityApi extends BaseAPI {
      * @param {string} [language] Language field selector, displays data and fields available in the selected language (default:&#x27;null&#x27; all languages are displayed)
      * @param {number} [pagenumber] Pagenumber, (default:1)
      * @param {number} [pagesize] Elements per Page, (default:10)
-     * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+     * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
      * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
      * @param {string} [idlist] IDFilter (Separator &#x27;,&#x27; List of Activity IDs), (default:&#x27;null&#x27;)
      * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
@@ -1146,7 +1146,7 @@ export class ActivityApi extends BaseAPI {
      * 
      * @summary GET Activity List Reduced
      * @param {string} [language] Localization Language, (default:&#x27;en&#x27;)
-     * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /api/ActivityTypes
+     * @param {string} [activitytype] Type of the Activity (&#x27;null&#x27; &#x3D; Filter disabled, possible values: BITMASK: &#x27;Mountains &#x3D; 1&#x27;,&#x27;Cycling &#x3D; 2&#x27;,&#x27;Local tours &#x3D; 4&#x27;,&#x27;Horses &#x3D; 8&#x27;,&#x27;Hiking &#x3D; 16&#x27;,&#x27;Running and fitness &#x3D; 32&#x27;,&#x27;Cross-country ski-track &#x3D; 64&#x27;,&#x27;Tobbogan run &#x3D; 128&#x27;,&#x27;Slopes &#x3D; 256&#x27;,&#x27;Lifts &#x3D; 512&#x27;), (default:&#x27;1023&#x27; &#x3D;&#x3D; ALL), REFERENCE TO: GET /v1/ActivityTypes
      * @param {string} [subtype] Subtype of the Activity (BITMASK Filter &#x3D; available SubTypes depends on the selected Activity Type), (default:&#x27;null&#x27;)
      * @param {string} [locfilter] Locfilter (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)
      * @param {string} [areafilter] AreaFilter (Alternate Locfilter, can be combined with locfilter) (Separator &#x27;,&#x27; possible values: reg + REGIONID &#x3D; (Filter by Region), tvs + TOURISMASSOCIATIONID &#x3D; (Filter by Tourismassociation), skr + SKIREGIONID &#x3D; (Filter by Skiregion), ska + SKIAREAID &#x3D; (Filter by Skiarea), are + AREAID &#x3D; (Filter by LTS Area), &#x27;null&#x27; &#x3D; No Filter), (default:&#x27;null&#x27;)

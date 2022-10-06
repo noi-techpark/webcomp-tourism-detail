@@ -18,6 +18,12 @@
       "email": "info@konverto.eu",
       "organization": "KONVERTO AG",
       "organizationUrl": "https://konverto.eu"
+    },
+    {
+      "name": "Rudi Thoeni",
+      "email": "r.thoeni@noi.bz",
+      "organization": "NOI AG",
+      "organizationUrl": "https://noi.bz.it"
     }
   ],
   "image": "wcs-logo.png",
@@ -85,6 +91,42 @@
             "it"
           ],
           "default": "de"
+        }
+      },
+      {
+        "key": "sourceFilter",
+        "type": "text",
+        "label": "sourceFilter",
+        "required": false,
+        "options": {
+          "default": null
+        }
+      },
+      {
+        "key": "locFilter",
+        "type": "text",
+        "label": "locFilter",
+        "required": false,
+        "options": {
+          "default": null
+        }
+      },
+      {
+        "key": "withImageOnly",
+        "type": "boolean",
+        "label": "withImageOnly",
+        "required": false,
+        "options": {
+          "default": false
+        }
+      },
+      {
+        "key": "enablePlaceholder",
+        "type": "boolean",
+        "label": "enablePlaceholder",
+        "required": false,
+        "options": {
+          "default": false
         }
       },
       {

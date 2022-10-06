@@ -8,3 +8,6 @@ export * from './gastronomy-localized';
 export * from './gastronomy-reduced';
 export * from './gastronomy-types';
 export * from './poi-types';
+export * from './smg-poi-types';
+export * from './odhactivity-poi-localized';
+export * from './odhactivity-poi';

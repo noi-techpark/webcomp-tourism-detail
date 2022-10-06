@@ -37,7 +37,7 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
          * @throws {RequiredError}
          */
         gastronomyGetAllGastronomyChanged: async (pagenumber?: number, pagesize?: number, seed?: string, updatefrom?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/GastronomyChanged`;
+            const localVarPath = `/v1/GastronomyChanged`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -98,7 +98,7 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
          * @throws {RequiredError}
          */
         gastronomyGetAllGastronomyTypesList: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/GastronomyTypes`;
+            const localVarPath = `/v1/GastronomyTypes`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -146,7 +146,7 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling gastronomyGetApiGastronomyTypesById.');
             }
-            const localVarPath = `/api/GastronomyTypes/{id}`
+            const localVarPath = `/v1/GastronomyTypes/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -210,7 +210,7 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
          * @throws {RequiredError}
          */
         gastronomyGetGastronomyList: async (pagenumber?: number, pagesize?: number, idlist?: string, locfilter?: string, dishcodefilter?: string, ceremonycodefilter?: string, categorycodefilter?: string, facilitycodefilter?: string, cuisinecodefilter?: string, odhtagfilter?: string, active?: boolean, odhactive?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, updatefrom?: string, searchfilter?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Gastronomy`;
+            const localVarPath = `/v1/Gastronomy`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -352,7 +352,7 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
          * @throws {RequiredError}
          */
         gastronomyGetGastronomyListLocalized: async (language?: string, pagenumber?: number, pagesize?: number, idlist?: string, locfilter?: string, dishcodefilter?: string, ceremonycodefilter?: string, categorycodefilter?: string, facilitycodefilter?: string, cuisinecodefilter?: string, odhtagfilter?: string, active?: boolean, odhactive?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/GastronomyLocalized`;
+            const localVarPath = `/v1/GastronomyLocalized`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -477,7 +477,7 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
          * @throws {RequiredError}
          */
         gastronomyGetGastronomyListReduced: async (language?: string, locfilter?: string, dishcodefilter?: string, ceremonycodefilter?: string, categorycodefilter?: string, facilitycodefilter?: string, cuisinecodefilter?: string, odhtagfilter?: string, active?: boolean, odhactive?: boolean, latitude?: string, longitude?: string, radius?: string, fields?: string, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/GastronomyReduced`;
+            const localVarPath = `/v1/GastronomyReduced`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -583,7 +583,7 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling gastronomyGetGastronomySingle.');
             }
-            const localVarPath = `/api/Gastronomy/{id}`
+            const localVarPath = `/v1/Gastronomy/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -641,7 +641,7 @@ export const GastronomyApiAxiosParamCreator = function (configuration?: Configur
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling gastronomyGetGastronomySingleLocalized.');
             }
-            const localVarPath = `/api/GastronomyLocalized/{id}`
+            const localVarPath = `/v1/GastronomyLocalized/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');

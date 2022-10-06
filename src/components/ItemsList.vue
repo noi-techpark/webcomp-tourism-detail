@@ -17,7 +17,8 @@
       >
         <hr class="solid" />
         <div class="list-item">
-          <div
+          <div v-if="enablePlaceholder">
+            <div
             v-if="item.ImageGallery === null || item.ImageGallery.length === 0"
           >
             <div class="thumbnail">
@@ -27,7 +28,7 @@
                 width="60px"
                 height="60px"
                 preserveAspectRatio="xMidYMid slice"
-                v-if="placeholderImage === 'gastro'"
+                v-if="item.ODHTags.find((x) => x.Id === 'gastronomy')"
               ></PlaceholderGastro>
               <PlaceholderActivity
                 class="activitySvg"
@@ -35,7 +36,7 @@
                 width="60px"
                 height="60px"
                 preserveAspectRatio="xMidYMid slice"
-                v-if="placeholderImage === 'activity'"
+                v-if="item.ODHTags.find((x) => x.Id === 'activity')"
               ></PlaceholderActivity>
               <POIPlaceholder
                 class="poiSvg"
@@ -43,13 +44,15 @@
                 width="60px"
                 height="60px"
                 preserveAspectRatio="xMidYMid slice"
-                v-if="placeholderImage === 'poi'"
+                v-if="item.ODHTags.find((x) => x.Id === 'poi')"
               ></POIPlaceholder>
             </div>
           </div>
           <div v-else>
             <img class="thumbnail" :src="item.ImageGallery[0].ImageUrl" />
           </div>
+          </div>
+         
           <div class="info">
             <div class="title">{{ getTitle(item, language) }}</div>
             <div v-if="contentType === 'Gastronomy'" class="short-info">
@@ -60,6 +63,9 @@
             </div>
             <div v-else-if="contentType === 'POI'" class="short-info">
               {{ getPoiShortInfo(item) }}
+            </div>
+            <div v-else-if="contentType === 'ODHActivityPoi'" class="short-info">
+              {{ getODHActivityPoiShortInfo(item) }}
             </div>
           </div>
           <div class="arrow-icon">
@@ -90,7 +96,7 @@
 </template>
 
 <script>
-import { ActivityApi, GastronomyApi, PoiApi } from '@/api';
+import { ActivityApi, GastronomyApi, PoiApi, ODHActivityPoiApi } from '@/api';
 import Paging from '@/components/Paging';
 import ArrowIconRight from '@/assets/img/arrow_right.svg';
 import PlaceholderGastro from '@/assets/img/gastro-placeholder.svg';
@@ -114,7 +120,7 @@ export default {
     },
     contentType: {
       type: String,
-      default: 'Gastronomy',
+      //default: 'Activity',
     },
     contentIdList: {
       type: String,
@@ -132,100 +138,91 @@ export default {
       type: Number,
       default: 1,
     },
+    locFilter: {
+      type: String,
+      default: null,
+    },
+    sourceFilter: {
+      type: String,
+      default: null,
+    },
+    withImageOnly: {
+      type: Boolean,
+      default: false,
+    },
+    enablePlaceholder: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
       items: [],
       gastronomyTypes: [],
       activityTypes: [],
+      odhactivitypoiTypes: [],
       totalPages: 0,
       isLoading: false,
     };
   },
-  created() {
-    if (this.contentType === 'Gastronomy') {
-      this.loadGastronomyTypeList();
-      this.loadGastronomyList(this.currentPage);
-    } else if (this.contentType === 'Activity') {
-      this.loadActivityTypeList();
-      this.loadActivityList(this.currentPage);
-    } else if (this.contentType === 'POI') {
-      this.loadPoiList(this.currentPage);
-    }
+  created() {   
+      this.loadODHActivityPoiList(this.currentPage);    
   },
-  computed: {
-    placeholderImage() {
-      if (this.contentType === 'Gastronomy') {
-        return 'gastro';
-      } else if (this.contentType === 'Activity') {
-        return 'activity';
-      } else {
-        return 'poi';
-      }
-    },
-  },
+  // computed: {
+  //   placeholderImage() {
+  //     if (this.contentType === 'Gastronomy') {
+  //       return 'gastro';
+  //     } else if (this.contentType === 'Activity') {
+  //       return 'activity';
+  //     } else {
+  //       return 'poi';
+  //     }
+  //   },
+  // },
   methods: {
     nextPage() {
       this.items = [];
-      if (this.contentType === 'Gastronomy') {
-        this.loadGastronomyList(this.currentPage + 1);
-      } else if (this.contentType === 'Activity') {
-        this.loadActivityList(this.currentPage + 1);
-      } else {
-        this.loadPoiList(this.currentPage + 1);
-      }
+      this.loadODHActivityPoiList(this.currentPage + 1);      
       this.$emit('change-current-page', this.currentPage + 1);
     },
     lastPage() {
       this.items = [];
-      if (this.contentType === 'Gastronomy') {
-        this.loadGastronomyList(this.currentPage - 1);
-      } else if (this.contentType === 'Activity') {
-        this.loadActivityList(this.currentPage - 1);
-      } else {
-        this.loadPoiList(this.currentPage - 1);
-      }
+      this.loadODHActivityPoiList(this.currentPage - 1);     
       this.$emit('change-current-page', this.currentPage - 1);
     },
     goToPage(pageNum) {
       this.items = [];
-      if (this.contentType === 'Gastronomy') {
-        this.loadGastronomyList(pageNum);
-      } else if (this.contentType === 'Activity') {
-        this.loadActivityList(pageNum);
-      } else {
-        this.loadPoiList(pageNum);
-      }
+      this.loadODHActivityPoiList(pageNum);     
       this.$emit('change-current-page', pageNum);
     },
     showDetail(contentId) {
       this.$emit('show-detail', contentId);
     },
-    loadActivityTypeList() {
-      const activityApi = new ActivityApi();
-      activityApi.activityGetAllActivityTypesList().then((value) => {
-        this.activityTypes = value.data;
-      });
+    loadODHActivityPoiTypeList() {
+      const odhactivityApi = new ODHActivityPoiApi();
+      odhactivityApi
+        .oDHActivityPoiGetAllODHActivityPoiTypesList()
+        .then((value) => {
+          this.odhactivitypoiTypes = value.data;
+        });
     },
-    loadActivityList(pageNum) {
+    loadODHActivityPoiList(pageNum) {
       this.isLoading = true;
-      const activityApi = new ActivityApi();
-      activityApi
-        .activityGetActivityList(
-          this.language,
+      const odhactivityApi = new ODHActivityPoiApi();
+      odhactivityApi
+        .oDHActivityPoiGetODHActivityPoiList(
           pageNum,
           this.pageSize,
           this.category,
           null,
+          null,
           this.contentIdList,
+          this.locFilter,
+          this.language,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
+          this.sourceFilter,
+          this.contentType != 'ODHActivityPoi' ? this.contentType.toLowerCase() : null,
           true,
           true,
           null,
@@ -233,8 +230,10 @@ export default {
           null,
           null,
           '',
+          this.language,
           null,
           null,
+          this.withImageOnly ? 'in(ImageGallery.[*].License,"CC0")' : null,
           []
         )
         .then((value) => {
@@ -250,69 +249,52 @@ export default {
         this.gastronomyTypes = value.data;
       });
     },
-    loadGastronomyList(pageNum) {
-      this.isLoading = true;
-      const gastronomyApi = new GastronomyApi();
-      gastronomyApi
-        .gastronomyGetGastronomyList(
-          pageNum,
-          this.pageSize,
-          this.contentIdList,
-          null,
-          null,
-          null,
-          this.category,
-          null,
-          null,
-          null,
-          true,
-          true,
-          null,
-          null,
-          null,
-          null,
-          '',
-          this.language
-        )
-        .then((value) => {
-          this.items = value?.data?.Items ?? [];
-          this.$emit('change-current-page', value?.data?.CurrentPage);
-          this.totalPages = value?.data?.TotalPages;
-          this.isLoading = false;
-        });
+    getODHActivityPoiShortInfo(item) {
+      const shortInfo = [];
+      shortInfo.push(...this.getODHActivityPoiTypes(item));
+      shortInfo.push(this.getODHActivityPoiLocationInfo(item)); 
+      if (item?.ContactInfos?.en?.Phonenumber) {
+        const telephone =
+          this.$t('phone') + ': ' + item.ContactInfos.en.Phonenumber;
+        shortInfo.push(telephone);
+      }
+      if (item?.ContactInfos[this.language]?.Url) {
+        const url = this.$t('web') + ': ' + item.ContactInfos[this.language]?.Url;
+        shortInfo.push(url);
+      }
+      if (item?.Difficulty) {
+        const difficulty = 'Difficulty: ' + item?.Difficulty;
+        shortInfo.push(difficulty);
+      }
+      return shortInfo.filter((info) => info != null).join(', ');
     },
-    loadPoiList(pageNum) {
-      this.isLoading = true;
-      const poiApi = new PoiApi();
-      poiApi
-        .poiGetPoiFiltered(
-          pageNum,
-          this.pageSize,
-          this.category,
-          null,
-          this.contentIdList,
-          null,
-          null,
-          null,
-          null,
-          true,
-          true,
-          null,
-          null,
-          null,
-          null,
-          '',
-          this.language,
-          null,
-          null,
-          []
-        )
-        .then((value) => {
-          this.items = value?.data?.Items ?? [];
-          this.$emit('change-current-page', value?.data?.CurrentPage);
-          this.totalPages = value?.data?.TotalPages;
-          this.isLoading = false;
-        });
+    getODHActivityPoiTypes(item) {      
+      const categories = [];      
+      
+      if (item?.AdditionalPoiInfos[this.language]?.Categories){
+        item?.AdditionalPoiInfos[this.language]?.Categories.forEach(
+          categoryname => categories.push(categoryname)
+          );        
+      }
+      return categories;
+    },
+    getODHActivityPoiLocationInfo(item) {      
+      let municipality = "";
+      let district = "";
+
+      if (item?.LocationInfo?.MunicipalityInfo?.Name[this.language]) {
+        municipality = item?.LocationInfo?.MunicipalityInfo?.Name[this.language];                       
+      }     
+      if (item?.LocationInfo?.DistrictInfo?.Name[this.language] ) {
+
+        if(municipality != item?.LocationInfo?.DistrictInfo?.Name[this.language])
+        district = ' - ' + item?.LocationInfo?.DistrictInfo?.Name[this.language];                
+      }     
+
+      const location =
+          this.$t('location') + ': ' + municipality + district; 
+
+      return location;
     },
     getGastronomyShortInfo(item) {
       const shortInfo = [];
