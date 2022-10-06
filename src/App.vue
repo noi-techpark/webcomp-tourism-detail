@@ -4,7 +4,7 @@
       v-if="detailContentId"
       :content-id="detailContentId"
       :is-list-available="islistAvailable"
-      :content-type="contentType"
+      :content-type="contentType"      
       :language="language"
       @close="closeDetail"
     />
@@ -17,10 +17,12 @@
       :contentIdList="contentIdList"
       :pageSize="pageSize"
       :category="category"
+      :loc-filter="locFilter"
+      :source-filter="sourceFilter"
       :currentPage="currentPage"
-      :withImageOnly="withImageOnly"
-      :enablePlaceholder="enablePlaceholder"
-      :locFilter="locFilter"
+      :with-image-only="withImageOnly"
+      :enable-placeholder="enablePlaceholder"
+      :tag-id-list="tagIdList"
     />
   </div>
 </template>
@@ -55,13 +57,21 @@ export default Vue.extend({
   props: {
     contentType: {
       type: String,
-      default: 'Gastronomy',
+      default: 'ODHActivityPoi',
     },
     contentIdList: {
       type: String,
       default: null,
     },
     category: {
+      type: String,
+      default: null,
+    },
+    locFilter: {
+      type: String,
+      default: null,
+    },
+    sourceFilter: {
       type: String,
       default: null,
     },
@@ -76,15 +86,7 @@ export default Vue.extend({
     tagIdList: {
       type: String,
       default: null,
-    },
-    locFilter: {
-      type: String,
-      default: null,
-    },
-    sourceFilter: {
-      type: String,
-      default: null,
-    },
+    },    
     withImageOnly: {
       type: Boolean,
       default: false,
@@ -115,7 +117,7 @@ export default Vue.extend({
         : [];
     },
     istaglistAvailable() {
-      return this.tagIdList.length != 1;
+      return this.tagIds.length != 1;
     },
   },
   watch: {

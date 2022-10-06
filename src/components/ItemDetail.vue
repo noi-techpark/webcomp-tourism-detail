@@ -7,7 +7,7 @@
         <arrow-icon-left viewBox="0 0 24 24" width="100%" height="40px" />
       </div>
       <span>{{ $t('back') }}</span>
-    </div>
+    </div>    
     <div v-if="isItemEmpty && !isLoading" class="item-empty">
       {{ $t('noItemData') }}
     </div>
@@ -111,7 +111,7 @@
             <span class="prop-key">{{ $t('phone') }}: </span>
             <span class="text-dark">{{ itemContactInfos.Phonenumber }}</span>
           </li>
-          <li v-if="this.contentType === 'Gastronomy'">
+          <li v-if="item.ODHTags.find((x) => x.Id === 'gastronomy')">
             <calendar class="calendar icon"></calendar>
             <span v-if="isGastronomyItemOpen === true" style="color: #9BC320">{{
               $t(`scheduleTypes.1`)
@@ -143,7 +143,7 @@
       ></div>
 
       <!-- COMMON -->
-      <div v-if="contentType === 'Gastronomy' && isGastronomyItemOpen.length">
+      <div v-if="item.ODHTags.find((x) => x.Id === 'gastronomy') && isGastronomyItemOpen.length">
         <div class="subtitle">{{ $t('operationSchedule') }}</div>
         <div>
           <div v-for="(schedule, i) of isGastronomyItemOpen" :key="i">
@@ -255,7 +255,7 @@ import DistanceLength from '@/assets/img/ic_distanceduration.svg';
 import MapIcon from '@/assets/img/ic_map.svg';
 import Phone from '@/assets/img/ic_phone.svg';
 import Difficulty from '@/assets/img/ic_difficulty.svg';
-import { GastronomyApi, PoiApi, ActivityApi } from '@/api';
+import { GastronomyApi, PoiApi, ActivityApi, ODHActivityPoiApi } from '@/api';
 import ImageDetail from '@/components/ImageDetail';
 
 const GASTRONOMY_TYPES = [
@@ -462,7 +462,10 @@ export default {
   },
   created() {
     this.isLoading = true;
-    if (this.contentType === 'Gastronomy') {
+    if(this.contentType === 'ODHActivityPoi'){
+      this.loadODHActivityPoiItem();
+    }
+    else if ( this.contentType === 'Gastronomy') {
       this.loadGastronomyItem();
       this.loadGastronomyTypeList();
     } else if (this.contentType === 'POI') {
@@ -481,6 +484,14 @@ export default {
     },
   },
   methods: {
+    loadODHActivityPoiItem() {
+      new ODHActivityPoiApi()
+        .oDHActivityPoiGetODHActivityPoiSingle(this.contentId, '', this.language)
+        .then((value) => {
+          this.item = value.data;
+          this.isLoading = false;
+        });
+    },
     loadGastronomyItem() {
       new GastronomyApi()
         .gastronomyGetGastronomySingle(this.contentId, '', this.language)

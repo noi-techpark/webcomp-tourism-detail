@@ -95,25 +95,25 @@
         }
       },
       {
-        "key": "sourceFilter",
+        "key": "source-filter",
         "type": "text",
         "label": "sourceFilter",
         "required": false,
         "options": {
-          "default": null
+          "default": ""
         }
       },
       {
-        "key": "locFilter",
+        "key": "loc-filter",
         "type": "text",
         "label": "locFilter",
         "required": false,
         "options": {
-          "default": null
+          "default": ""
         }
       },
       {
-        "key": "withImageOnly",
+        "key": "with-image-only",
         "type": "null",
         "label": "Display only data where Images are available",
         "required": false,
@@ -122,7 +122,7 @@
         }
       },
       {
-        "key": "enablePlaceholder",
+        "key": "enable-placeholder",
         "type": "null",        
         "label": "Enable Image Placeholder",
         "required": false,

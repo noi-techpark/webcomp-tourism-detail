@@ -1,6 +1,7 @@
 <template>
   <div class="list">
     <h2 class="page-title">{{ $t(contentType) }}</h2>
+    <h3>parameter: {{ contentType }} - {{ language }} - {{ category }} - {{ sourceFilter }} - {{ locFilter }} - {{ withImageOnly }}</h3>
     <paging
       :current-page="currentPage"
       :total-pages="totalPages"
@@ -134,10 +135,6 @@ export default {
       type: String,
       default: null,
     },
-    currentPage: {
-      type: Number,
-      default: 1,
-    },
     locFilter: {
       type: String,
       default: null,
@@ -146,6 +143,10 @@ export default {
       type: String,
       default: null,
     },
+    currentPage: {
+      type: Number,
+      default: 1,
+    },    
     withImageOnly: {
       type: Boolean,
       default: false,
