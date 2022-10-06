@@ -59,10 +59,10 @@
               {{ getGastronomyShortInfo(item) }}
             </div>
             <div v-else-if="contentType === 'Activity'" class="short-info">
-              {{ getActivityShortInfo(item) }}
+              {{ getODHActivityPoiShortInfo(item) }}
             </div>
             <div v-else-if="contentType === 'POI'" class="short-info">
-              {{ getPoiShortInfo(item) }}
+              {{ getODHActivityPoiShortInfo(item) }}
             </div>
             <div v-else-if="contentType === 'ODHActivityPoi'" class="short-info">
               {{ getODHActivityPoiShortInfo(item) }}
@@ -329,30 +329,7 @@ export default {
         }
       });
       return categories;
-    },
-    getActivityShortInfo(item) {
-      const shortInfo = [];
-      shortInfo.push(...this.getActivityTypes(item));
-      if (item?.ContactInfos?.[this.language]?.City) {
-        const location =
-          this.$t('location') + ': ' + item.ContactInfos?.[this.language].City;
-        shortInfo.push(location);
-      }
-      if (item?.ContactInfos?.en?.Phonenumber) {
-        const telephone =
-          this.$t('phone') + ': ' + item.ContactInfos.en.Phonenumber;
-        shortInfo.push(telephone);
-      }
-      if (item?.ContactInfos?.en?.Url) {
-        const url = this.$t('web') + ': ' + item.ContactInfos.en.Url;
-        shortInfo.push(url);
-      }
-      if (item?.Difficulty) {
-        const difficulty = 'Difficulty: ' + item?.Difficulty;
-        shortInfo.push(difficulty);
-      }
-      return shortInfo.filter((info) => info != null).join(', ');
-    },
+    },    
     getActivityTypes(item) {
       let categoryCodeIds = item.ActivityTypes.map((code) =>
         this.activityTypes.find((x) => x.Id === code.Id)
@@ -373,24 +350,6 @@ export default {
     },
     getTitle(item, language) {
       return item?.Detail?.[language]?.Title ?? '';
-    },
-    getPoiShortInfo(item) {
-      const shortInfo = [];
-      shortInfo.push(...this.getPoiTypes(item));
-      if (item?.ContactInfos?.[this.language]?.City) {
-        shortInfo.push(
-          this.$t('location') + ': ' + item.ContactInfos?.[this.language].City
-        );
-      }
-      if (item?.ContactInfos?.en?.Phonenumber) {
-        shortInfo.push(
-          this.$t('phone') + ': ' + item.ContactInfos.en.Phonenumber
-        );
-      }
-      if (item?.ContactInfos?.en?.Url) {
-        shortInfo.push(this.$t('web') + ': ' + item.ContactInfos.en.Url);
-      }
-      return shortInfo.filter((info) => info != null).join(', ');
     },
     getPoiTypes(item) {
       const poiType = item.AdditionalPoiInfos[this.language].MainType;
