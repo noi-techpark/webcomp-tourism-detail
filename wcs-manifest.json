@@ -114,20 +114,20 @@
       },
       {
         "key": "withImageOnly",
-        "type": "bool",
+        "type": "null",
+        "label": "Display only data where Images are available",
         "required": false,
-        "options": {
-          "label": "withImageOnly",
+        "options": {          
           "default": false
         }
       },
       {
         "key": "enablePlaceholder",
-        "type": "bool",        
+        "type": "null",        
+        "label": "Enable Image Placeholder",
         "required": false,
-        "options": {
-          "label": "enablePlaceholder",
-          "default": false
+        "options": {          
+          "default": true
         }
       },
       {

@@ -56,7 +56,7 @@
           <div class="info">
             <div class="title">{{ getTitle(item, language) }}</div>
             <div v-if="contentType === 'Gastronomy'" class="short-info">
-              {{ getGastronomyShortInfo(item) }}
+              {{ getODHActivityPoiShortInfo(item) }}
             </div>
             <div v-else-if="contentType === 'Activity'" class="short-info">
               {{ getODHActivityPoiShortInfo(item) }}
@@ -165,8 +165,7 @@ export default {
       isLoading: false,
     };
   },
-  created() {   
-      this.loadODHActivityPoiList(this.currentPage);    
+  created() {        this.loadODHActivityPoiList(this.currentPage);    
   },
   // computed: {
   //   placeholderImage() {
@@ -252,6 +251,7 @@ export default {
     getODHActivityPoiShortInfo(item) {
       const shortInfo = [];
       shortInfo.push(...this.getODHActivityPoiTypes(item));
+      //shortInfo.push(...this.getGastronomyTypes(item));
       shortInfo.push(this.getODHActivityPoiLocationInfo(item)); 
       if (item?.ContactInfos?.en?.Phonenumber) {
         const telephone =
@@ -295,41 +295,22 @@ export default {
           this.$t('location') + ': ' + municipality + district; 
 
       return location;
-    },
-    getGastronomyShortInfo(item) {
-      const shortInfo = [];
-      shortInfo.push(...this.getGastronomyTypes(item));
-      if (item?.ContactInfos?.[this.language]?.City) {
-        const location =
-          this.$t('location') + ': ' + item.ContactInfos?.[this.language].City;
-        shortInfo.push(location);
-      }
-      if (item?.ContactInfos?.en?.Phonenumber) {
-        const telephone =
-          this.$t('phone') + ': ' + item.ContactInfos.en.Phonenumber;
-        shortInfo.push(telephone);
-      }
-      if (item?.ContactInfos?.en?.Url) {
-        const url = this.$t('web') + ': ' + item.ContactInfos.en.Url;
-        shortInfo.push(url);
-      }
-      return shortInfo.filter((info) => info != null).join(', ');
-    },
-    getGastronomyTypes(item) {
-      const categoryCodeIds = item.CategoryCodes.map((code) =>
-        this.gastronomyTypes.find((x) => x.Id === code.Id)
-      );
-      const categories = categoryCodeIds.map((category) => {
-        if (this.language === 'de') {
-          return category?.TypeDesc?.de ?? '-';
-        } else if (this.language === 'it') {
-          return category?.TypeDesc?.it ?? '-';
-        } else {
-          return category?.TypeDesc?.en ?? '-';
-        }
-      });
-      return categories;
-    },    
+    },   
+    // getGastronomyTypes(item) {
+    //   const categoryCodeIds = item.CategoryCodes.map((code) =>
+    //     this.gastronomyTypes.find((x) => x.Id === code.Id)
+    //   );
+    //   const categories = categoryCodeIds.map((category) => {
+    //     if (this.language === 'de') {
+    //       return category?.TypeDesc?.de ?? '-';
+    //     } else if (this.language === 'it') {
+    //       return category?.TypeDesc?.it ?? '-';
+    //     } else {
+    //       return category?.TypeDesc?.en ?? '-';
+    //     }
+    //   });
+    //   return categories;
+    // },    
     getActivityTypes(item) {
       let categoryCodeIds = item.ActivityTypes.map((code) =>
         this.activityTypes.find((x) => x.Id === code.Id)
