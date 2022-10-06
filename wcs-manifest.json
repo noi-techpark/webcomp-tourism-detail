@@ -113,19 +113,19 @@
       },
       {
         "key": "withImageOnly",
-        "type": "boolean",
-        "label": "withImageOnly",
+        "type": "bool",
         "required": false,
         "options": {
+          "label": "withImageOnly",
           "default": false
         }
       },
       {
         "key": "enablePlaceholder",
-        "type": "boolean",
-        "label": "enablePlaceholder",
+        "type": "bool",        
         "required": false,
         "options": {
+          "label": "enablePlaceholder",
           "default": false
         }
       },
