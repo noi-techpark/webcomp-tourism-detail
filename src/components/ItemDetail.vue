@@ -26,15 +26,20 @@
             </div>
           </div>
           <!-- POI / Activity -->
-          <div v-if="itemAdditionalPoiInfos">
-            <div v-if="itemAdditionalPoiInfos.MainType" class="props">
+          <div v-if="itemCategoryInfos">
+
+            <div v-if="itemCategoryInfos.length > 1" class="props">
+              <span class="prop-key">{{ $t('categories') }}:</span
+              >{{ itemCategoryInfos }}
+            </div>
+            <!-- <div v-if="itemAdditionalPoiInfos.MainType" class="props">
               <span class="prop-key">{{ $t('category') }}:</span
               >{{ itemAdditionalPoiInfos.MainType }}
             </div>
             <div v-if="itemAdditionalPoiInfos.SubType" class="props">
               <span class="prop-key">{{ $t('subcategory') }}:</span
               >{{ itemAdditionalPoiInfos.SubType }}
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -99,6 +104,11 @@
             <span class="prop-key">{{ $t('location') }}: </span>
             <span class="text-dark">{{ itemContactInfos.City }}</span>
           </li>
+          <li v-if="itemMunicpalityInfos">
+            <map-icon class="map-icon icon"></map-icon>
+            <span class="prop-key">{{ $t('location') }}: </span>
+            <span class="text-dark">{{ itemMunicpalityInfos }}</span>
+          </li>
           <li v-if="itemContactInfos.Url">
             <external-link class="external-link icon"></external-link>
             <span class="prop-key">{{ $t('web') }}: </span>
@@ -111,7 +121,7 @@
             <span class="prop-key">{{ $t('phone') }}: </span>
             <span class="text-dark">{{ itemContactInfos.Phonenumber }}</span>
           </li>
-          <li v-if="item.ODHTags.find((x) => x.Id === 'gastronomy')">
+          <li v-if="item.ODHTags.find((x) => x.Id === 'gastronomy') && isGastronomyItemOpen != null">
             <calendar class="calendar icon"></calendar>
             <span v-if="isGastronomyItemOpen === true" style="color: #9BC320">{{
               $t(`scheduleTypes.1`)
@@ -120,7 +130,7 @@
               $t(`scheduleTypes.2`)
             }}</span>
           </li>
-          <li v-else-if="item.IsOpen != null">
+          <!-- <li v-else-if="item.IsOpen != null">
             <calendar class="calendar icon"></calendar>
             <span
               :style="[
@@ -132,7 +142,7 @@
                   : $t('scheduleTypes.2')
               }}</span
             >
-          </li>
+          </li> -->
         </ul>
       </div>
 
@@ -143,7 +153,7 @@
       ></div>
 
       <!-- COMMON -->
-      <div v-if="item.ODHTags.find((x) => x.Id === 'gastronomy') && isGastronomyItemOpen.length">
+      <div v-if="item.ODHTags.find((x) => x.Id === 'gastronomy') && isGastronomyItemOpen != null && isGastronomyItemOpen.length">
         <div class="subtitle">{{ $t('operationSchedule') }}</div>
         <div>
           <div v-for="(schedule, i) of isGastronomyItemOpen" :key="i">
@@ -270,7 +280,7 @@ const SCHEDULE_DAYS = [
   'Monday',
   'Tuesday',
   'Wednesday',
-  'Thuresday',
+  'Thursday',
   'Friday',
   'Saturday',
   'Sunday',
@@ -344,6 +354,21 @@ export default {
     },
     itemContactInfos() {
       return this.item?.ContactInfos?.[this.language] || {};
+    },
+    itemMunicpalityInfos() {
+      return this.item?.LocationInfo?.MunicipalityInfo?.Name[this.language] || {};
+    },
+    itemRegionInfos() {
+      return this.item?.LocationInfo?.RegionInfo?.Name[this.language] || {};
+    },
+    itemTvInfos() {
+      return this.item?.LocationInfo?.TvInfo?.Name[this.language] || {};
+    },
+    itemDistrictInfos() {
+      return this.item?.LocationInfo?.DistrictInfo?.Name[this.language] || {};
+    },
+    itemCategoryInfos() {
+      return this.item?.AdditionalPoiInfos[this.language]?.Categories || {};
     },
     googleMapsLink() {
       return this.item?.Latitude && this.item?.Longitude
@@ -425,7 +450,7 @@ export default {
       })).filter((t) => t.values.length);
     },
     isGastronomyItemOpen() {
-      const schedules = this.item.OperationSchedule.filter((s) => {
+      const schedules = this.item.OperationSchedule?.filter((s) => {
         const start = new Date(s.Start);
         const stop = new Date(s.Stop);
         const now = new Date();
@@ -437,12 +462,15 @@ export default {
         );
       });
       const schedule =
-        schedules !== null && schedules.length > 0 ? schedules[0] : null;
-      let open = false;
+       schedules !== undefined && schedules !== null && schedules.length > 0 ? schedules[0] : null;
+      let open = null;
       if (schedule !== null) {
         for (const time of schedule.OperationScheduleTime) {
           if (time.State === 1) {
             open = true;
+          }
+          else if (time.State === 2) {
+            open = false;
           }
         }
       }
@@ -462,7 +490,7 @@ export default {
   },
   created() {
     this.isLoading = true;
-    if(this.contentType === 'ODHActivityPoi'){
+    if(this.contentType === 'All'){
       this.loadODHActivityPoiItem();
     }
     else if ( this.contentType === 'Gastronomy') {

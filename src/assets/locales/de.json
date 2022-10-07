@@ -30,7 +30,7 @@
         "Monday": "Mo",
         "Tuesday": "Di",
         "Wednesday": "Mi",
-        "Thuresday": "Do",
+        "Thursday": "Do",
         "Friday": "Fr",
         "Saturday": "Sa",
         "Sunday": "So"
@@ -43,6 +43,7 @@
     "Gastronomy": "Gastronomie",
     "Activity": "Aktivitäten",
     "ODHActivityPoi": "Aktivitäten & Pois",
+    "All": "Aktivitäten & Pois",
     "POI": "Interessante Orte",
     "props": {
         "AltitudeDifference": "Höhendifferenz",
@@ -74,5 +75,6 @@
     "from": "Von",
     "to": "Bis",
     "persons": "Personen",
-    "noItemData": "Keine Daten für die eingestellte Sprache vorhanden"
+    "noItemData": "Keine Daten für die eingestellte Sprache vorhanden",
+    "searchOdhActivityPoi": "Suche"
 }

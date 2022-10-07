@@ -53,9 +53,9 @@
         "label": "Type of list items",
         "required": false,
         "options": {
-          "default": "ODHActivityPoi",
+          "default": "All",
           "values": [
-            "ODHActivityPoi",
+            "All",
             "Gastronomy",
             "Activity",
             "POI"

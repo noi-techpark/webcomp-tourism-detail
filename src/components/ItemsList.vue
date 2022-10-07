@@ -81,7 +81,7 @@
             <div v-else-if="contentType === 'POI'" class="short-info">
               {{ getODHActivityPoiShortInfo(item) }}
             </div>
-            <div v-else-if="contentType === 'ODHActivityPoi'" class="short-info">
+            <div v-else-if="contentType === 'All'" class="short-info">
               {{ getODHActivityPoiShortInfo(item) }}
             </div>
           </div>
@@ -249,7 +249,7 @@ export default {
           null,
           null,
           this.sourceFilter,
-          this.contentType != 'ODHActivityPoi' ? this.contentType.toLowerCase() : null,
+          this.contentType != 'All' ? this.contentType.toLowerCase() : null,
           true,
           true,
           null,

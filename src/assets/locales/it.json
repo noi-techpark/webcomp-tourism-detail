@@ -30,7 +30,7 @@
     "Monday": "Lun",
     "Tuesday": "Mar",
     "Wednesday": "Mer",
-    "Thuresday": "Gio",
+    "Thursday": "Gio",
     "Friday": "Ven",
     "Saturday": "Sab",
     "Sunday": "Do"
@@ -43,6 +43,8 @@
   "Gastronomy": "Gastronomia",
   "Activity": "Attività",
   "POI": "Punti di interesse",
+  "ODHActivityPoi": "Attività e Punti di interesse",
+  "All": "Attività e Punti di interesse",
   "props": {
     "AltitudeDifference": "Differenza di altezza",
     "AltitudeLowestPoint": "Punto più basso",

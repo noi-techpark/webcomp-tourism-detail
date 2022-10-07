@@ -58,7 +58,7 @@ export default Vue.extend({
   props: {
     contentType: {
       type: String,
-      default: 'ODHActivityPoi',
+      default: 'All',
     },
     contentIdList: {
       type: String,
