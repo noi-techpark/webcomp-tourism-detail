@@ -1,7 +1,23 @@
 <template>
   <div class="list">
     <h2 class="page-title">{{ $t(contentType) }}</h2>
-    <h3>parameter: {{ contentType }} - {{ language }} - {{ category }} - {{ sourceFilter }} - {{ locFilter }} - {{ withImageOnly }}</h3>
+    <!-- <h3>parameter: {{ contentType }} - {{ language }} - {{ category }} - {{ sourceFilter }} - {{ locFilter }} - {{ withImageOnly }}</h3> -->
+    <div class="search-bar">
+      <input
+        type="text"
+        class="search-input"
+        :placeholder="$t('searchOdhActivityPoi')"
+        v-model="searchInput"
+        @keyup="searchODHActivityPoiList"
+      />
+      <div class="search-button">
+        <search-icon
+          @click="loadODHActivityPoiList(currentPage)"
+          width="24px"
+          height="24pxs"
+        ></search-icon>
+      </div>
+    </div>
     <paging
       :current-page="currentPage"
       :total-pages="totalPages"
@@ -97,13 +113,14 @@
 </template>
 
 <script>
-import { ActivityApi, GastronomyApi, PoiApi, ODHActivityPoiApi } from '@/api';
+import { GastronomyApi, ODHActivityPoiApi } from '@/api';
 import Paging from '@/components/Paging';
 import ArrowIconRight from '@/assets/img/arrow_right.svg';
 import PlaceholderGastro from '@/assets/img/gastro-placeholder.svg';
 import PlaceholderActivity from '@/assets/img/Activity-Placeholder.svg';
 import POIPlaceholder from '@/assets/img/POI-Placeholder.svg';
 import Spinner from '@/components/Spinner';
+import SearchIcon from '@/assets/img/ic_search.svg';
 
 export default {
   components: {
@@ -113,6 +130,7 @@ export default {
     PlaceholderGastro,
     PlaceholderActivity,
     POIPlaceholder,
+    SearchIcon,
   },
   props: {
     language: {
@@ -164,6 +182,7 @@ export default {
       odhactivitypoiTypes: [],
       totalPages: 0,
       isLoading: false,
+      searchInput: '',
     };
   },
   created() {        this.loadODHActivityPoiList(this.currentPage);    
@@ -197,6 +216,10 @@ export default {
     },
     showDetail(contentId) {
       this.$emit('show-detail', contentId);
+    },
+    searchODHActivityPoiList() {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(this.loadODHActivityPoiList, 300, 1);
     },
     loadODHActivityPoiTypeList() {
       const odhactivityApi = new ODHActivityPoiApi();
@@ -232,7 +255,7 @@ export default {
           '',
           this.language,
           null,
-          null,
+          this.searchInput,
           this.withImageOnly ? 'in(ImageGallery.[*].License,"CC0")' : null,
           []
         )
@@ -508,5 +531,34 @@ hr.solid {
   max-height: 40px;
   max-width: 40px;
   display: flex;
+}
+
+input:focus {
+  outline: none;
+}
+
+.search-bar {
+  width: 100%;
+  margin: 16px;
+  display: flex;
+  border: 1px solid #e8ecf1;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  flex-grow: 1;
+}
+
+.search-button {
+  padding-top: 4px;
+  padding-right: 20px;
+  cursor: pointer;
+  min-width: 24px;
+  max-width: 24px;
+  min-height: 24px;
+  max-height: 24px;
 }
 </style>
