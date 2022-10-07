@@ -74,7 +74,7 @@
       {
         "key": "category",
         "type": "text",
-        "label": "Maincategory.\n BITMASK: 1 = Wellness, 2 = Winter, 4 = Summer, 8 = Culture, 16 = Other, 32 = Gastronomy, 64 = Mobility, 128 = Shops and services, Default: null <a href='https://github.com/noi-techpark/odh-docs/wiki/ODHActivityPoi#filtering'>tst url</a>",
+        "label": "Maincategory.\n BITMASK: 1 = Wellness, 2 = Winter, 4 = Summer, 8 = Culture, 16 = Other, 32 = Gastronomy, 64 = Mobility, 128 = Shops and services, Default: null",
         "required": false,
         "options": {
           "default": ""
@@ -118,7 +118,7 @@
             "sta",
             "archapp"
           ],
-          "default": "de"
+          "default": null
         }
       },
       {
