@@ -371,8 +371,8 @@ export default {
       return this.item?.AdditionalPoiInfos[this.language]?.Categories || {};
     },
     googleMapsLink() {
-      return this.item?.Latitude && this.item?.Longitude
-        ? `https://www.google.com/maps/search/?api=1&query=${this.item.Latitude},${this.item.Longitude}`
+      return this.item?.GpsPoints['position']?.Latitude && this.item?.GpsPoints['position']?.Longitude
+        ? `https://www.google.com/maps/search/?api=1&query=${this.item.GpsPoints['position']?.Latitude},${this.item.GpsPoints['position']?.Longitude}`
         : null;
     },
     itemAdditionalPoiInfos() {
