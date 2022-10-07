@@ -17,6 +17,7 @@
       :contentIdList="contentIdList"
       :pageSize="pageSize"
       :category="category"
+      :subcategory="subcategory"
       :loc-filter="locFilter"
       :source-filter="sourceFilter"
       :currentPage="currentPage"
@@ -64,6 +65,10 @@ export default Vue.extend({
       default: null,
     },
     category: {
+      type: String,
+      default: null,
+    },
+    subcategory: {
       type: String,
       default: null,
     },

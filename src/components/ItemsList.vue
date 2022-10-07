@@ -153,6 +153,10 @@ export default {
       type: String,
       default: null,
     },
+    subcategory: {
+      type: String,
+      default: null,
+    },
     locFilter: {
       type: String,
       default: null,
@@ -237,7 +241,7 @@ export default {
           pageNum,
           this.pageSize,
           this.category,
-          null,
+          this.subcategory,
           null,
           this.contentIdList,
           this.locFilter,
