@@ -104,7 +104,7 @@
             <span class="prop-key">{{ $t('location') }}: </span>
             <span class="text-dark">{{ itemContactInfos.City }}</span>
           </li>
-          <li v-if="itemMunicpalityInfos">
+          <li v-if="itemMunicpalityInfos && itemContactInfos.City == null">
             <map-icon class="map-icon icon"></map-icon>
             <span class="prop-key">{{ $t('location') }}: </span>
             <span class="text-dark">{{ itemMunicpalityInfos }}</span>
@@ -130,19 +130,15 @@
               $t(`scheduleTypes.2`)
             }}</span>
           </li>
-          <!-- <li v-else-if="item.IsOpen != null">
+          <li v-else-if="item.IsOpen != null">
             <calendar class="calendar icon"></calendar>
-            <span
-              :style="[
-                item.IsOpen === true ? { color: '#9BC320' } : { color: 'red' },
-              ]"
-              >{{
-                item.IsOpen === true
-                  ? $t('scheduleTypes.1')
-                  : $t('scheduleTypes.2')
-              }}</span
-            >
-          </li> -->
+            <span v-if="item.IsOpen === true" style="color: '#9BC320'">{{ 
+              $t('scheduleTypes.1')
+            }}</span>
+            <span v-if="item.IsOpen === false" style="color: 'red'">{{ 
+              $t('scheduleTypes.2')
+            }}</span>
+          </li>
         </ul>
       </div>
 
