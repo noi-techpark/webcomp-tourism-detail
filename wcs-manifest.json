@@ -96,17 +96,26 @@
       },
       {
         "key": "source-filter",
-        "type": "text",
-        "label": "sourceFilter",
+        "type": "select",
+        "label": "Filter by dataprovider",
         "required": false,
         "options": {
-          "default": ""
+          "values": [
+            "lts",
+            "idm",
+            "siag",
+            "dss",
+            "suedtirolwein",
+            "sta",
+            "archapp"
+          ],
+          "default": "de"
         }
       },
       {
         "key": "loc-filter",
         "type": "text",
-        "label": "locFilter",
+        "label": "Location Filter ()",
         "required": false,
         "options": {
           "default": ""
