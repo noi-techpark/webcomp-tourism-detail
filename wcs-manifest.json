@@ -136,7 +136,7 @@
         "label": "Display only data where Images are available",
         "required": false,
         "options": {          
-          "default": false
+          "default": true
         }
       },
       {
