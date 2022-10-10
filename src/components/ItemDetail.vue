@@ -15,32 +15,23 @@
       <div class="title-container" :style="titleImage">
         <div class="title">
           <h1>{{ itemDetail.Title }}</h1>
-          <!-- Gastronomy -->
-          <div v-if="itemCategories" class="props">
+          <!-- Gastronomy Temporary Hide -->
+          <!-- <div v-if="itemGastroCategoryInfo" class="props">
             <div>
               <span class="prop-key" v-if="item.CategoryCodes.length > 1"
-                >{{ $t('categories') }}:</span
-              >
+                >{{ $t('categories') }}:</span>
               <span class="prop-key" v-else>{{ $t('category') }}:</span>
-              {{ itemCategories }}
+              {{ itemGastroCategoryInfo }}
             </div>
-          </div>
+          </div> -->
           <!-- POI / Activity -->
-          <div v-if="itemCategoryInfos">
-
-            <div v-if="itemCategoryInfos.length > 1" class="props">
-              <span class="prop-key">{{ $t('categories') }}:</span
-              >{{ itemCategoryInfos }}
-            </div>
-            <!-- <div v-if="itemAdditionalPoiInfos.MainType" class="props">
-              <span class="prop-key">{{ $t('category') }}:</span
-              >{{ itemAdditionalPoiInfos.MainType }}
-            </div>
-            <div v-if="itemAdditionalPoiInfos.SubType" class="props">
-              <span class="prop-key">{{ $t('subcategory') }}:</span
-              >{{ itemAdditionalPoiInfos.SubType }}
-            </div> -->
-          </div>
+          <div v-if="itemCategoryInfos" class="props">
+              <span class="prop-key">{{ $t('categories') }}:</span>
+                  <!-- <div v-for="(value,i) of itemCategoryInfos" :key="i" class="text">
+                     {{ value }}
+                  </div>                                -->
+                  {{ itemCategoryInfos }}            
+          </div>          
         </div>
       </div>
 
@@ -261,7 +252,7 @@ import DistanceLength from '@/assets/img/ic_distanceduration.svg';
 import MapIcon from '@/assets/img/ic_map.svg';
 import Phone from '@/assets/img/ic_phone.svg';
 import Difficulty from '@/assets/img/ic_difficulty.svg';
-import { GastronomyApi, PoiApi, ActivityApi, ODHActivityPoiApi } from '@/api';
+import { GastronomyApi, ODHActivityPoiApi } from '@/api';
 import ImageDetail from '@/components/ImageDetail';
 
 const GASTRONOMY_TYPES = [
@@ -364,7 +355,7 @@ export default {
       return this.item?.LocationInfo?.DistrictInfo?.Name[this.language] || {};
     },
     itemCategoryInfos() {
-      return this.item?.AdditionalPoiInfos[this.language]?.Categories || {};
+      return this.item?.AdditionalPoiInfos[this.language]?.Categories.join(', ') || {};
     },
     googleMapsLink() {
       return this.item?.GpsPoints['position']?.Latitude && this.item?.GpsPoints['position']?.Longitude
@@ -402,8 +393,9 @@ export default {
 
       return props;
     },
-    itemCategories() {
-      return (
+    itemGastroCategoryInfo() {
+      console.log(this.item?.CategoryCodes);
+      return (        
         this.item?.CategoryCodes?.map(
           (c) =>
             this.gastronomyTypes.find((t) => t.Id === c.Id)?.TypeDesc[
@@ -436,7 +428,7 @@ export default {
     },
     itemGastronomyTypes() {
       const filteredArray = this.gastronomyTypes.filter((t) =>
-        this.item.Facilities.find((f) => t.Id === f.Id)
+        this.item.Facilities?.find((f) => t.Id === f.Id)
       );
       return GASTRONOMY_TYPES.map((type) => ({
         name: this.$t(`gastronomyTypes.${type}`),
@@ -487,15 +479,16 @@ export default {
   created() {
     this.isLoading = true;
     if(this.contentType === 'All'){
-      this.loadODHActivityPoiItem();
+      this.loadGastronomyTypeList();
+      this.loadODHActivityPoiItem();      
     }
-    else if ( this.contentType === 'Gastronomy') {
+    else if (this.contentType === 'Gastronomy') {
       this.loadGastronomyItem();
       this.loadGastronomyTypeList();
     } else if (this.contentType === 'POI') {
-      this.loadPoiItem();
+      this.loadODHActivityPoiItem();
     } else if (this.contentType === 'Activity') {
-      this.loadActivityItem();
+      this.loadODHActivityPoiItem();
     }
   },
   filters: {
@@ -518,7 +511,7 @@ export default {
     },
     loadGastronomyItem() {
       new GastronomyApi()
-        .gastronomyGetGastronomySingle(this.contentId, '', this.language)
+        .oDHActivityPoiGetODHActivityPoiSingle(this.contentId, '', this.language)
         .then((value) => {
           this.item = value.data;
           this.isLoading = false;
@@ -530,23 +523,7 @@ export default {
         .then((value) => {
           this.gastronomyTypes = value.data;
         });
-    },
-    loadPoiItem() {
-      new PoiApi()
-        .poiGetPoiSingle(this.contentId, '', this.language)
-        .then((value) => {
-          this.item = value.data;
-          this.isLoading = false;
-        });
-    },
-    loadActivityItem() {
-      new ActivityApi()
-        .activityGetActivitySingle(this.contentId, '', this.language)
-        .then((value) => {
-          this.item = value.data;
-          this.isLoading = false;
-        });
-    },
+    },    
     close() {
       this.$emit('close');
     },

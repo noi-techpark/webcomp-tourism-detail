@@ -279,21 +279,21 @@ export default {
     getODHActivityPoiShortInfo(item) {
       const shortInfo = [];
       shortInfo.push(...this.getODHActivityPoiTypes(item));
-      //shortInfo.push(...this.getGastronomyTypes(item));
+      
       shortInfo.push(this.getODHActivityPoiLocationInfo(item)); 
-      if (item?.ContactInfos?.en?.Phonenumber) {
-        const telephone =
-          this.$t('phone') + ': ' + item.ContactInfos.en.Phonenumber;
-        shortInfo.push(telephone);
-      }
-      if (item?.ContactInfos[this.language]?.Url) {
-        const url = this.$t('web') + ': ' + item.ContactInfos[this.language]?.Url;
-        shortInfo.push(url);
-      }
-      if (item?.Difficulty) {
-        const difficulty = 'Difficulty: ' + item?.Difficulty;
-        shortInfo.push(difficulty);
-      }
+      // if (item?.ContactInfos?.en?.Phonenumber) {
+      //   const telephone =
+      //     this.$t('phone') + ': ' + item.ContactInfos.en.Phonenumber;
+      //   shortInfo.push(telephone);
+      // }
+      // if (item?.ContactInfos[this.language]?.Url) {
+      //   const url = this.$t('web') + ': ' + item.ContactInfos[this.language]?.Url;
+      //   shortInfo.push(url);
+      // }
+      // if (item?.Difficulty) {
+      //   const difficulty = 'Difficulty: ' + item?.Difficulty;
+      //   shortInfo.push(difficulty);
+      // }
       return shortInfo.filter((info) => info != null).join(', ');
     },
     getODHActivityPoiTypes(item) {      
