@@ -280,7 +280,13 @@ export default {
       const shortInfo = [];
       shortInfo.push(...this.getODHActivityPoiTypes(item));
       
-      shortInfo.push(this.getODHActivityPoiLocationInfo(item)); 
+      if (item?.LocationInfo?.MunicipalityInfo?.Name[this.language]) {
+         const municipality =
+           this.$t('location') + ': ' + item.LocationInfo.MunicipalityInfo.Name[this.language];
+         shortInfo.push(municipality);
+      };
+
+      //shortInfo.push(this.getODHActivityPoiLocationInfo(item)); 
       // if (item?.ContactInfos?.en?.Phonenumber) {
       //   const telephone =
       //     this.$t('phone') + ': ' + item.ContactInfos.en.Phonenumber;

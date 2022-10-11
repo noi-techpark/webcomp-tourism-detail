@@ -90,15 +90,15 @@
             <map-icon class="map-icon icon"></map-icon>
             <a :href="googleMapsLink" target="_blank">Google Maps</a>
           </li>
-          <li v-if="itemContactInfos.City">
+          <!-- <li v-if="itemContactInfos.City">
             <map-icon class="map-icon icon"></map-icon>
             <span class="prop-key">{{ $t('location') }}: </span>
             <span class="text-dark">{{ itemContactInfos.City }}</span>
-          </li>
-          <li v-if="itemMunicpalityInfos && itemContactInfos.City == null">
+          </li> -->
+          <li v-if="itemMunicpalityInfos && itemDistrictInfos">
             <map-icon class="map-icon icon"></map-icon>
             <span class="prop-key">{{ $t('location') }}: </span>
-            <span class="text-dark">{{ itemMunicpalityInfos }}</span>
+            <span class="text-dark">{{ getItemLocationInfo }}</span>
           </li>
           <li v-if="itemContactInfos.Url">
             <external-link class="external-link icon"></external-link>
@@ -471,6 +471,22 @@ export default {
         )
           .filter((day) => day != null)
           .join(', ');
+    },
+    getItemLocationInfo() {      
+      let municipality = "";
+      let district = "";
+
+      if (this.item?.LocationInfo?.MunicipalityInfo?.Name[this.language]) {
+        municipality = this.item?.LocationInfo?.MunicipalityInfo?.Name[this.language];                       
+      }     
+      if (this.item?.LocationInfo?.DistrictInfo?.Name[this.language] ) {
+
+        if(municipality != this.item?.LocationInfo?.DistrictInfo?.Name[this.language]){
+          district = ' - ' + this.item?.LocationInfo?.DistrictInfo?.Name[this.language];                
+        }        
+      }     
+
+      return municipality + district;
     },
     isItemEmpty() {
       return Object.keys(this.itemDetail).length === 0;
