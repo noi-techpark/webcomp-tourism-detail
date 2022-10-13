@@ -258,9 +258,10 @@ export default {
           null,
           '',
           this.language,
+          this.withImageOnly ? true : null,
+          null,          
+          this.searchInput,          
           null,
-          this.searchInput,
-          this.withImageOnly ? 'in(ImageGallery.[*].License,"CC0")' : null,
           []
         )
         .then((value) => {
