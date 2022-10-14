@@ -355,7 +355,7 @@ export default {
       return this.item?.LocationInfo?.DistrictInfo?.Name[this.language] || {};
     },
     itemCategoryInfos() {
-      return this.item?.AdditionalPoiInfos[this.language]?.Categories.join(', ') || {};
+      return this.item?.AdditionalPoiInfos[this.language]?.Categories?.join(', ') || {};
     },
     googleMapsLink() {
       return this.item?.GpsPoints['position']?.Latitude && this.item?.GpsPoints['position']?.Longitude
