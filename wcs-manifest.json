@@ -1,6 +1,6 @@
 {
   "title": "Tourism Detail",
-  "description": "A web component to display a list and details of gastronomy businesses, activities and points of interests located in South Tyrol. It is possible to select a category and only display selected items or the details page of a single one.",
+  "description": "A web component to display a list and details of gastronomy businesses, activities and points of interests located in South Tyrol. It is possible to select a category and only display selected items or the details page of a single one. ",
   "descriptionAbstract": "List and details of gastronomy businesses, activities and points of interests",
   "license": "AGPL-3.0-or-later",
   "repositoryUrl": "https://github.com/noi-techpark/webcomp-tourism-detail.git",
@@ -26,7 +26,7 @@
       "organizationUrl": "https://noi.bz.it"
     }
   ],
-  "image": "wcs-logo.png",
+  "image": "wcs-logo-new.png",
   "searchTags": [
     "activities",
     "poi",
@@ -124,7 +124,7 @@
       {
         "key": "loc-filter",
         "type": "text",
-        "label": "Location Filter (pass type + id (https://tourism.opendatahub.bz.it/v1/Location))",
+        "label": "Location Filter (pass type + id check out https://tourism.opendatahub.bz.it/v1/Location)",
         "required": false,
         "options": {
           "default": ""
@@ -133,7 +133,7 @@
       {
         "key": "with-image-only",
         "type": "null",
-        "label": "Display only data where Images are available",
+        "label": "Display only data where Images with  CC0 License are available",
         "required": false,
         "options": {          
           "default": true
