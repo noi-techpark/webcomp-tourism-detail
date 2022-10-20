@@ -7,6 +7,6 @@ Files: src/* work/* dist/* odh-*.js .browserslistrc .eslintignore .eslintrc.js .
 Copyright: (c) 2021 NOI Techpark <info@noi.bz.it>
 License: AGPL-3.0-or-later
 
-Files: .github/workflows/main.yml *.md *.txt .env.* *.json .env infrastructure/* .editorconfig .gitignore docker-compose.yml yarn.lock webpack.* wcs-logo.png wcs-logo.webp karma.conf.js browserslist
+Files: .github/workflows/main.yml *.md *.txt .env.* *.json .env infrastructure/* .editorconfig .gitignore docker-compose.yml yarn.lock webpack.* wcs-logo.png wcs-logo.webp karma.conf.js browserslist wcs-logo-new.png
 Copyright: (c) 2021 NOI Techpark <info@noi.bz.it>
 License: CC0-1.0
