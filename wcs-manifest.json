@@ -133,7 +133,7 @@
       {
         "key": "with-image-only",
         "type": "null",
-        "label": "Display only data where Images with  CC0 License are available",
+        "label": "Display only data where Images are available",
         "required": false,
         "options": {          
           "default": true

@@ -250,7 +250,7 @@ export default {
           null,
           this.sourceFilter,
           this.contentType != 'All' ? this.contentType.toLowerCase() : null,
-          true,
+          null,
           true,
           null,
           null,
