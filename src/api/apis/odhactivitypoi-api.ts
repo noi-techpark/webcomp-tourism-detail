@@ -145,7 +145,7 @@ export const ODHActivityPoiApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        oDHActivityPoiGetODHActivityPoiList: async (pagenumber?: number, pagesize?: number, type?: string, subtype?: string, poitype?: string, idlist?: string, locfilter?: string, langfilter?: string, areafilter?: string, highlight?: boolean, source?: string, odhtagfilter?: string, odhactive?: boolean, active?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, hascc0image?: boolean, updatefrom?: string, searchfilter?: string, rawfilter?: string, options: any = {}): Promise<RequestArgs> => {
+        oDHActivityPoiGetODHActivityPoiList: async (pagenumber?: number, pagesize?: number, type?: string, subtype?: string, poitype?: string, idlist?: string, locfilter?: string, langfilter?: string, areafilter?: string, highlight?: boolean, source?: string, odhtagfilter?: string, odhactive?: boolean, active?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, hasimage?: boolean, updatefrom?: string, searchfilter?: string, rawfilter?: string, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/ODHActivityPoi`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -246,8 +246,8 @@ export const ODHActivityPoiApiAxiosParamCreator = function (configuration?: Conf
                 localVarQueryParameter['language'] = language;
             }
 
-            if (hascc0image !== undefined) {
-                localVarQueryParameter['hascc0image'] = hascc0image;
+            if (hasimage !== undefined) {
+                localVarQueryParameter['hasimage'] = hasimage;
             }
 
             if (updatefrom !== undefined) {
@@ -407,8 +407,8 @@ export const ODHActivityPoiApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async oDHActivityPoiGetODHActivityPoiList(pagenumber?: number, pagesize?: number, type?: string, subtype?: string, poitype?: string, idlist?: string, locfilter?: string, langfilter?: string, areafilter?: string, highlight?: boolean, source?: string, odhtagfilter?: string, odhactive?: boolean, active?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, hascc0image?: boolean, updatefrom?: string, searchfilter?: string, rawfilter?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ODHActivityPoi>>> {
-            const localVarAxiosArgs = await ODHActivityPoiApiAxiosParamCreator(configuration).oDHActivityPoiGetODHActivityPoiList(pagenumber, pagesize, type, subtype, poitype, idlist, locfilter, langfilter, areafilter, highlight, source, odhtagfilter, odhactive, active, seed, latitude, longitude, radius, fields, language, hascc0image, updatefrom, searchfilter, rawfilter, options);
+        async oDHActivityPoiGetODHActivityPoiList(pagenumber?: number, pagesize?: number, type?: string, subtype?: string, poitype?: string, idlist?: string, locfilter?: string, langfilter?: string, areafilter?: string, highlight?: boolean, source?: string, odhtagfilter?: string, odhactive?: boolean, active?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, hasimage?: boolean, updatefrom?: string, searchfilter?: string, rawfilter?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ODHActivityPoi>>> {
+            const localVarAxiosArgs = await ODHActivityPoiApiAxiosParamCreator(configuration).oDHActivityPoiGetODHActivityPoiList(pagenumber, pagesize, type, subtype, poitype, idlist, locfilter, langfilter, areafilter, highlight, source, odhtagfilter, odhactive, active, seed, latitude, longitude, radius, fields, language, hasimage, updatefrom, searchfilter, rawfilter, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -487,8 +487,8 @@ export const ODHActivityPoiApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        oDHActivityPoiGetODHActivityPoiList(pagenumber?: number, pagesize?: number, type?: string, subtype?: string, poitype?: string, idlist?: string, locfilter?: string, langfilter?: string, areafilter?: string, highlight?: boolean, source?: string, odhtagfilter?: string, odhactive?: boolean, active?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, hascc0image?: boolean, updatefrom?: string, searchfilter?: string, rawfilter?: string, options?: any): AxiosPromise<Array<ODHActivityPoi>> {
-            return ODHActivityPoiApiFp(configuration).oDHActivityPoiGetODHActivityPoiList(pagenumber, pagesize, type, subtype, poitype, idlist, locfilter, langfilter, areafilter, highlight, source, odhtagfilter, odhactive, active, seed, latitude, longitude, radius, fields, language, hascc0image, updatefrom, searchfilter, rawfilter, options).then((request) => request(axios, basePath));
+        oDHActivityPoiGetODHActivityPoiList(pagenumber?: number, pagesize?: number, type?: string, subtype?: string, poitype?: string, idlist?: string, locfilter?: string, langfilter?: string, areafilter?: string, highlight?: boolean, source?: string, odhtagfilter?: string, odhactive?: boolean, active?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, hasimage?: boolean, updatefrom?: string, searchfilter?: string, rawfilter?: string, options?: any): AxiosPromise<Array<ODHActivityPoi>> {
+            return ODHActivityPoiApiFp(configuration).oDHActivityPoiGetODHActivityPoiList(pagenumber, pagesize, type, subtype, poitype, idlist, locfilter, langfilter, areafilter, highlight, source, odhtagfilter, odhactive, active, seed, latitude, longitude, radius, fields, language, hasimage, updatefrom, searchfilter, rawfilter, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -556,7 +556,7 @@ export class ODHActivityPoiApi extends BaseAPI {
      * @param {string} [radius] Radius to Search in Meters. Only Object withhin the given point and radius are returned and sorted by distance. Random Sorting is disabled if the GeoFilter Informations are provided, (default:&#x27;null&#x27;)
      * @param {string} [fields] Select fields to display, More fields are indicated by separator &#x27;,&#x27; example fields&#x3D;Id,Active,Shortname. Select also Dictionary fields, example Detail.de.Title, or Elements of Arrays example ImageGallery[0].ImageUrl. (default:&#x27;null&#x27; all fields are displayed)
      * @param {string} [language] Language field selector, displays data and fields available in the selected language (default:&#x27;null&#x27; all languages are displayed)
-     * @param {boolean} [hascc0image] 
+     * @param {boolean} [hasimage] 
      * @param {string} [updatefrom] Date from Format (yyyy-MM-dd) (all GBActivityPoi with LastChange &amp;gt;&#x3D; datefrom are passed), (default: null)
      * @param {string} [searchfilter] String to search for, Title in all languages are searched, (default: null)
      * @param {string} [rawfilter] rawfilter to pass, (default: null)
@@ -564,8 +564,8 @@ export class ODHActivityPoiApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ODHActivityPoiApi
      */
-    public oDHActivityPoiGetODHActivityPoiList(pagenumber?: number, pagesize?: number, type?: string, subtype?: string, poitype?: string, idlist?: string, locfilter?: string, langfilter?: string, areafilter?: string, highlight?: boolean, source?: string, odhtagfilter?: string, odhactive?: boolean, active?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, hascc0image?: boolean, updatefrom?: string, searchfilter?: string, rawfilter?: string, options?: any) {
-        return ODHActivityPoiApiFp(this.configuration).oDHActivityPoiGetODHActivityPoiList(pagenumber, pagesize, type, subtype, poitype, idlist, locfilter, langfilter, areafilter, highlight, source, odhtagfilter, odhactive, active, seed, latitude, longitude, radius, fields, language, hascc0image, updatefrom, searchfilter, rawfilter, options).then((request) => request(this.axios, this.basePath));
+    public oDHActivityPoiGetODHActivityPoiList(pagenumber?: number, pagesize?: number, type?: string, subtype?: string, poitype?: string, idlist?: string, locfilter?: string, langfilter?: string, areafilter?: string, highlight?: boolean, source?: string, odhtagfilter?: string, odhactive?: boolean, active?: boolean, seed?: string, latitude?: string, longitude?: string, radius?: string, fields?: string, language?: string, hasimage?: boolean, updatefrom?: string, searchfilter?: string, rawfilter?: string, options?: any) {
+        return ODHActivityPoiApiFp(this.configuration).oDHActivityPoiGetODHActivityPoiList(pagenumber, pagesize, type, subtype, poitype, idlist, locfilter, langfilter, areafilter, highlight, source, odhtagfilter, odhactive, active, seed, latitude, longitude, radius, fields, language, hasimage, updatefrom, searchfilter, rawfilter, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
