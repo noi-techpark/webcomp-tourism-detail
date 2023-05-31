@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: NOI Techpark <digital@noi.bz.it>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 export * from './activity-poi-reduced';
 export * from './activity-types';
 export * from './gbltsactivity';

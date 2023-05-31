@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: NOI Techpark <digital@noi.bz.it>
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Tourism Details
 
 [![REUSE status](https://api.reuse.software/badge/github.com/noi-techpark/webcomp-tourism-detail)](https://api.reuse.software/info/github.com/noi-techpark/webcomp-tourism-detail)
