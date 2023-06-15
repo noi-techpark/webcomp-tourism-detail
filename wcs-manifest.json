@@ -83,7 +83,7 @@
       {
         "key": "subcategory",
         "type": "text",
-        "label": "Subcategory. \n Depending on the selected Maincategory, BITMASK values available at (https://tourism.opendatahub.bz.it/v1/ODHActivityPoiTypes?rawfilter=eq(Type,%27SubType%27))",
+        "label": "Subcategory. \n Depending on the selected Maincategory, BITMASK values available at (https://tourism.opendatahub.com/v1/ODHActivityPoiTypes?rawfilter=eq(Type,%27SubType%27))",
         "required": false,
         "options": {
           "default": ""
@@ -124,7 +124,7 @@
       {
         "key": "loc-filter",
         "type": "text",
-        "label": "Location Filter (pass type + id check out https://tourism.opendatahub.bz.it/v1/Location)",
+        "label": "Location Filter (pass type + id check out https://tourism.opendatahub.com/v1/Location)",
         "required": false,
         "options": {
           "default": ""
