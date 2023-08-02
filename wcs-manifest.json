@@ -109,8 +109,10 @@
         "type": "select",
         "label": "Filter by dataprovider",
         "required": false,
+        "default": "all",
         "options": {
           "values": [
+            "all",
             "lts",
             "idm",
             "siag",
