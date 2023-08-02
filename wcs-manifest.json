@@ -108,8 +108,7 @@
         "key": "source-filter",
         "type": "select",
         "label": "Filter by dataprovider",
-        "required": false,
-        "default": "all",
+        "required": false,        
         "options": {
           "values": [
             "all",
@@ -120,7 +119,8 @@
             "suedtirolwein",
             "sta",
             "archapp"
-          ]
+          ],
+          "default":"all"
         }
       },
       {

@@ -254,7 +254,7 @@ export default {
           this.language,
           null,
           null,
-          this.sourceFilter != 'all' ? null : this.sourceFilter,
+          this.sourceFilter == 'all' || this.sourceFilter == undefined ? null : this.sourceFilter,
           this.contentType != 'All' ? this.contentType.toLowerCase() : null,
           null,
           true,
