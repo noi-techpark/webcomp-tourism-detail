@@ -13,7 +13,7 @@ SPDX-License-Identifier: CC0-1.0
 A web component to display a list and details of gastronomy businesses,
 activities and points of interests located in South Tyrol. It is possible to
 select a category and only display selected items or the details page of a
-single one.
+single one. 
 
 - [Tourism Details](#tourism-details)
   - [Usage](#usage)
