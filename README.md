@@ -142,6 +142,10 @@ npm run start
 
 The application will be served and can be accessed at [http://localhost:8080](http://localhost:8080).
 
+### Environment
+
+Copy .env.example to .env and set all needed Environment Variables.
+
 ## Tests and linting
 
 The tests and the linting can be executed with the following commands:
