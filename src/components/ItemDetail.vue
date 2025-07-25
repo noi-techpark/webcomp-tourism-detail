@@ -209,14 +209,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         </ul>
       </div>
 
-      <div v-for="type of itemGastronomyTypes" :key="type.type">
+      <!-- <div v-for="type of itemGastronomyTypes" :key="type.type">
         <div style="text-align: center; color: #949494">{{ type.name }}</div>
         <div class="gastronomyTypes">
           <div v-for="(value, i) of type.values" :key="i" class="category">
             {{ value }}
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div v-if="imageGallery">
         <img
@@ -501,12 +501,12 @@ export default {
   created() {
     this.isLoading = true;
     if(this.contentType === 'All'){
-      this.loadGastronomyTypeList();
+      //this.loadGastronomyTypeList();
       this.loadODHActivityPoiItem();      
     }
     else if (this.contentType === 'Gastronomy') {
       this.loadGastronomyItem();
-      this.loadGastronomyTypeList();
+      //this.loadGastronomyTypeList();
     } else if (this.contentType === 'POI') {
       this.loadODHActivityPoiItem();
     } else if (this.contentType === 'Activity') {
@@ -539,13 +539,13 @@ export default {
           this.isLoading = false;
         });
     },
-    loadGastronomyTypeList() {
-      new GastronomyApi()
-        .gastronomyGetAllGastronomyTypesList()
-        .then((value) => {
-          this.gastronomyTypes = value.data;
-        });
-    },    
+    // loadGastronomyTypeList() {
+    //   new GastronomyApi()
+    //     .gastronomyGetAllGastronomyTypesList()
+    //     .then((value) => {
+    //       this.gastronomyTypes = value.data;
+    //     });
+    // },    
     close() {
       this.$emit('close');
     },

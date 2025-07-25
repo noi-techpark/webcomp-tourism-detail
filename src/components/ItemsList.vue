@@ -231,14 +231,6 @@ export default {
       clearTimeout(this.timer);
       this.timer = setTimeout(this.loadODHActivityPoiList, 300, 1);
     },
-    loadODHActivityPoiTypeList() {
-      const odhactivityApi = new ODHActivityPoiApi();
-      odhactivityApi
-        .oDHActivityPoiGetAllODHActivityPoiTypesList()
-        .then((value) => {
-          this.odhactivitypoiTypes = value.data;
-        });
-    },
     loadODHActivityPoiList(pageNum) {
       this.isLoading = true;
       const odhactivityApi = new ODHActivityPoiApi();
@@ -276,12 +268,6 @@ export default {
           this.totalPages = value?.data?.TotalPages;
           this.isLoading = false;
         });
-    },
-    loadGastronomyTypeList() {
-      const gastronomyApi = new GastronomyApi();
-      gastronomyApi.gastronomyGetAllGastronomyTypesList().then((value) => {
-        this.gastronomyTypes = value.data;
-      });
     },
     getODHActivityPoiShortInfo(item) {
       const shortInfo = [];
